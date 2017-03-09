@@ -6,9 +6,10 @@ let express = require('express'),
     sslRedirect = require('heroku-ssl-redirect'),
     nodemailer = require('nodemailer'),
     bodyParser = require('body-parser'),
+    dotenv = require('dotenv-safe'),
     app = express();
 
-require('dotenv-safe').load({
+dotenv.load({
   allowEmptyValues: true
 });
 
