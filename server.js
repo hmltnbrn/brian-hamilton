@@ -15,6 +15,8 @@ dotenv.load({
 
 app.set('port', process.env.PORT || 8080); //sets port
 
+app.use(sslRedirect());
+
 app.use('/', express.static(__dirname + '/www'));
 app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/')); //necessary for banner.js script
 app.use('/bluebird', express.static(__dirname + '/node_modules/bluebird/js/browser/')); //necessary for promises on IE
@@ -24,8 +26,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
-
-app.use(sslRedirect());
 
 // Adding CORS support
 app.all('*', function (req, res, next) {
