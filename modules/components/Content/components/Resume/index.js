@@ -25,11 +25,11 @@ class Resume extends React.Component {
             and Web Science, with a concentration in Civil Engineering.</div>
             <div className="resume-title">EXPERIENCE</div>
             <div className="institution-title">Consultant Web Developer, New York City Transit</div>
-            <div className="location-years">New York, New York — March 2015-Present</div>
+            <div className="location-years">New York, New York — March 2015-March 2017</div>
             <ul className="experience-list">
               <li>Built data visualizations for subway and bus performance, using
                   BIRT reports, JavaScript, jQuery, HTML, and SQL.</li>
-              <li>Created a dashboard for real-time data display, using Node.js and React.js.</li>
+              <li>Created a dashboard for real-time data display, using Node.js and React.js, Socket.IO, and RabbitMQ.</li>
               <li>Worked on adapting open-source projects for visualizing scheduled
                   and real-time train movement, using Python, JavaScript (D3 library), JSON, and SQL.</li>
               <li>Queried from an Oracle database, which included data for subway
@@ -48,14 +48,13 @@ class Resume extends React.Component {
             <div className="location-years">New York, New York — Summer 2013</div>
             <ul className="experience-list">
               <li>Troubleshot and repaired problems with desktop hardware and software.</li>
-              <li>Supported users in a fast-paced trading environment.</li>
               <li>Worked with financial applications, such as Bloomberg and FactSet.</li>
             </ul>
             <div className="resume-title">SKILLS</div>
             <ul className="skills-list">
-              <li>Proficient in basic web development technologies, including HTML5, CSS3, JavaScript, jQuery, and JSON.</li>
+              <li>Proficient in basic web development technologies, including HTML5, CSS3, JavaScript, jQuery, JSON, and XML.</li>
               <li>Using object-oriented programming languages, such as Python and C++.</li>
-              <li>Experience building full-stack applications with Node.js, React.js, and PostgreSQL.</li>
+              <li>Experience building full-stack applications with Node.js, Express.js, React.js, PostgreSQL, and EJS.</li>
               <li>Creating databases, normalizing tables, and querying using SQL.</li>
               <li>Building data visualizations with D3.js.</li>
               <li>Knowledgeable of the Windows, OS X, and Linux operating systems.</li>
@@ -64,6 +63,7 @@ class Resume extends React.Component {
             </ul>
             <div className="resume-title">PROJECTS</div>
             <ul className="skills-list">
+              <li>Node.js, EJS, and PostgreSQL application for encoding poetry in TEI. (CUNY – Available on Github)</li>
               <li>Node.js, React.js, and PostgreSQL application for a small classroom library. (Personal – Available on GitHub)</li>
               <li>Dashboard for visualizations and real-time data for the Rail Control Center. (New York City Transit)</li>
               <li>Visualization for real-time train movement and daily ridership. (New

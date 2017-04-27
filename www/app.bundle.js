@@ -21957,18 +21957,19 @@
 	    _this.state = {
 	      windowWidth: window.innerWidth
 	    };
+	    _this.handleResize = _this.handleResize.bind(_this);
 	    return _this;
 	  }
 	
 	  _createClass(App, [{
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
-	      window.addEventListener('resize', this.handleResize.bind(this));
+	      window.addEventListener('resize', this.handleResize);
 	    }
 	  }, {
 	    key: 'componentWillUnmount',
 	    value: function componentWillUnmount() {
-	      window.removeEventListener('resize', this.handleResize.bind(this));
+	      window.removeEventListener('resize', this.handleResize);
 	    }
 	  }, {
 	    key: 'handleResize',
@@ -41151,7 +41152,7 @@
 	            _react2.default.createElement(
 	              'div',
 	              { className: 'location-years' },
-	              'New York, New York \u2014 March 2015-Present'
+	              'New York, New York \u2014 March 2015-March 2017'
 	            ),
 	            _react2.default.createElement(
 	              'ul',
@@ -41164,7 +41165,7 @@
 	              _react2.default.createElement(
 	                'li',
 	                null,
-	                'Created a dashboard for real-time data display, using Node.js and React.js.'
+	                'Created a dashboard for real-time data display, using Node.js and React.js, Socket.IO, and RabbitMQ.'
 	              ),
 	              _react2.default.createElement(
 	                'li',
@@ -41237,11 +41238,6 @@
 	              _react2.default.createElement(
 	                'li',
 	                null,
-	                'Supported users in a fast-paced trading environment.'
-	              ),
-	              _react2.default.createElement(
-	                'li',
-	                null,
 	                'Worked with financial applications, such as Bloomberg and FactSet.'
 	              )
 	            ),
@@ -41256,7 +41252,7 @@
 	              _react2.default.createElement(
 	                'li',
 	                null,
-	                'Proficient in basic web development technologies, including HTML5, CSS3, JavaScript, jQuery, and JSON.'
+	                'Proficient in basic web development technologies, including HTML5, CSS3, JavaScript, jQuery, JSON, and XML.'
 	              ),
 	              _react2.default.createElement(
 	                'li',
@@ -41266,7 +41262,7 @@
 	              _react2.default.createElement(
 	                'li',
 	                null,
-	                'Experience building full-stack applications with Node.js, React.js, and PostgreSQL.'
+	                'Experience building full-stack applications with Node.js, Express.js, React.js, PostgreSQL, and EJS.'
 	              ),
 	              _react2.default.createElement(
 	                'li',
@@ -41297,6 +41293,11 @@
 	            _react2.default.createElement(
 	              'ul',
 	              { className: 'skills-list' },
+	              _react2.default.createElement(
+	                'li',
+	                null,
+	                'Node.js, EJS, and PostgreSQL application for encoding poetry in TEI. (CUNY \u2013 Available on Github)'
+	              ),
 	              _react2.default.createElement(
 	                'li',
 	                null,
@@ -41611,6 +41612,39 @@
 	              _react2.default.createElement(_FlatButton2.default, {
 	                label: 'Live Demo',
 	                href: 'http://classroomlibrary.brianhamilton.me',
+	                target: '_blank',
+	                style: { color: "#CCA677" },
+	                icon: _react2.default.createElement(_link2.default, { color: '#CCA677' }) })
+	            )
+	          ),
+	          _react2.default.createElement(
+	            _Card.Card,
+	            { className: 'projects-paper' },
+	            _react2.default.createElement(
+	              _Card.CardMedia,
+	              {
+	                overlay: _react2.default.createElement(_Card.CardTitle, { title: 'end/line', subtitle: 'Web application for encoding poetry with TEI' })
+	              },
+	              _react2.default.createElement('img', { src: 'images/end-line.png' })
+	            ),
+	            _react2.default.createElement(
+	              _Card.CardText,
+	              null,
+	              'Currently working as the back-end developer and lead developer on this project, which is now in beta.',
+	              _react2.default.createElement('br', null),
+	              'Node.js application built with Express, EJS, Bootstrap, and PostgreSQL.'
+	            ),
+	            _react2.default.createElement(
+	              _Card.CardActions,
+	              null,
+	              _react2.default.createElement(_FlatButton2.default, {
+	                label: 'Repository',
+	                href: 'https://github.com/end-line/end-line',
+	                target: '_blank',
+	                icon: _react2.default.createElement(GitHubIcon, null) }),
+	              _react2.default.createElement(_FlatButton2.default, {
+	                label: 'Live Site',
+	                href: 'http://www.endlineproject.org/',
 	                target: '_blank',
 	                style: { color: "#CCA677" },
 	                icon: _react2.default.createElement(_link2.default, { color: '#CCA677' }) })
@@ -45503,7 +45537,7 @@
 /* 467 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -45514,10 +45548,6 @@
 	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
-	
-	var _MuiThemeProvider = __webpack_require__(198);
-	
-	var _MuiThemeProvider2 = _interopRequireDefault(_MuiThemeProvider);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -45537,35 +45567,31 @@
 	  }
 	
 	  _createClass(Footer, [{
-	    key: 'render',
+	    key: "render",
 	    value: function render() {
 	
 	      return _react2.default.createElement(
-	        _MuiThemeProvider2.default,
-	        null,
+	        "div",
+	        { className: "footer" },
 	        _react2.default.createElement(
-	          'div',
-	          { className: 'footer' },
+	          "p",
+	          { className: "footer-built" },
+	          "Brian Hamilton \xA9 2016-2017"
+	        ),
+	        _react2.default.createElement(
+	          "p",
+	          { className: "footer-photo" },
+	          "View this site\u2019s ",
 	          _react2.default.createElement(
-	            'p',
-	            { className: 'footer-built' },
-	            'Brian Hamilton \xA9 2016-2017'
+	            "a",
+	            { href: "https://github.com/hmltnbrn/brian-hamilton", target: "_blank" },
+	            "repository"
 	          ),
+	          " | Photo by ",
 	          _react2.default.createElement(
-	            'p',
-	            { className: 'footer-photo' },
-	            'View this site\u2019s ',
-	            _react2.default.createElement(
-	              'a',
-	              { href: 'https://github.com/hmltnbrn/brian-hamilton', target: '_blank' },
-	              'repository'
-	            ),
-	            ' | Photo by ',
-	            _react2.default.createElement(
-	              'a',
-	              { href: 'https://www.flickr.com/photos/tedchambers/', target: '_blank' },
-	              'Ted Chambers'
-	            )
+	            "a",
+	            { href: "https://www.flickr.com/photos/tedchambers/", target: "_blank" },
+	            "Ted Chambers"
 	          )
 	        )
 	      );

@@ -44,6 +44,30 @@ class Projects extends React.Component {
           </Card>
           <Card className="projects-paper">
             <CardMedia
+              overlay={<CardTitle title="end/line" subtitle="Web application for encoding poetry with TEI" />}
+            >
+              <img src="images/end-line.png" />
+            </CardMedia>
+            <CardText>
+              Currently working as the back-end developer and lead developer on this project, which is now in beta.<br/>
+              Node.js application built with Express, EJS, Bootstrap, and PostgreSQL.
+            </CardText>
+            <CardActions>
+              <FlatButton
+                label="Repository"
+                href="https://github.com/end-line/end-line"
+                target="_blank"
+                icon={<GitHubIcon/>}/>
+              <FlatButton
+                label="Live Site"
+                href="http://www.endlineproject.org/"
+                target="_blank"
+                style={{color:"#CCA677"}}
+                icon={<LinkIcon color="#CCA677"/>}/>
+            </CardActions>
+          </Card>
+          <Card className="projects-paper">
+            <CardMedia
               overlay={<CardTitle title="NYCT Train Movement" subtitle="Subway visualization with animation" />}
             >
               <img src="images/train-movement.png" />

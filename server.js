@@ -15,6 +15,10 @@ dotenv.load({
 
 app.set('port', process.env.PORT || 8080); //sets port
 
+app.use('/', express.static(__dirname + '/www'));
+app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/')); //necessary for banner.js script
+app.use('/bluebird', express.static(__dirname + '/node_modules/bluebird/js/browser/')); //necessary for promises on IE
+
 app.use(compression());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -22,10 +26,6 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use(sslRedirect());
-
-app.use('/', express.static(__dirname + '/www'));
-app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/')); //necessary for banner.js script
-app.use('/bluebird', express.static(__dirname + '/node_modules/bluebird/js/browser/')); //necessary for promises on IE
 
 // Adding CORS support
 app.all('*', function (req, res, next) {
@@ -49,10 +49,10 @@ let transporter = nodemailer.createTransport({
   auth: {
     type: 'OAuth2',
     user: process.env.EMAIL,
-    clientId: process.env.CLIENTID,
-    clientSecret: process.env.CLIENTSECRET,
-    refreshToken: process.env.REFRESHTOKEN,
-    accessToken: process.env.ACCESSTOKEN,
+    clientId: process.env.CLIENT_ID,
+    clientSecret: process.env.CLIENT_SECRET,
+    refreshToken: process.env.REFRESH_TOKEN,
+    accessToken: process.env.ACCESS_TOKEN,
     expires: 3600
   }
 });
@@ -69,18 +69,18 @@ let handleEmail = (req, res, next) => {
     from: {
       name: name,
       address: email
-    }, // sender address
+    },
     sender: {
       name: name,
       address: email
-    }, // sender address
+    },
     replyTo: {
       name: name,
       address: email
-    }, // sender address
+    },
     to: 'Brian Hamilton <hmltnbrn@gmail.com>', // list of receivers
-    subject: subject, // Subject line
-    text: bodyText, // plain text body
+    subject: subject,
+    text: bodyText
   };
 
   // send mail with defined transport object
