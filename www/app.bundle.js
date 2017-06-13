@@ -41008,7 +41008,7 @@
 	            _react2.default.createElement(
 	              "p",
 	              null,
-	              "I\u2019m a full-stack developer based in Astoria, New York. Currently, I work for New York City Transit as a consultant, specializing in data visualizations, real-time data dashboards, and full-stack web applications. My main languages of focus are JavaScript (Node.js/Express/React) and Python."
+	              "I\u2019m a full-stack developer based in Astoria, New York. I specialize in data visualizations, real-time data dashboards, and full-stack web applications. My main languages of focus are JavaScript (Node.js/Express/React) and Python."
 	            ),
 	            _react2.default.createElement(
 	              "p",
@@ -41644,7 +41644,7 @@
 	                icon: _react2.default.createElement(GitHubIcon, null) }),
 	              _react2.default.createElement(_FlatButton2.default, {
 	                label: 'Live Site',
-	                href: 'http://www.endlineproject.org/',
+	                href: 'https://www.endlineproject.org/',
 	                target: '_blank',
 	                style: { color: "#CCA677" },
 	                icon: _react2.default.createElement(_link2.default, { color: '#CCA677' }) })

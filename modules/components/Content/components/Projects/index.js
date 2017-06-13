@@ -60,7 +60,7 @@ class Projects extends React.Component {
                 icon={<GitHubIcon/>}/>
               <FlatButton
                 label="Live Site"
-                href="http://www.endlineproject.org/"
+                href="https://www.endlineproject.org/"
                 target="_blank"
                 style={{color:"#CCA677"}}
                 icon={<LinkIcon color="#CCA677"/>}/>
