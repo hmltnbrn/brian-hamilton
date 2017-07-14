@@ -2,7 +2,7 @@
   "name": "brian-hamilton",
   "version": "1.5.0",
   "engines": {
-    "node": "6.9.5"
+    "node": "6.11.1"
   },
   "description": "My personal website.",
   "main": "server.js",
