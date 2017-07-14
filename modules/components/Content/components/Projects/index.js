@@ -68,6 +68,25 @@ class Projects extends React.Component {
           </Card>
           <Card className="projects-paper">
             <CardMedia
+              overlay={<CardTitle title="Mirror, Mirror 2017" subtitle="Study on the status of the U.S. health care system" />}
+            >
+              <img src="images/mirror-mirror.png" />
+            </CardMedia>
+            <CardText>
+              Co-developer with the Commonwealth Fund on a set of interactive data visualizations<br/>
+              Node.js application built with React and D3.js.
+            </CardText>
+            <CardActions>
+              <FlatButton
+                label="Live Site"
+                href="http://www.commonwealthfund.org/interactives/2017/july/mirror-mirror/"
+                target="_blank"
+                style={{color:"#CCA677"}}
+                icon={<LinkIcon color="#CCA677"/>}/>
+            </CardActions>
+          </Card>
+          <Card className="projects-paper">
+            <CardMedia
               overlay={<CardTitle title="NYCT Train Movement" subtitle="Subway visualization with animation" />}
             >
               <img src="images/train-movement.png" />
