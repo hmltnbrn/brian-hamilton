@@ -1,0 +1,46 @@
+.Banner-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: url('/images/astoria.jpg') no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-attachment: fixed;
+  z-index: -1;
+}
+
+.Banner-words {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  bottom: 0px;
+  background: rgba(0,0,0,.4);
+  color: #FFFFFF;
+}
+
+.Banner-name {
+  position: absolute;
+  width: 100%;
+  padding-left: 15%;
+  top: 40%;
+  font-size: 40px;
+  line-height: normal;
+}
+
+.Banner-title {
+  position: absolute;
+  width: 100%;
+  padding-left: 15%;
+  top: 46%;
+  font-size: 28px;
+  line-height: normal;
+}
+
+@media (min-width: 0) and (max-width: 800px) {
+  .Banner-name,
+  .Banner-title {
+    padding-left: 5%;
+  }
+}

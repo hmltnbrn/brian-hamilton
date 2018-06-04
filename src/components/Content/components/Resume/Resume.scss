@@ -1,0 +1,55 @@
+.resume-paper {
+  min-height: 100px;
+  width: 60%;
+  margin: 10px;
+  padding: 20px;
+}
+
+.resume-header {
+  text-align: center;
+  font-size: 27px;
+  color: #85200C;
+  margin-top: 10px;
+  margin-bottom: 65px;
+}
+
+.resume-title {
+  color: #949591;
+  font-size: 18px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.institution-title {
+  color: #85200C;
+  font-size: 14px;
+}
+
+.location-years {
+  color: #B2B3AE;
+}
+
+.experience-list {
+  margin: 0 0 10px 0;
+}
+
+.skills-list {
+  margin: 0;
+}
+
+.school-description {
+  margin-bottom: 10px;
+}
+
+.download-buttons {
+  text-align: right;
+}
+
+@media (min-width: 0) and (max-width: 800px) {
+  .resume-paper {
+    min-height: 100px;
+    width: 100%;
+    margin: 10px;
+    padding: 20px;
+  }
+}
