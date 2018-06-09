@@ -7,8 +7,8 @@ class Footer extends React.Component {
 
     return (
       <footer>
-        <p className="Footer-name">Brian Hamilton © 2016-2018</p>
-        <p className="Footer-repo">View this site&rsquo;s <a href="https://github.com/hmltnbrn/brian-hamilton" target="_blank" rel="noopener noreferrer">repository</a> | Photo by <a href="https://www.flickr.com/photos/tedchambers/" target="_blank" rel="noopener noreferrer">Ted Chambers</a></p>
+        <p className="footer-name">Brian Hamilton © 2016-2018</p>
+        <p className="footer-repo">View this site&rsquo;s <a href="https://github.com/hmltnbrn/brian-hamilton" target="_blank" rel="noopener noreferrer">repository</a> | Photo by <a href="https://www.flickr.com/photos/tedchambers/" target="_blank" rel="noopener noreferrer">Ted Chambers</a></p>
       </footer>
     );
   }

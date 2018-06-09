@@ -1,20 +1,17 @@
 footer {
   width: 100%;
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   text-align: center;
-  background-color: #FFFFFF;
-}
-
-footer p {
-  margin: 0;
-  color: #4F4F4F;
-}
-
-.Footer-name {
-  font-size: 15px;
-}
-
-.Footer-repo {
-  font-size: 12px;
+  background-color: #ffffff;
+  p {
+    color: #4f4f4f;
+    line-height: 1.4;
+    &.footer-name {
+      font-size: 15px;
+    }
+    &.footer-repo {
+      font-size: 12px;
+    }
+  }
 }

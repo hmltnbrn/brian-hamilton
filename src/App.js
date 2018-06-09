@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import './App.css';
-
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
+import Resume from './components/Resume/Resume';
 import Portfolio from './components/Portfolio/Portfolio';
+import Contact from './components/Contact/Contact';
 import Footer from './components/Footer/Footer';
+import NotFound from './components/NotFound/NotFound';
 
 class App extends Component {
 
@@ -33,14 +34,19 @@ class App extends Component {
 
   render() {
     return (
-      <MuiThemeProvider>
-        <div className="App-components">
-          <Header windowWidth={this.state.windowWidth}/>
-            <Route exact path="/" component={Home}/>
-            <Route path="/portfolio" component={Portfolio}/>
-          <Footer/>
-        </div>
-      </MuiThemeProvider>
+      <div className="app-components">
+        <Header windowWidth={this.state.windowWidth}/>
+          <main>
+            <Switch>
+              <Route exact path="/" component={Home}/>
+              <Route path="/resume" component={Resume}/>
+              <Route path="/portfolio" component={Portfolio}/>
+              <Route path="/contact" component={Contact}/>
+              <Route component={NotFound}/>
+            </Switch>
+          </main>
+        <Footer/>
+      </div>
     );
   }
 }

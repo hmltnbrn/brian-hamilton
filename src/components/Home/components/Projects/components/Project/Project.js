@@ -16,7 +16,7 @@ class Project extends React.Component {
 
     return (
       <div className="project" style={projectStyle}>
-        <div className="project-overlay">
+        <div className="project-overlay" tabIndex="0">
           <div className="project-title">{this.props.title}</div>
           <div className="project-links">
             {links}

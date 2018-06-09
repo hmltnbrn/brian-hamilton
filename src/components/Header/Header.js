@@ -1,16 +1,9 @@
 import React from 'react';
-import Scroll from 'react-scroll';
-import { white } from 'material-ui/styles/colors';
-import { Toolbar, ToolbarGroup, ToolbarSeparator } from 'material-ui/Toolbar';
-import AppBar from 'material-ui/AppBar';
-import Drawer from 'material-ui/Drawer';
-import MenuItem from 'material-ui/MenuItem';
-import IconButton from 'material-ui/IconButton';
-import FlatButton from 'material-ui/FlatButton';
-import Email from 'material-ui/svg-icons/communication/email';
-import NavigationMenu from 'material-ui/svg-icons/navigation/menu';
-
 import './Header.css';
+
+import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
+
+import { NavLink } from 'react-router-dom';
 
 class Header extends React.Component {
 
@@ -19,80 +12,9 @@ class Header extends React.Component {
     this.state = {
       drawer: false
     };
-    this.scroller = Scroll.scroller;
-  }
-
-  handleToggle() {
-    this.setState({drawer: !this.state.drawer});
-  }
-
-  scrollToElement(element) {
-    this.setState({drawer: false});
-    this.scroller.scrollTo(element, {
-      duration: 1000,
-      smooth: true,
-      offset: -64
-    });
   }
 
   render() {
-
-    const toolStyle = {
-      backgroundColor: 'inherit',
-      overflowX: 'auto',
-      overflowY: 'hidden',
-      position: 'relative',
-      width: '100%',
-      height: 64
-    };
-
-    const appBarStyle = {
-      backgroundColor: "#CCA677"
-    };
-
-    const buttonStyle = {
-      color: 'inherit',
-      margin: 10
-    };
-
-    const leftGroupStyle = {
-      alignItems: "center",
-      position: 'absolute',
-      left: 0,
-      height: 64
-    };
-
-    const rightGroupStyle = {
-      alignItems: "center",
-      height: 64,
-      position: 'absolute',
-      right: 0
-    };
-
-    const spanButtonStyle = {
-      display: 'flex',
-      justifyContent: 'space-between',
-      alignItems: 'center'
-    };
-
-    const separatorStyle = {
-      top: 0,
-      marginRight: 30
-    };
-
-    const iconButtonStyle = {
-      marginRight: 24
-    };
-
-    const iconEmailButtonStyle = {
-      marginRight: 24,
-      color: 'inherit',
-      transition: 'none'
-    };
-
-    const menuItemStyle = {
-      padding: 4
-    };
 
     //https://github.com/danleech/simple-icons
     const GitHubIcon = () => (
@@ -109,84 +31,52 @@ class Header extends React.Component {
     );
 
     return (
-      <header className="header-bottom">
-        <Toolbar style={toolStyle}>
-          <ToolbarGroup style={leftGroupStyle}>
-            {this.props.windowWidth < 800 ?
-              <IconButton
-                style={{transition: 'none'}}
-                touch={true}
-                onClick={this.handleToggle.bind(this)}
-              >
-                <NavigationMenu color={'inherit'} />
-              </IconButton> :
-              <span></span>
-            }
-          </ToolbarGroup>
-          <ToolbarGroup style={rightGroupStyle}>
+      <header>
+        <div className="header-container">
+          <div className="header-left">
+          {this.props.windowWidth < 800 ?
+            <i className="material-icons drawer-opener" onClick={() => this.setState({drawer: true})}>menu</i>
+            : <span></span>
+          }
+          </div>
+          <div className="header-right">
             {this.props.windowWidth >= 800 ?
-              <div style={spanButtonStyle}>
-                <FlatButton label="About Me" style={buttonStyle} onClick={() => this.scrollToElement("about")}/>
-                <FlatButton label="Resume" style={buttonStyle} onClick={() => this.scrollToElement("resume")}/>
-                <FlatButton label="Projects" style={buttonStyle} onClick={() => this.scrollToElement("projects")}/>
-                <FlatButton label="Contact" style={buttonStyle} onClick={() => this.scrollToElement("contact")}/>
-                <ToolbarSeparator className="header-separator" style={separatorStyle}/>
-              </div> :
-              <div></div>
+              <div className="header-links">
+                <NavLink exact to="/" className="header-link" activeClassName="active">Home</NavLink>
+                <NavLink to="/resume" className="header-link" activeClassName="active">Resume</NavLink>
+                <NavLink to="/portfolio" className="header-link" activeClassName="active">Portfolio</NavLink>
+                <NavLink to="/contact" className="header-link" activeClassName="active">Contact</NavLink>
+                <div className="vertical-rule"></div>
+                <a href="https://www.linkedin.com/in/brian-hamilton-520835a8" target="_blank" rel="noopener noreferrer"><LinkedInIcon /></a>
+                <a href="https://github.com/hmltnbrn" target="_blank" rel="noopener noreferrer"><GitHubIcon /></a>
+              </div>
+              : 
+              <div className="header-links">
+                <a href="https://www.linkedin.com/in/brian-hamilton-520835a8" target="_blank" rel="noopener noreferrer"><LinkedInIcon /></a>
+                <a href="https://github.com/hmltnbrn" target="_blank" rel="noopener noreferrer"><GitHubIcon /></a>
+              </div>
             }
-            <IconButton style={iconEmailButtonStyle} href="mailto:hmltnbrn@gmail.com">
-              <Email color={'inherit'}/>
-            </IconButton>
-            <IconButton style={iconButtonStyle} href="https://www.linkedin.com/in/brian-hamilton-520835a8" target="_blank">
-              <LinkedInIcon/>
-            </IconButton>
-            <IconButton style={iconButtonStyle} href="https://github.com/hmltnbrn" target="_blank">
-              <GitHubIcon/>
-            </IconButton>
-          </ToolbarGroup>
-        </Toolbar>
-        <Drawer
-          docked={false}
+          </div>
+        </div>
+        <SwipeableDrawer
           open={this.state.drawer}
-          onRequestChange={(drawer) => this.setState({drawer})}
+          onClose={() => this.setState({drawer: false})}
+          onOpen={() => this.setState({drawer: true})}
         >
-          <AppBar
-            title="Sections"
-            style={appBarStyle}
-            zDepth={1}
-            iconElementLeft={
-            <IconButton
-              touch={true}
-              onClick={this.handleToggle.bind(this)}
-            >
-              <NavigationMenu color={white} />
-            </IconButton>}
-          />
-          <MenuItem
-            onClick={() => this.scrollToElement("about")}
-            style={menuItemStyle}
+          <div
+            tabIndex={0}
+            role="button"
+            onClick={() => this.setState({drawer: false})}
+            onKeyDown={() => this.setState({drawer: false})}
           >
-            About Me
-          </MenuItem>
-          <MenuItem
-            onClick={() => this.scrollToElement("resume")}
-            style={menuItemStyle}
-          >
-            Resume
-          </MenuItem>
-          <MenuItem
-            onClick={() => this.scrollToElement("projects")}
-            style={menuItemStyle}
-          >
-            Projects
-          </MenuItem>
-          <MenuItem
-            onClick={() => this.scrollToElement("contact")}
-            style={menuItemStyle}
-          >
-            Contact
-          </MenuItem>
-        </Drawer>
+            <div className="links-container">
+              <NavLink exact to="/" className="drawer-link" activeClassName="active">Home</NavLink>
+              <NavLink to="/resume" className="drawer-link" activeClassName="active">Resume</NavLink>
+              <NavLink to="/portfolio" className="drawer-link" activeClassName="active">Portfolio</NavLink>
+              <NavLink to="/contact" className="drawer-link" activeClassName="active">Contact</NavLink>
+            </div>
+          </div>
+        </SwipeableDrawer>
       </header>
     );
   }

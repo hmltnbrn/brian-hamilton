@@ -1,19 +1,19 @@
+@import "../../styles/variables.scss";
+
 header {
-  position: fixed;
-  z-index: 10;
   width: 100%;
-  top: 0;
-  color: #FFFFFF;
-  fill: #FFFFFF;
-  background: none;
-  transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+  height: 54px;
+  background: white;
+  padding: 0 25px;
 }
 
-.header-bottom {
-  color: #000000;
-  fill: #000000;
-  background-color: #FFFFFF;
-  box-shadow: rgba(0, 0, 0, 0.156863) 0px 3px 10px, rgba(0, 0, 0, 0.227451) 0px 3px 10px;
+.header-container {
+  max-width: 1280px;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .header-button {
@@ -22,11 +22,68 @@ header {
   fill: inherit;
 }
 
-.github-button {
-  height: 24px;
-  width: 24px;
-  display: inline-block;
-  vertical-align: middle;
-  margin-left: 12px;
-  margin-right: 0;
+.header-left, .header-right {
+  display: flex;
+  align-items: center;
+  .header-links {
+    display: flex;
+    align-items: center;
+    a {
+      font-size: 17px;
+      font-weight: 300;
+      transition: all .6s cubic-bezier(.25,.8,.25,1);
+      outline: none;
+      margin: 0 0 0 50px;
+      &:link, &:visited {
+        color: #000000;
+        text-decoration: none;
+      }
+      &:hover, &:focus {
+        fill: $primary-color;
+        color: $primary-color;
+      }
+      &.header-link {
+        margin: 0 0 0 40px;
+        padding: 5px;
+        border: 1px solid #ffffff;
+        &:hover, &:focus, &.active {
+          border-color: $primary-color;
+        }
+      }
+    }
+  }
+}
+
+.vertical-rule {
+  background-color: rgba(0, 0, 0, 0.173);
+  height: 32px;
+  width: 1px;
+  margin: 0 0 0 50px;
+}
+
+.drawer-opener {
+  cursor: pointer;
+}
+
+.links-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
+  padding: 54px 0;
+  .drawer-link {
+    min-width: 200px;
+    padding: 20px 30px;
+    font-size: 17px;
+    font-weight: 300;
+    transition: all .6s cubic-bezier(.25,.8,.25,1);
+    &:link, &:visited {
+      color: #000000;
+      text-decoration: none;
+    }
+    &:hover, &:focus, &.active {
+      background: $primary-color;
+      color: #ffffff;
+    }
+  }
 }
