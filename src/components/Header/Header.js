@@ -1,7 +1,7 @@
 import React from 'react';
 import Scroll from 'react-scroll';
-import {white} from 'material-ui/styles/colors';
-import {Toolbar, ToolbarGroup, ToolbarSeparator} from 'material-ui/Toolbar';
+import { white } from 'material-ui/styles/colors';
+import { Toolbar, ToolbarGroup, ToolbarSeparator } from 'material-ui/Toolbar';
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
@@ -109,7 +109,7 @@ class Header extends React.Component {
     );
 
     return (
-      <header>
+      <header className="header-bottom">
         <Toolbar style={toolStyle}>
           <ToolbarGroup style={leftGroupStyle}>
             {this.props.windowWidth < 800 ?

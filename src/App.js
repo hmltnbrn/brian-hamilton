@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
 import './App.css';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import Header from './components/Header/Header';
-import Banner from './components/Banner/Banner';
-import Content from './components/Content/Content';
+import Home from './components/Home/Home';
+import Portfolio from './components/Portfolio/Portfolio';
 import Footer from './components/Footer/Footer';
 
 class App extends Component {
@@ -35,8 +36,8 @@ class App extends Component {
       <MuiThemeProvider>
         <div className="App-components">
           <Header windowWidth={this.state.windowWidth}/>
-          <Banner/>
-          <Content windowWidth={this.state.windowWidth}/>
+            <Route exact path="/" component={Home}/>
+            <Route path="/portfolio" component={Portfolio}/>
           <Footer/>
         </div>
       </MuiThemeProvider>

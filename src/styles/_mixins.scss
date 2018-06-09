@@ -1,0 +1,4 @@
+@mixin rgba_primary($opacity) {
+  background: rgb(187, 129, 61);
+  background: rgba(187, 129, 61, $opacity);
+}
