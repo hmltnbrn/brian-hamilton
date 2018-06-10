@@ -60,28 +60,18 @@ let handleEmail = (req, res, next) => {
   let name = req.body.name;
   let email = req.body.email;
   let subject = req.body.subject;
-  let bodyText = req.body.bodyText;
+  let message = req.body.message;
 
-  // setup email data
   let mailOptions = {
-    from: {
-      name: name,
-      address: email
-    },
-    sender: {
-      name: name,
-      address: email
-    },
     replyTo: {
       name: name,
       address: email
     },
-    to: 'Brian Hamilton <hmltnbrn@gmail.com>', // list of receivers
+    to: 'Brian Hamilton <hmltnbrn@gmail.com>',
     subject: subject,
-    text: bodyText
+    text: message
   };
 
-  // send mail with defined transport object
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
       console.log(error);

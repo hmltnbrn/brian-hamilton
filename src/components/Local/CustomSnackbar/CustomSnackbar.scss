@@ -1,0 +1,16 @@
+.snackbar-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: normal;
+  font-weight: 300;
+  font-size: 20px;
+  & > * {
+    margin: 0 15px 0 0;
+  }
+}
+
+.snackbar-close {
+  cursor: pointer;
+  display: flex;
+}
