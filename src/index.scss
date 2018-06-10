@@ -60,4 +60,12 @@ a:hover {
     background: $primary-color;
     color: #ffffff;
   }
+  &.inverse {
+    background: $primary-color;
+    color: #ffffff;
+    &:hover, &:focus {
+      background: none;
+      color: $primary-color;
+    }
+  }
 }

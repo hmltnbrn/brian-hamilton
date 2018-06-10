@@ -1,6 +1,10 @@
 import React from 'react';
 import './Contact.css';
 
+import Dialog from '@material-ui/core/Dialog';
+import DialogContent from '@material-ui/core/DialogContent';
+import withMobileDialog from '@material-ui/core/withMobileDialog';
+
 import Input from '../Local/Input/Input';
 import TextArea from '../Local/TextArea/TextArea';
 
@@ -16,7 +20,8 @@ class Contact extends React.Component {
       subject: "",
       subjectError: false,
       message: "",
-      messageError: false
+      messageError: false,
+      open: false
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -78,56 +83,84 @@ class Contact extends React.Component {
       message: "",
       messageError: false
     });
-  }
+  };
+
+  handleClickOpen = () => {
+    this.setState({ open: true });
+  };
+
+  handleClose = () => {
+    this.setState({ open: false });
+  };
 
   render() {
 
     return (
       <div className="contact-container">
-        <div className="contact-paper">
-          <p>If you would like to get in contact, please email me at <a href="mailto:hmltnbrn@gmail.com">hmltnbrn@gmail.com</a> or use the form below.</p>
-          <form onSubmit={this.handleSubmit} noValidate>
-            <Input
-              type="text"
-              name="name"
-              placeholder="Full Name *"
-              value={this.state.name}
-              errorText={this.state.nameError}
-              onChange={this.handleInputChange}
-            />
-            <Input
-              type="email"
-              name="email"
-              placeholder="Email *"
-              value={this.state.email}
-              errorText={this.state.emailError}
-              onChange={this.handleInputChange}
-            />
-            <Input
-              type="text"
-              name="subject"
-              placeholder="Subject *"
-              value={this.state.subject}
-              errorText={this.state.subjectError}
-              onChange={this.handleInputChange}
-            />
-            <TextArea
-              name="message"
-              rows={5}
-              placeholder="Message *"
-              value={this.state.message}
-              errorText={this.state.messageError}
-              onChange={this.handleInputChange}
-            />
-            <div className="button-container">
-              <button type="button" className="button-link" onClick={this.clear}>Clear</button>
-              <button type="submit" className="button-link">Send Email</button>
+        <div className="contact-top-container">
+          <div className="contact-chooser">
+            <div className="contact-option" onClick={this.handleClickOpen}>
+              <i className="material-icons">email</i>
+              <div className="contact-text">Shoot me an email</div>
             </div>
-          </form>
+            <div className="contact-option">
+              <i className="material-icons">phone</i>
+              <div className="contact-text">Give me a ring</div>
+            </div>
+          </div>
         </div>
+        <Dialog
+          fullScreen={true}
+          open={this.state.open}
+          onClose={this.handleClose}
+        >
+          <DialogContent>
+            <div className="email-dialog">
+              <div className="dialog-exit" onClick={this.handleClose} tabIndex="0"><i className="material-icons">clear</i></div>
+              <form onSubmit={this.handleSubmit} noValidate>
+                <Input
+                  type="text"
+                  name="name"
+                  placeholder="Full Name *"
+                  value={this.state.name}
+                  errorText={this.state.nameError}
+                  onChange={this.handleInputChange}
+                />
+                <Input
+                  type="email"
+                  name="email"
+                  placeholder="Email Address*"
+                  value={this.state.email}
+                  errorText={this.state.emailError}
+                  onChange={this.handleInputChange}
+                />
+                <Input
+                  type="text"
+                  name="subject"
+                  placeholder="Subject *"
+                  value={this.state.subject}
+                  errorText={this.state.subjectError}
+                  onChange={this.handleInputChange}
+                />
+                <TextArea
+                  name="message"
+                  rows={5}
+                  placeholder="Message *"
+                  value={this.state.message}
+                  errorText={this.state.messageError}
+                  onChange={this.handleInputChange}
+                />
+                <div className="email-button-container">
+                  <button type="button" className="button-link" onClick={this.clear}>Clear</button>
+                  <button type="submit" className="button-link">Send Email</button>
+                </div>
+              </form>
+            </div>
+          </DialogContent>
+        </Dialog>
       </div>
     );
   }
 };
 
-export default Contact;
+export default withMobileDialog()(Contact);

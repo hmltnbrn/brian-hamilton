@@ -1,6 +1,8 @@
 import React from 'react';
 import './Technologies.css';
 
+import { Link } from 'react-router-dom';
+
 import Technology from './components/Technology/Technology';
 
 class Technologies extends React.Component {
@@ -47,6 +49,9 @@ class Technologies extends React.Component {
             alt="React Logo"
             title="React"
           />
+        </div>
+        <div className="resume-link-container">
+          <Link to="resume" className="button-link inverse">Take a Look at My Resume</Link>
         </div>
       </div>
     );
