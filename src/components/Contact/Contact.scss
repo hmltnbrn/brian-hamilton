@@ -1,7 +1,6 @@
 @import "../../styles/variables.scss";
 
 .contact-container {
-  background: linear-gradient($background-color, $dark-gray);
   padding: 100px 25px;
   & > * {
     max-width: 1280px;
