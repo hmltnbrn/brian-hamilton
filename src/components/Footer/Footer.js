@@ -21,8 +21,8 @@ class Footer extends React.Component {
           <Link to="/contact" className="footer-link">Contact</Link>
         </div>
         <div className="footer-nav">
-          <a href="tel:1-518-391-5033"><i className="material-icons">phone</i></a>
-          <a href="mailto:hmltnbrn@gmail.com"><i className="material-icons">email</i></a>
+          <a href="tel:1-518-391-5033" title="Call Me"><i className="material-icons">phone</i></a>
+          <a href="mailto:hmltnbrn@gmail.com" title="Email Me"><i className="material-icons">email</i></a>
           <a href="https://twitter.com/hmltnbrn" target="_blank" rel="noopener noreferrer"><TwitterIcon /></a>
           <a href="https://www.linkedin.com/in/brian-hamilton-520835a8" target="_blank" rel="noopener noreferrer"><LinkedInIcon /></a>
           <a href="https://github.com/hmltnbrn" target="_blank" rel="noopener noreferrer"><GitHubIcon /></a>
