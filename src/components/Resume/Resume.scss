@@ -3,6 +3,67 @@
   & > * {
     max-width: 1280px;
     margin: 0 auto;
-    text-align: center;
+  }
+}
+
+.resume-section {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: 0 0 50px 0;
+  .section-left {
+    max-width: 300px;
+    width: 100%;
+    text-align: right;
+    h1 {
+      margin: 0;
+      font-weight: 300;
+      font-size: 30px;
+      padding: 0 100px 25px 0;
+    }
+  }
+  .section-right {
+    max-width: 800px;
+    width: 100%;
+  }
+}
+
+.side-by-side {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: left;
+  & > :first-child {
+    margin: 0 100px 0 0;
+  }
+  h2 {
+    font-weight: 300;
+    margin: 10px 0;
+  }
+}
+
+ul {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.resume-experience {
+  margin: 0 0 50px 0;
+  h2 {
+    font-weight: 300;
+    margin: 10px 0;
+    font-size: 23px;
+    & > :first-child {
+      margin-right: 5px;
+    }
+    & .company-name {
+      font-size: 18px;
+    }
+  }
+  h3 {
+    margin: 0;
+    font-weight: 300;
+    font-size: 14px;
+    color: #4f4f4f;
   }
 }
