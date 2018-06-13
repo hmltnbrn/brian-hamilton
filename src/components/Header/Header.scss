@@ -71,13 +71,14 @@ header {
     font-size: 17px;
     font-weight: 300;
     transition: all .6s cubic-bezier(.25,.8,.25,1);
+    border-bottom: 1px solid #ffffff;
     &:link, &:visited {
       color: #000000;
       text-decoration: none;
     }
     &:hover, &:focus, &.active {
-      background: $primary-color;
-      color: #ffffff;
+      color: $primary-color;
+      border-bottom-color: $primary-color;
     }
   }
 }

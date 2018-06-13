@@ -53,16 +53,18 @@
   }
 }
 
-.email-dialog {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  text-align: center;
+.contact-dialog {
   & > * {
     max-width: 1280px;
     margin: 0 auto;
     text-align: center;
     width: 100%;
+  }
+  &.center {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
   }
   .dialog-exit {
     display: flex;
@@ -79,6 +81,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 100px 0 0 0;
   }
   p {
     font-size: 30px;
@@ -122,7 +125,10 @@
       }
     }
   }
-  .email-dialog {
+  .contact-dialog {
+    form {
+      padding: 75px 0 0 0;
+    }
     p {
       font-size: 25px;
       strong {

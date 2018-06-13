@@ -131,7 +131,7 @@ class Contact extends React.Component {
           open={this.state.emailDialog}
           onClose={() => this.setState({emailDialog: false})}
         >
-          <DialogContent className="email-dialog">
+          <DialogContent className="contact-dialog">
             <div className="dialog-exit" onClick={() => this.setState({emailDialog: false})} tabIndex="0"><i className="material-icons">clear</i></div>
             <form onSubmit={this.handleSubmit} noValidate>
               <Input
@@ -160,7 +160,7 @@ class Contact extends React.Component {
               />
               <TextArea
                 name="message"
-                rows={5}
+                rows={6}
                 placeholder="Message *"
                 value={this.state.message}
                 errorText={this.state.messageError}
@@ -171,7 +171,6 @@ class Contact extends React.Component {
                 <button type="submit" className="button-link">Send Email</button>
               </div>
             </form>
-            <span></span>
           </DialogContent>
         </Dialog>
         <Dialog
@@ -179,7 +178,7 @@ class Contact extends React.Component {
           open={this.state.phoneDialog}
           onClose={() => this.setState({phoneDialog: false})}
         >
-          <DialogContent className="email-dialog">
+          <DialogContent className="contact-dialog center">
             <div className="dialog-exit" onClick={() => this.setState({phoneDialog: false})} tabIndex="0"><i className="material-icons">clear</i></div>
             <p>On a phone? Tap the button below.</p>
             <div className="dialog-button-container">
