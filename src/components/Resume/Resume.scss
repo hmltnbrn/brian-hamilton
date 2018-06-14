@@ -2,6 +2,7 @@
 
 .resume-container {
   padding: 100px 25px;
+  line-height: 1.5;
   & > * {
     max-width: 1280px;
     margin: 0 auto;
@@ -46,7 +47,6 @@
 
 ul {
   font-size: 16px;
-  line-height: 1.6;
   li {
     list-style-position: outside;
     padding-left: 1em;
@@ -65,25 +65,48 @@ ul {
 
 .resume-experience, .resume-education {
   margin: 0 0 30px 0;
-  h2 {
-    font-weight: 300;
-    margin: 10px 0;
-    font-size: 23px;
-    & > :first-child {
-      margin-right: 5px;
+  .resume-header {
+    margin: 10px 0 5px 0;
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    h2 {
+      font-weight: 300;
+      margin: 0 10px 0 0;
+      font-size: 23px;
+      color: $primary-color;
     }
-    & .company-name {
+    h3 {
       font-size: 18px;
+      font-weight: 300;
+      margin: 0;
     }
   }
-  h3 {
+  h4 {
     margin: 0 0 10px 0;
     font-weight: 300;
     font-size: 14px;
-    color: #4f4f4f;
+    color: $charcoal;
   }
   p {
     font-size: 16px;
-    line-height: 1.6;
+  }
+}
+
+@media (max-width: 1000px) {
+  .resume-section {
+    .section-left {
+      max-width: unset;
+      text-align: center;
+      h1 {
+        padding: 0 0 25px 0;
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .resume-container {
+    padding: 50px 25px;
   }
 }
