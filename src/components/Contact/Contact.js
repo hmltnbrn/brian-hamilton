@@ -132,7 +132,7 @@ class Contact extends React.Component {
           onClose={() => this.setState({emailDialog: false})}
         >
           <DialogContent className="contact-dialog">
-            <div className="dialog-exit" onClick={() => this.setState({emailDialog: false})} tabIndex="0"><i className="material-icons">clear</i></div>
+            <div className="dialog-exit"><i className="material-icons" onClick={() => this.setState({emailDialog: false})} tabIndex="0">clear</i></div>
             <form onSubmit={this.handleSubmit} noValidate>
               <Input
                 type="text"
@@ -179,12 +179,12 @@ class Contact extends React.Component {
           onClose={() => this.setState({phoneDialog: false})}
         >
           <DialogContent className="contact-dialog center">
-            <div className="dialog-exit" onClick={() => this.setState({phoneDialog: false})} tabIndex="0"><i className="material-icons">clear</i></div>
+            <div className="dialog-exit"><i className="material-icons" onClick={() => this.setState({phoneDialog: false})} tabIndex="0">clear</i></div>
             <p>On a phone? Tap the button below.</p>
             <div className="dialog-button-container">
               <a href="tel:1-518-391-5033" className="round-button-link" onClick={() => this.setState({phoneDialog: false})}><i className="material-icons">phone</i></a>
             </div>
-            <p className="phone-wrap"><span>Otherwise, call me at </span><span><strong>1-518-391-5033</strong>.</span></p>
+            <p className="phone-wrap"><span>Otherwise, call me at </span><span><strong>(518) 391-5033</strong>.</span></p>
             <span></span>
           </DialogContent>
         </Dialog>

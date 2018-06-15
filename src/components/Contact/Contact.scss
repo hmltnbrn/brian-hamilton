@@ -69,12 +69,13 @@
   .dialog-exit {
     display: flex;
     justify-content: flex-end;
-    cursor: pointer;
     & > i {
       font-size: 30px;
-    }
-    &:focus {
-      outline: none;
+      cursor: pointer;
+      &:focus {
+        border: none;
+        outline: none;
+      }
     }
   }
   form {
