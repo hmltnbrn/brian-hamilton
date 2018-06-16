@@ -43,7 +43,7 @@ a:hover {
 .button-link {
   display: flex;
   align-items: center;
-  transition: background .4s cubic-bezier(.25,.8,.25,1), color .4s cubic-bezier(.25,.8,.25,1);
+  transition: background .4s cubic-bezier(.25,.8,.25,1), color .4s cubic-bezier(.25,.8,.25,1), fill .4s cubic-bezier(.25,.8,.25,1);
   color: $primary-color;
   padding: 15px 25px;
   margin: 10px;
@@ -57,23 +57,28 @@ a:hover {
   background: none;
   outline: none;
   cursor: pointer;
-  & i {
-    margin-right: 5px;
+  fill: $primary-color;
+  & i, & svg {
+    margin-right: 10px;
   }
   &:link, &:visited {
     color: $primary-color;
     text-decoration: none;
+    fill: $primary-color;
   }
   &:hover, &:focus {
     background: $primary-color;
     color: #ffffff;
+    fill: #ffffff;
   }
   &.inverse {
     background: $primary-color;
     color: #ffffff;
+    fill: #ffffff;
     &:hover, &:focus {
       background: none;
       color: $primary-color;
+      fill: $primary-color;
     }
   }
 }

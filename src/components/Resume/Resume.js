@@ -1,12 +1,22 @@
 import React from 'react';
 import './Resume.css';
 
+import { MicrosoftWordIcon } from '../../icons/MicrosoftWord';
+import { AdobeAcrobatReaderIcon } from '../../icons/AdobeAcrobatReader';
+
 class Resume extends React.Component {
 
   render() {
 
     return (
       <div className="resume-page-container">
+        <div className="resume-download-container">
+          <h2>Download resume as...</h2>
+          <div className="resume-download">
+            <a href="./files/BrianHResume.docx" target="_blank" className="button-link"><MicrosoftWordIcon/>DOCX</a>
+            <a href="./files/BrianHResume.pdf" target="_blank" className="button-link"><AdobeAcrobatReaderIcon/>PDF</a>
+          </div>
+        </div>
         <div className="resume-container">
           <div className="resume-section">
             <div className="section-left">
@@ -132,13 +142,6 @@ class Resume extends React.Component {
                 <p>Graduated as a Bachelor of Science in Information Technology and Web Science, with a concentration in Civil Engineering.</p>
               </div>
             </div>
-          </div>
-        </div>
-        <div className="resume-download-container">
-          <h2>Download resume as...</h2>
-          <div className="resume-download">
-            <a href="./files/BrianHResume.docx" target="_blank" className="button-link"><i className="material-icons">insert_drive_file</i>DOCX</a>
-            <a href="./files/BrianHResume.pdf" target="_blank" className="button-link"><i className="material-icons">picture_as_pdf</i>PDF</a>
           </div>
         </div>
       </div>
