@@ -12,7 +12,7 @@
 .resume-section {
   display: flex;
   justify-content: space-around;
-  align-items: flex-start;
+  align-items: baseline;
   flex-wrap: wrap;
   padding: 0 0 50px 0;
   .section-left {
@@ -93,6 +93,27 @@ ul {
   }
 }
 
+.resume-download-container {
+  background: $dark-gray;
+  padding: 50px 25px;
+  & > * {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  h2 {
+    text-align: center;
+    font-weight: 300;
+    font-size: 40px;
+  }
+  .resume-download {
+    padding: 25px 10px 0 10px;
+    max-width: 500px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+}
+
 @media (max-width: 1000px) {
   .resume-section {
     .section-left {
@@ -108,5 +129,11 @@ ul {
 @media (max-width: 500px) {
   .resume-container {
     padding: 50px 25px;
+  }
+  .resume-download-container {
+    padding: 40px 25px;
+    h2 {
+      font-size: 30px;
+    }
   }
 }
