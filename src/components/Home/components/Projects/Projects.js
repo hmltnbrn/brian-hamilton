@@ -23,12 +23,12 @@ class Projects extends React.Component {
         <h1>Featured projects</h1>
         <div className="project-container">
           <Project
-            background="'./images/classroom-library.png'"
+            background="'./images/projects/classroom-library.png'"
             title="Classroom Library"
             links={projectOneLinks}
           />
           <Project
-            background="'./images/mirror-mirror.png'"
+            background="'./images/projects/mirror-mirror.png'"
             title="Mirror, Mirror 2017"
             links={projectTwoLinks}
           />

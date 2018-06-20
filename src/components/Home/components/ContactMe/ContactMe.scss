@@ -2,10 +2,12 @@
 @import "../../../../styles/mixins.scss";
 
 .home-contact-me {
-  background: url('/images/contact-me.jpg') no-repeat center center;
+  background: url('/images/backgrounds/orange-envelope.jpg') no-repeat center center;
   background-size: cover;
   width: 100%;
   height: calc(100vh - 100px);
+  min-height: 700px;
+  max-height: 900px;
   position: relative;
 }
 

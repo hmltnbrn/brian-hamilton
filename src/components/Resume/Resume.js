@@ -4,6 +4,8 @@ import './Resume.css';
 import { MicrosoftWordIcon } from '../../icons/MicrosoftWord';
 import { AdobeAcrobatReaderIcon } from '../../icons/AdobeAcrobatReader';
 
+import { Link } from 'react-router-dom';
+
 class Resume extends React.Component {
 
   render() {
@@ -13,8 +15,8 @@ class Resume extends React.Component {
         <div className="resume-download-container">
           <h2>Download resume as...</h2>
           <div className="resume-download">
-            <a href="./files/BrianHResume.docx" target="_blank" className="button-link"><MicrosoftWordIcon/>DOCX</a>
-            <a href="./files/BrianHResume.pdf" target="_blank" className="button-link"><AdobeAcrobatReaderIcon/>PDF</a>
+            <a href="./files/resume/BrianHResume.docx" target="_blank" className="button-link"><MicrosoftWordIcon/>DOCX</a>
+            <a href="./files/resume/BrianHResume.pdf" target="_blank" className="button-link"><AdobeAcrobatReaderIcon/>PDF</a>
           </div>
         </div>
         <div className="resume-container">
@@ -142,6 +144,12 @@ class Resume extends React.Component {
                 <p>Graduated as a Bachelor of Science in Information Technology and Web Science, with a concentration in Civil Engineering.</p>
               </div>
             </div>
+          </div>
+        </div>
+        <div className="resume-contact-me">
+          <div className="contact-banner-overlay">
+            <h1>Like what you see?</h1>
+            <Link to="contact">Continue to Contact Me</Link>
           </div>
         </div>
       </div>
