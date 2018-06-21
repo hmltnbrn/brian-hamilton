@@ -84,6 +84,31 @@ a:hover {
       fill: $primary-color;
     }
   }
+  &.white {
+    border: 2px solid #ffffff;
+    color: #ffffff;
+    fill: #ffffff;
+    &:link, &:visited {
+      color: #ffffff;
+      text-decoration: none;
+      fill: #ffffff;
+    }
+    &:hover, &:focus {
+      background: #ffffff;
+      color: #000000;
+      fill: #000000;
+    }
+    &.inverse {
+      background: #ffffff;
+      color: #000000;
+      fill: #000000;
+      &:hover, &:focus {
+        background: none;
+        color: #ffffff;
+        fill: #ffffff;
+      }
+    }
+  }
 }
 
 // For use with an icon
