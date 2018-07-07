@@ -4,7 +4,7 @@
 
 This is the underlying code for my website, [brianhamilton.me](https://www.brianhamilton.me/).
 
-[Node.js](https://nodejs.org/en/) app using [Express](https://expressjs.com/), [React](https://facebook.github.io/react/), [React Scroll](https://github.com/fisshy/react-scroll), [Nodemailer](https://nodemailer.com/about/), and [Material-UI](http://www.material-ui.com/#/).
+[Node.js](https://nodejs.org/en/) app using [Express](https://expressjs.com/), [React](https://reactjs.org/), [Nodemailer](https://nodemailer.com/about/), and [Material-UI](https://material-ui.com/).
 
 ## Installation
 
@@ -34,9 +34,7 @@ This is the underlying code for my website, [brianhamilton.me](https://www.brian
 
 3. The heroku-ssl-redirect module is included, but will only do anything with proper SSL certificates in use on Heroku.
 
-4. This site has been optimized for Chrome, Firefox, Safari, Internet Explorer, and mobile Android and iOS devices.
-
-5. Small bits of jQuery is used for mobile optimization and scrolling behavior for the banner and header bar. The code is located in the **/public/scripts/banner.js** file.
+4. This site has been optimized for Chrome, Firefox, Safari, Edge, and mobile Android and iOS devices. It will not worked properly on Internet Explorer.
 
 ---
 

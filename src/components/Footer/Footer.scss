@@ -32,6 +32,7 @@ footer {
     &:hover, &:focus {
       color: $primary-color;
       fill: $primary-color;
+      text-decoration: none;
     }
   }
 }

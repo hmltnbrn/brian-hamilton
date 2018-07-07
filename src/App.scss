@@ -9,6 +9,7 @@
 
 main {
   flex: 1;
+  -ms-flex: 1;
+  -webkit-flex: 1;
   position: relative;
-  // background: linear-gradient($background-color, $dark-gray);
 }
