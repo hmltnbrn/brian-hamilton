@@ -1,0 +1,45 @@
+@import "../../styles/variables.scss";
+
+.portfolio-section {
+  padding: 100px 25px;
+  &.completed-projects {
+    background: $dark-gray;
+  }
+  h1 {
+    font-weight: 300;
+    font-size: 40px;
+    padding: 0 100px;
+  }
+  & > * {
+    max-width: 1280px;
+    margin: 0 auto;
+    text-align: center;
+  }
+}
+
+.portfolio-project-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 80px 0 0 0;
+}
+
+@media (max-width: 768px) {
+  .portfolio-section {
+    h1 {
+      padding: 0 10px;
+    }
+  }
+  .portfolio-project-container {
+    padding: 25px 0 0 0;
+  }
+}
+
+@media (max-width: 500px) {
+  .portfolio-section {
+    padding: 25px;
+    h1 {
+      font-size: 35px;
+    }
+  }
+}

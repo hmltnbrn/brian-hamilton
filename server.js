@@ -15,11 +15,9 @@ dotenv.load({
 
 app.set('port', process.env.PORT || 8080); //sets port
 
-app.use(sslRedirect());
+if (process.env.NODE_ENV == 'production') app.use(sslRedirect());
 
-app.use('/', express.static(__dirname + '/www'));
-app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/')); //necessary for banner.js script
-app.use('/bluebird', express.static(__dirname + '/node_modules/bluebird/js/browser/')); //necessary for promises on IE
+app.use('/', express.static(__dirname + '/build'));
 
 app.use(compression());
 app.use(bodyParser.json());
@@ -62,54 +60,39 @@ let handleEmail = (req, res, next) => {
   let name = req.body.name;
   let email = req.body.email;
   let subject = req.body.subject;
-  let bodyText = req.body.bodyText;
+  let message = req.body.message;
 
-  // setup email data
   let mailOptions = {
-    from: {
-      name: name,
-      address: email
-    },
-    sender: {
-      name: name,
-      address: email
-    },
     replyTo: {
       name: name,
       address: email
     },
-    to: 'Brian Hamilton <hmltnbrn@gmail.com>', // list of receivers
+    to: 'Brian Hamilton <hmltnbrn@gmail.com>',
     subject: subject,
-    text: bodyText
+    text: message
   };
 
-  // send mail with defined transport object
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
       console.log(error);
-      return res.json({sent: false});
+      return res.status(200).json({sent: false});
     }
     console.log('Message %s sent: %s', info.messageId, info.response);
-    return res.json({sent: true});
+    return res.status(200).json({sent: true});
   });
 
 }
 
 app.post('/send', handleEmail);
 
-//Handle 404
-app.use(function(req, res, next) {
-  res.status(404).send('404: Not Found. You don\'t belong here.');
+//Handle Main Page
+app.get('*', function (req, res, next) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
 //Handle 500
 app.use(function(err, req, res, next) {
   res.status(500).send('500: Internal Server Error');
-});
-
-//Handle Main Page
-app.get('*', function (req, res, next) {
-  res.sendFile(path.join(__dirname, 'www', 'index.html'));
 });
 
 app.listen(app.get('port'), function () {

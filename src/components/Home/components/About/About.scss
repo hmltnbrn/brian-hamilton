@@ -1,0 +1,27 @@
+@import "../../../../styles/variables.scss";
+
+.home-about {
+  background: $dark-gray;
+}
+
+.about-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 75px 0;
+  p {
+    font-size: 30px;
+    padding: 0 50px;
+    font-weight: 300;
+    line-height: 1.4;
+  }
+}
+
+@media (max-width: 500px) {
+  .about-container {
+    padding: 25px 0;
+    p {
+      font-size: 20px;
+      padding: 0 25px;
+    }
+  }
+}
