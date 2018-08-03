@@ -34,6 +34,7 @@ class Resume extends React.Component {
                         <li>HTML5</li>
                         <li>CSS3 / SASS</li>
                         <li>JavaScript / jQuery</li>
+                        <li>TypeScript</li>
                         <li>PHP</li>
                         <li>Bootstrap</li>
                       </ul>

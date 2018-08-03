@@ -27,7 +27,15 @@ class Portfolio extends React.Component {
       { href: "http://schools.brianhamilton.me/", text: "View Project" }
     ];
 
-    const projectSixLinks = [];
+    const projectSixLinks = [
+      { href: "https://github.com/hmltnbrn/trebot", text: "Repository" }
+    ];
+
+    const projectSevenLinks = [
+      { href: "https://www.commonwealthfund.org/blog/2018/understand-how-consumers-are-faring-individual-health-insurance-markets-watch-states", text: "Live Site" }
+    ];
+
+    const projectEightLinks = [];
 
     return (
       <div className="portfolio-container">
@@ -60,6 +68,16 @@ class Portfolio extends React.Component {
                 title="NYC School Crimes"
                 links={projectFiveLinks}
               />
+              <Project
+                background="'./images/projects/trebot.jpg'"
+                title="Trebot"
+                links={projectSixLinks}
+              />
+              <Project
+                background="'./images/projects/health-insurance.png'"
+                title="What Is Your State Doing to Affect Access to Adequate Health Insurance?"
+                links={projectSevenLinks}
+              />
             </div>
           </div>
           <div className="portfolio-section in-progress-projects">
@@ -68,7 +86,7 @@ class Portfolio extends React.Component {
             <Project
               background="'./images/projects/book-bin.png'"
               title="BookBin"
-              links={projectSixLinks}
+              links={projectEightLinks}
             />
             </div>
           </div>
