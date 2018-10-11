@@ -10,7 +10,7 @@ class ContactMe extends React.Component {
       <div className="home-contact-me">
         <div className="contact-banner-overlay">
           <h1>Want to chat?</h1>
-          <p>Whether it's to talk about politics, a job offer, or the latest Angular, send me a message.</p>
+          <p>Whether it's to talk about politics, a freelance opportunity, or the latest Angular, send me a message.</p>
           <Link to="contact">Click Here to Contact Me</Link>
         </div>
       </div>

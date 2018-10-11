@@ -11,7 +11,7 @@ class Project extends React.Component {
     };
 
     const links = this.props.links.map(link => 
-      <a key={link.text} href={link.href} target="_blank">{link.text}</a>
+      <a key={link.text} href={link.href} target="_blank" rel="noopener noreferrer">{link.text}</a>
     );
 
     return (
