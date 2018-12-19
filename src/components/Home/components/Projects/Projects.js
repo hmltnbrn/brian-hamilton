@@ -15,7 +15,7 @@ class Projects extends React.Component {
     ];
 
     const projectTwoLinks = [
-      { href: "http://www.commonwealthfund.org/interactives/2017/july/mirror-mirror/", text: "Live Site" }
+      { href: "https://www.commonwealthfund.org/blog/2018/understand-how-consumers-are-faring-individual-health-insurance-markets-watch-states", text: "Live Site" }
     ];
 
     return (
@@ -28,8 +28,8 @@ class Projects extends React.Component {
             links={projectOneLinks}
           />
           <Project
-            background="'./images/projects/mirror-mirror.png'"
-            title="Mirror, Mirror 2017"
+            background="'./images/projects/health-insurance.png'"
+            title="What Is Your State Doing to Affect Access to Adequate Health Insurance?"
             links={projectTwoLinks}
           />
         </div>
