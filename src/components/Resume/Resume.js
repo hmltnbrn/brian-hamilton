@@ -39,14 +39,15 @@ class Resume extends React.Component {
                         <li>Bootstrap</li>
                       </ul>
                     </li>
-                    <li>Web Frameworks
+                    <li>Web Frameworks / Server-Side Tech
                       <ul>
                         <li>Node.js / Express</li>
                         <li>React</li>
                         <li>Angular 2+</li>
+                        <li>Nginx</li>
                       </ul>
                     </li>
-                    <li>Database/Data Visualization
+                    <li>Database / Data Visualization
                       <ul>
                         <li>PostgreSQL</li>
                         <li>MySQL</li>
@@ -61,20 +62,32 @@ class Resume extends React.Component {
                       <ul>
                         <li>Python</li>
                         <li>C++</li>
+                        <li>Ruby</li>
                       </ul>
                     </li>
                   </ul>
                 </div>
-                <div>
-                  <h2 className="primary-color">Methodologies</h2>
-                  <ul>
-                    <li>Agile Software Development</li>
-                    <li>Cross-Browser Compatibility</li>
-                    <li>Database Normalization</li>
-                    <li>Mobile Web Design</li>
-                    <li>Responsive Web Design</li>
-                    <li>REST API</li>
-                  </ul>
+                <div className="top-by-top">
+                  <div>
+                    <h2 className="primary-color">Methodologies</h2>
+                    <ul>
+                      <li>Agile Software Development</li>
+                      <li>Cross-Browser Compatibility</li>
+                      <li>Database Normalization</li>
+                      <li>Mobile Web Design</li>
+                      <li>Responsive Web Design</li>
+                      <li>REST API</li>
+                      <li>Virtualization</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h2 className="primary-color">AWS Services</h2>
+                    <ul>
+                      <li>CloudFront</li>
+                      <li>EC2</li>
+                      <li>S3</li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
@@ -91,9 +104,9 @@ class Resume extends React.Component {
                 </div>
                 <h4>New York, New York | July 2017 - Present</h4>
                 <ul>
-                  <li>Co-developer for Sweet Defeat platform.</li>
-                  <li>Developed an internal data manager for Steady, using Node.js and Angular 5.</li>
-                  <li>Worked on the back-end API for Steady.</li>
+                  <li>Co-developer for the Sweet Defeat platform, using HTML5, CSS3, and PHP.</li>
+                  <li>Maintained HelpRx and other associated ScriptRelief websites, using Ruby on Rails, Nginx, and Linux.</li>
+                  <li>Developed an internal data manager for Steady with Node.js and Angular 5.</li>
                 </ul>
               </div>
               <div className="resume-experience">

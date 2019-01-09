@@ -13,7 +13,7 @@ class Footer extends React.Component {
 
     return (
       <footer>
-        <p className="footer-name">Brian Hamilton © 2016-2018</p>
+        <p className="footer-name">Brian Hamilton © 2016-{(new Date().getFullYear())}</p>
         <div className="footer-nav">
           <Link to="/" className="footer-link">Home</Link>
           <Link to="/resume" className="footer-link">Resume</Link>
