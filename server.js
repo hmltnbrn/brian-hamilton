@@ -46,7 +46,7 @@ let transporter = nodemailer.createTransport({
   service: 'Gmail',
   auth: {
     type: 'OAuth2',
-    user: process.env.EMAIL,
+    user: process.env.GMAIL_AUTH_EMAIL,
     clientId: process.env.GMAIL_CLIENT_ID,
     clientSecret: process.env.GMAIL_CLIENT_SECRET,
     refreshToken: process.env.GMAIL_REFRESH_TOKEN,
@@ -55,21 +55,16 @@ let transporter = nodemailer.createTransport({
   }
 });
 
-let handleEmail = (req, res, next) => {
-
-  let name = req.body.name;
-  let email = req.body.email;
-  let subject = req.body.subject;
-  let message = req.body.message;
+app.post('/send', (req, res, next) => {
 
   let mailOptions = {
     replyTo: {
-      name: name,
-      address: email
+      name: req.body.name,
+      address: req.body.email
     },
-    to: 'Brian Hamilton <hmltnbrn@gmail.com>',
-    subject: subject,
-    text: message
+    to: process.env.MAIL_TO_ADDRESS,
+    subject: req.body.subject,
+    text: req.body.message
   };
 
   transporter.sendMail(mailOptions, (error, info) => {
@@ -81,9 +76,7 @@ let handleEmail = (req, res, next) => {
     return res.status(200).json({sent: true});
   });
 
-}
-
-app.post('/send', handleEmail);
+});
 
 //Handle Main Page
 app.get('*', function (req, res, next) {

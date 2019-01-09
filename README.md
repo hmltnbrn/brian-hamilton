@@ -30,7 +30,7 @@ This is the underlying code for my website, [brianhamilton.me](https://www.brian
 
 1. This website uses [Create React App](https://github.com/facebook/create-react-app) to function. Follow its usage details to understand how to build for production.
 
-2. Nodemailer implementation uses environment variables for the sensitive IDs and tokens. Follow online documentation to create your own, then follow step 5 from the installation instructions to put them in place. It can also be removed entirely. If you deploy this on an actual server, you will need to manually set the variables. On Heroku, this is done with config vars.
+2. Nodemailer implementation uses environment variables for the sensitive IDs and tokens. Follow online documentation to create your own, then follow step 4 from the installation instructions to put them in place. It can also be removed entirely. If you deploy this on an actual server, you will need to manually set the variables. On Heroku, this is done with config vars.
 
 3. The heroku-ssl-redirect module is included, but will only do anything with proper SSL certificates in use on Heroku.
 
