@@ -47,10 +47,10 @@ let transporter = nodemailer.createTransport({
   auth: {
     type: 'OAuth2',
     user: process.env.EMAIL,
-    clientId: process.env.CLIENT_ID,
-    clientSecret: process.env.CLIENT_SECRET,
-    refreshToken: process.env.REFRESH_TOKEN,
-    accessToken: process.env.ACCESS_TOKEN,
+    clientId: process.env.GMAIL_CLIENT_ID,
+    clientSecret: process.env.GMAIL_CLIENT_SECRET,
+    refreshToken: process.env.GMAIL_REFRESH_TOKEN,
+    accessToken: process.env.GMAIL_ACCESS_TOKEN,
     expires: 3600
   }
 });
