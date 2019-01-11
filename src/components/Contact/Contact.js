@@ -211,7 +211,7 @@ class Contact extends React.Component {
           <DialogContent className="contact-dialog center">
             <div className="dialog-exit"><i className="material-icons" onClick={() => this.setState({phoneDialog: false})} tabIndex="0">clear</i></div>
             <p>On a phone? Tap the button below.</p>
-            <div className="dialog-button-container">
+            <div className="dialog-button-container phone">
               <a href="tel:1-518-391-5033" className="round-button-link" onClick={() => this.setState({phoneDialog: false})}><i className="material-icons">phone</i></a>
             </div>
             <p className="phone-wrap"><span>Otherwise, call me at </span><span><strong>(518) 391-5033</strong>.</span></p>

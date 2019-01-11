@@ -65,6 +65,7 @@
     flex-direction: column;
     justify-content: space-between;
     text-align: center;
+    align-items: center;
   }
   .dialog-exit {
     display: flex;
@@ -101,6 +102,10 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    &.phone {
+      margin: 0;
+      padding: 25px 0;
+    }
   }
 }
 
