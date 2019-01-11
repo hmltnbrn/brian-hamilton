@@ -8,6 +8,27 @@ class CustomSnackbar extends React.Component {
 
   render() {
 
+    const type = this.props.type;
+
+    const Icon = () => {
+      switch(type) {
+        case 'success':
+          return <i className="material-icons">done</i>;
+        case 'warning':
+          return <i className="material-icons">warning</i>;
+        case 'error':
+          return <i className="material-icons">error</i>;
+        default:
+          return null;
+      }
+    }
+
+    const backgroundColor = {
+      success: "#2e7d32",
+      warning: "#f9a825",
+      error: "#c62828"
+    }
+
     return (
       <Snackbar
         anchorOrigin={{
@@ -20,10 +41,10 @@ class CustomSnackbar extends React.Component {
       >
         <SnackbarContent
           aria-describedby="bh-snackbar"
-          style={{backgroundColor: "#2e7d32"}}
+          style={{backgroundColor: backgroundColor[type]}}
           message={
             <span id="bh-snackbar" className="snackbar-message">
-              <i className="material-icons">done</i>
+              {Icon()}
               <span>{this.props.message}</span>
             </span>
           }

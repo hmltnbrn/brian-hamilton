@@ -82,7 +82,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 100px 0 0 0;
+    padding: 50px 0 0 0;
   }
   p {
     font-size: 30px;
@@ -93,8 +93,11 @@
       font-size: 32px;
     }
   }
+  .recaptcha-container {
+    margin: 15px;
+  }
   .dialog-button-container {
-    padding: 25px 0;
+    margin: 5px;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -128,7 +131,7 @@
   }
   .contact-dialog {
     form {
-      padding: 75px 0 0 0;
+      padding: 25px 0 0 0;
     }
     p {
       font-size: 25px;

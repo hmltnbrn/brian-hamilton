@@ -19,6 +19,7 @@
   "homepage": "https://www.brianhamilton.me",
   "dependencies": {
     "@material-ui/core": "^1.5.1",
+    "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "compression": "^1.7.3",
     "dotenv-safe": "^6.1.0",
@@ -31,6 +32,7 @@
     "path": "^0.12.7",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
+    "react-google-recaptcha": "^1.0.5",
     "react-router-dom": "^4.3.1",
     "react-scripts": "^2.1.3"
   },

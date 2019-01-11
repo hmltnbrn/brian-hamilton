@@ -7,6 +7,7 @@ let express = require('express'),
     nodemailer = require('nodemailer'),
     bodyParser = require('body-parser'),
     dotenv = require('dotenv-safe'),
+    axios = require('axios'),
     app = express();
 
 dotenv.load({
@@ -55,7 +56,7 @@ let transporter = nodemailer.createTransport({
   }
 });
 
-app.post('/send', (req, res, next) => {
+app.post('/send', async (req, res, next) => {
 
   let mailOptions = {
     replyTo: {
@@ -67,14 +68,35 @@ app.post('/send', (req, res, next) => {
     text: req.body.message
   };
 
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      console.log(error);
+  let secret = process.env.REACT_APP_RECAPTCHA_SECRET_KEY;
+  let recaptcha = req.body.recaptcha;
+  let ip = req.ip;
+
+  try {
+    var captchaCall = await axios.post(
+      `https://www.google.com/recaptcha/api/siteverify?secret=${secret}&response=${recaptcha}&removeip=${ip}`, {}, {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded; charset=utf-8"
+        },
+      },
+    );
+  } catch (e) {
+    console.log(e);
+    return res.status(200).json({sent: false});
+  }
+
+  if(captchaCall.data.success === true) {
+    try {
+      var mail = await transporter.sendMail(mailOptions);
+      console.log('Message %s sent: %s', mail.messageId, mail.response);
+      return res.status(200).json({sent: true});
+    } catch (e) {
+      console.log(e);
       return res.status(200).json({sent: false});
     }
-    console.log('Message %s sent: %s', info.messageId, info.response);
-    return res.status(200).json({sent: true});
-  });
+  }
+
+  return res.status(200).json({sent: false});
 
 });
 

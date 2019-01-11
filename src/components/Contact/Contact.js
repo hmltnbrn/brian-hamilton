@@ -5,6 +5,8 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import withMobileDialog from '@material-ui/core/withMobileDialog';
 
+import ReCAPTCHA from "react-google-recaptcha";
+
 import Input from '../Local/Input/Input';
 import TextArea from '../Local/TextArea/TextArea';
 import CustomSnackbar from '../Local/CustomSnackbar/CustomSnackbar';
@@ -22,9 +24,12 @@ class Contact extends React.Component {
       subjectError: false,
       message: "",
       messageError: false,
+      recaptcha: "",
       emailDialog: false,
       phoneDialog: false,
-      emailSnackbar: false
+      emailSuccessSnackbar: false,
+      recaptchaSnackbar: false,
+      emailErrorSnackbar: false
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -46,6 +51,7 @@ class Contact extends React.Component {
     !this.state.name ? this.setState({nameError: "Required field"}) : this.setState({nameError: false});
     !this.state.subject ? this.setState({subjectError: "Required field"}) : this.setState({subjectError: false});
     !this.state.message ? this.setState({messageError: "Required field"}) : this.setState({messageError: false});
+    !this.state.recaptcha ? this.setState({recaptchaSnackbar: true}) : this.setState({recaptchaSnackbar: false});
 
     if (!this.state.email) {
       this.setState({emailError: "Required field"})
@@ -60,40 +66,58 @@ class Contact extends React.Component {
       validEmail = true;
     }
 
-    if (this.state.name && validEmail === true && this.state.subject && this.state.message) {
+    if (this.state.name && validEmail === true && this.state.subject && this.state.message && this.state.recaptcha) {
       this.setState({
-        emailDialog: false
+        emailDialog: false,
       }, this.sendEmail);
     }
     event.preventDefault();
   }
 
-  sendEmail() {
-    var data = { name: this.state.name, email: this.state.email, subject: this.state.subject, message: this.state.message };
+  async sendEmail() {
+    var data = {
+      name: this.state.name,
+      email: this.state.email,
+      subject: this.state.subject,
+      message: this.state.message,
+      recaptcha: this.state.recaptcha
+    };
     var url = `${process.env.REACT_APP_API}/send`;
 
-    fetch(url, {
-      method: 'POST',
-      body: JSON.stringify(data), 
-      headers: new Headers({
-        'Content-Type': 'application/json'
-      })
-    })
-      .then(res => res.json())
-      .catch(error => console.error('Error:', error))
-      .then(response => {
-        this.setState({
-          emailSnackbar: true,
-          name: "",
-          nameError: false,
-          email: "",
-          emailError: false,
-          subject: "",
-          subjectError: false,
-          message: "",
-          messageError: false
-        });
+    try {
+      var response = await fetch(url, {
+        method: 'POST',
+        body: JSON.stringify(data), 
+        headers: new Headers({
+          'Content-Type': 'application/json'
+        })
       });
+      var json = await response.json();
+    } catch (e) {
+      this.setState({emailErrorSnackbar: true});
+    }
+
+    if(json.sent === true) {
+      this.setState({
+        emailSuccessSnackbar: true,
+        name: "",
+        nameError: false,
+        email: "",
+        emailError: false,
+        subject: "",
+        subjectError: false,
+        message: "",
+        messageError: false,
+        recaptcha: ""
+      });
+    }
+    else {
+      this.setState({
+        emailErrorSnackbar: true,
+        recaptcha: ""
+      });
+    }
+
   }
 
   clear = () => {
@@ -166,6 +190,12 @@ class Contact extends React.Component {
                 errorText={this.state.messageError}
                 onChange={this.handleInputChange}
               />
+              <div className="recaptcha-container">
+                <ReCAPTCHA
+                  sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}
+                  onChange={(value) => this.setState({recaptcha: value})}
+                />
+              </div>
               <div className="dialog-button-container">
                 <button type="button" className="button-link" onClick={this.clear}>Clear</button>
                 <button type="submit" className="button-link">Send Email</button>
@@ -188,7 +218,24 @@ class Contact extends React.Component {
             <span></span>
           </DialogContent>
         </Dialog>
-        <CustomSnackbar open={this.state.emailSnackbar} message="Email sent!" onClose={() => this.setState({emailSnackbar: false})}/>
+        <CustomSnackbar
+          open={this.state.emailSuccessSnackbar}
+          message="Email sent!"
+          onClose={() => this.setState({emailSuccessSnackbar: false})}
+          type="success"
+        />
+        <CustomSnackbar
+          open={this.state.recaptchaSnackbar}
+          message="Are you a robot?"
+          onClose={() => this.setState({recaptchaSnackbar: false})}
+          type="warning"
+        />
+        <CustomSnackbar
+          open={this.state.emailErrorSnackbar}
+          message="Email failed to send"
+          onClose={() => this.setState({emailErrorSnackbar: false})}
+          type="error"
+        />
       </div>
     );
   }
