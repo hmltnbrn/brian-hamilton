@@ -4,8 +4,8 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import ScrollToTop from './ScrollToTop';
 import 'normalize.css';
-import './index.css';
-import registerServiceWorker from './registerServiceWorker';
+import './index.scss';
+import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.render((
@@ -15,4 +15,4 @@ ReactDOM.render((
     </ScrollToTop>
   </BrowserRouter>
 ), document.getElementById('root'));
-registerServiceWorker();
+serviceWorker.unregister();

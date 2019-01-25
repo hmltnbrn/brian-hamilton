@@ -1,5 +1,5 @@
 import React from 'react';
-import './CustomSnackbar.css';
+import './CustomSnackbar.scss';
 
 import Snackbar from '@material-ui/core/Snackbar';
 import SnackbarContent from '@material-ui/core/SnackbarContent';

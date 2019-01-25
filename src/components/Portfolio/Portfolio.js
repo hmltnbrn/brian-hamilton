@@ -1,5 +1,5 @@
 import React from 'react';
-import './Portfolio.css';
+import './Portfolio.scss';
 
 import Project from '../Home/components/Projects/components/Project/Project';
 

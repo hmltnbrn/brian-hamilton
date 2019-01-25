@@ -1,5 +1,5 @@
 import React from 'react';
-import './Technology.css';
+import './Technology.scss';
 
 class Technology extends React.Component {
 

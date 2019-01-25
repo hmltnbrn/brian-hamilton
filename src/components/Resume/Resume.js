@@ -1,5 +1,5 @@
 import React from 'react';
-import './Resume.css';
+import './Resume.scss';
 
 import { MicrosoftWordIcon } from '../../icons/MicrosoftWord';
 import { AdobeAcrobatReaderIcon } from '../../icons/AdobeAcrobatReader';

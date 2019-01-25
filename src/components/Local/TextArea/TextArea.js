@@ -1,5 +1,5 @@
 import React from 'react';
-import './TextArea.css';
+import './TextArea.scss';
 
 class TextArea extends React.Component {
 
@@ -16,7 +16,14 @@ class TextArea extends React.Component {
 
     return (
       <div className="form-group">
-        <textarea rows={this.props.rows} name={this.props.name} placeholder={this.props.placeholder} value={this.props.value} onChange={this.handleChange} className={this.props.errorText && !this.props.value ? 'error' : ''} />
+        <textarea
+          rows={this.props.rows}
+          name={this.props.name}
+          placeholder={this.props.placeholder}
+          value={this.props.value}
+          onChange={this.handleChange}
+          className={this.props.errorText && !this.props.value ? 'error' : ''}
+        />
         <div className="error-alert">{this.props.errorText}</div>
       </div>
     );

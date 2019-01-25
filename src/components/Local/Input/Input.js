@@ -1,5 +1,5 @@
 import React from 'react';
-import './Input.css';
+import './Input.scss';
 
 class Input extends React.Component {
 
@@ -16,7 +16,14 @@ class Input extends React.Component {
 
     return (
       <div className="form-group">
-        <input type={this.props.type} name={this.props.name} placeholder={this.props.placeholder} value={this.props.value} onChange={this.handleChange} className={this.props.errorText ? 'error' : ''}/>
+        <input
+          type={this.props.type}
+          name={this.props.name}
+          placeholder={this.props.placeholder}
+          value={this.props.value}
+          onChange={this.handleChange}
+          className={this.props.errorText ? 'error' : ''}
+        />
         <div className="error-alert">{this.props.errorText}</div>
       </div>
     );

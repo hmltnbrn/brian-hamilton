@@ -1,5 +1,5 @@
 import React from 'react';
-import './Technologies.css';
+import './Technologies.scss';
 
 import { Link } from 'react-router-dom';
 

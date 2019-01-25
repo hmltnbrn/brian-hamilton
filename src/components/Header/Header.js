@@ -1,5 +1,5 @@
 import React from 'react';
-import './Header.css';
+import './Header.scss';
 
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 

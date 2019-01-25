@@ -1,5 +1,5 @@
 import React from 'react';
-import './Contact.css';
+import './Contact.scss';
 
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
