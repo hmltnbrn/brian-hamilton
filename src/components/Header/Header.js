@@ -1,6 +1,8 @@
 import React from 'react';
 import './Header.scss';
 
+import windowWidth from '../../WindowWidth';
+
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 
 import { NavLink } from 'react-router-dom';
@@ -71,4 +73,4 @@ class Header extends React.Component {
   }
 };
 
-export default Header;
+export default windowWidth(Header);

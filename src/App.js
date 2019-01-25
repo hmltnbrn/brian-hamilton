@@ -11,31 +11,10 @@ import Footer from './components/Footer/Footer';
 import NotFound from './components/NotFound/NotFound';
 
 class App extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      windowWidth: window.innerWidth
-    };
-    this.handleResize = this.handleResize.bind(this);
-  }
-
-  componentDidMount() {
-    window.addEventListener('resize', this.handleResize);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.handleResize);
-  }
-
-  handleResize() {
-    this.setState({windowWidth: window.innerWidth});
-  }
-
   render() {
     return (
       <div className="app-components">
-        <Header windowWidth={this.state.windowWidth}/>
+        <Header/>
           <main>
             <Switch>
               <Route exact path="/" component={Home}/>

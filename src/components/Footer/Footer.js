@@ -8,9 +8,7 @@ import { LinkedInIcon } from '../../icons/LinkedIn';
 import { GitHubIcon } from '../../icons/GitHub';
 
 class Footer extends React.Component {
-
   render() {
-
     return (
       <footer>
         <p className="footer-name">Brian Hamilton © 2016-{(new Date().getFullYear())}</p>

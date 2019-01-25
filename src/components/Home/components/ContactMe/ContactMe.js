@@ -4,7 +4,6 @@ import './ContactMe.scss';
 import { Link } from 'react-router-dom';
 
 class ContactMe extends React.Component {
-
   render() {
     return (
       <div className="home-contact-me">
