@@ -34,14 +34,14 @@ const OAuth2 = google.auth.OAuth2;
 const oauth2Client = new OAuth2(
   process.env.GMAIL_CLIENT_ID,
   process.env.GMAIL_CLIENT_SECRET,
-  "https://developers.google.com/oauthplayground"
+  process.env.GMAIL_REDIRECT_URL
 );
 
-app.post('/send', asyncWrap(async (req, res, next) => {
+oauth2Client.setCredentials({
+  refresh_token: process.env.GMAIL_REFRESH_TOKEN
+});
 
-  oauth2Client.setCredentials({
-    refresh_token: process.env.GMAIL_REFRESH_TOKEN
-  });
+app.post('/send', asyncWrap(async (req, res, next) => {
 
   const { token } = await oauth2Client.getAccessToken();
   
