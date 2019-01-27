@@ -1,3 +1,5 @@
+//@flow
+
 import React from 'react';
 import './Footer.scss';
 
@@ -7,7 +9,7 @@ import { TwitterIcon } from '../../icons/Twitter';
 import { LinkedInIcon } from '../../icons/LinkedIn';
 import { GitHubIcon } from '../../icons/GitHub';
 
-class Footer extends React.Component {
+class Footer extends React.Component<{}> {
   render() {
     return (
       <footer>

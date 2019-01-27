@@ -1,3 +1,5 @@
+//@flow
+
 import React from 'react';
 import './Resume.scss';
 
@@ -6,10 +8,8 @@ import { AdobeAcrobatReaderIcon } from '../../icons/AdobeAcrobatReader';
 
 import { Link } from 'react-router-dom';
 
-class Resume extends React.Component {
-
+class Resume extends React.Component<{}> {
   render() {
-
     return (
       <div className="resume-page-container">
         <div className="resume-download-container">

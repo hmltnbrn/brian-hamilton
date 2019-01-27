@@ -1,3 +1,5 @@
+//@flow
+
 import React, { Component } from 'react';
 import './Home.scss';
 
@@ -7,7 +9,7 @@ import Technologies from './components/Technologies/Technologies';
 import Projects from './components/Projects/Projects';
 import ContactMe from './components/ContactMe/ContactMe';
 
-class Home extends Component {
+class Home extends Component<{}> {
   render() {
     return (
       <div className="home-components">

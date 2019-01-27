@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 import './Header.scss';
 
@@ -10,17 +12,21 @@ import { NavLink } from 'react-router-dom';
 import { LinkedInIcon } from '../../icons/LinkedIn';
 import { GitHubIcon } from '../../icons/GitHub';
 
-class Header extends React.Component {
+type Props = {
+  windowWidth: number
+};
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      drawer: false
-    };
-  }
+type State = {
+  drawer: boolean
+};
+
+class Header extends React.Component<Props, State> {
+
+  state = {
+    drawer: false
+  };
 
   render() {
-
     return (
       <header>
         <div className="header-container">

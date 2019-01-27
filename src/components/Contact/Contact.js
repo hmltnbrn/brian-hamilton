@@ -1,3 +1,5 @@
+//@flow
+
 import React from 'react';
 import './Contact.scss';
 
@@ -11,40 +13,54 @@ import Input from '../Local/Input/Input';
 import TextArea from '../Local/TextArea/TextArea';
 import CustomSnackbar from '../Local/CustomSnackbar/CustomSnackbar';
 
-class Contact extends React.Component {
+type Props = {};
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: "",
-      nameError: false,
-      email: "",
-      emailError: false,
-      subject: "",
-      subjectError: false,
-      message: "",
-      messageError: false,
-      recaptcha: "",
-      emailDialog: false,
-      phoneDialog: false,
-      emailSuccessSnackbar: false,
-      recaptchaSnackbar: false,
-      emailErrorSnackbar: false
-    };
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+type State = {
+  name: string,
+  email: string,
+  subject: string,
+  message: string,
+  recaptcha: string,
+  nameError: boolean | string,
+  emailError: boolean | string,
+  subjectError: boolean | string,
+  messageError: boolean | string,
+  emailDialog: boolean,
+  phoneDialog: boolean,
+  emailSuccessSnackbar: boolean,
+  recaptchaSnackbar: boolean,
+  emailErrorSnackbar: boolean
+};
 
-  handleInputChange(event) {
-    const target = event.target;
+class Contact extends React.Component<Props, State> {
+
+  state = {
+    name: "",
+    nameError: false,
+    email: "",
+    emailError: false,
+    subject: "",
+    subjectError: false,
+    message: "",
+    messageError: false,
+    recaptcha: "",
+    emailDialog: false,
+    phoneDialog: false,
+    emailSuccessSnackbar: false,
+    recaptchaSnackbar: false,
+    emailErrorSnackbar: false
+  };
+
+  handleInputChange = (event:SyntheticEvent<HTMLButtonElement>):void => {
+    const target = event.currentTarget;
     const value = target.value;
     const name = target.name;
     this.setState({
       [name]: value
     });
-  }
+  };
 
-  handleSubmit(event) {
+  handleSubmit = (event:SyntheticEvent<HTMLButtonElement>):void => {
     let emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(.\w{2,63})+$/;
     let validEmail = true;
 
@@ -72,7 +88,7 @@ class Contact extends React.Component {
       }, this.sendEmail);
     }
     event.preventDefault();
-  }
+  };
 
   async sendEmail() {
     var data = {
@@ -82,8 +98,8 @@ class Contact extends React.Component {
       message: this.state.message,
       recaptcha: this.state.recaptcha
     };
-    var url = `${process.env.REACT_APP_API}/send`;
-
+    var url = `${process.env.REACT_APP_API || ""}/send`;
+    var json:{ sent:boolean } = {};
     try {
       var response = await fetch(url, {
         method: 'POST',
@@ -92,7 +108,7 @@ class Contact extends React.Component {
           'Content-Type': 'application/json'
         })
       });
-      var json = await response.json();
+      json = await response.json();
     } catch (e) {
       this.setState({emailErrorSnackbar: true});
     }
@@ -120,7 +136,7 @@ class Contact extends React.Component {
 
   }
 
-  clear = () => {
+  clear = ():void => {
     this.setState({
       name: "",
       nameError: false,
@@ -193,7 +209,7 @@ class Contact extends React.Component {
               <div className="recaptcha-container">
                 <ReCAPTCHA
                   sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}
-                  onChange={(value) => this.setState({recaptcha: value})}
+                  onChange={(value:string) => this.setState({recaptcha: value})}
                 />
               </div>
               <div className="dialog-button-container">

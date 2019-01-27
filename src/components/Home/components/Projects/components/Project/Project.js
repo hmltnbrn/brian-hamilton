@@ -1,7 +1,18 @@
+//@flow
+
 import React from 'react';
 import './Project.scss';
 
-class Project extends React.Component {
+type Props = {
+  background: string,
+  title: string,
+  links: Array<{
+    href: string,
+    text: string
+  }>
+};
+
+class Project extends React.Component<Props> {
 
   render() {
 

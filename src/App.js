@@ -10,7 +10,7 @@ import Contact from './components/Contact/Contact';
 import Footer from './components/Footer/Footer';
 import NotFound from './components/NotFound/NotFound';
 
-class App extends Component {
+class App extends Component<{}> {
   render() {
     return (
       <div className="app-components">

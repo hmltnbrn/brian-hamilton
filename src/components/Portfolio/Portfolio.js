@@ -1,9 +1,11 @@
+//@flow
+
 import React from 'react';
 import './Portfolio.scss';
 
 import Project from '../Home/components/Projects/components/Project/Project';
 
-class Portfolio extends React.Component {
+class Portfolio extends React.Component<{}> {
 
   render() {
 

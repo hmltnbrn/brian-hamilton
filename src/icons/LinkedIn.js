@@ -1,4 +1,6 @@
-import React  from 'react';
+//@flow
+
+import React from 'react';
 
 //https://github.com/danleech/simple-icons
 export const LinkedInIcon = () => (

@@ -26,6 +26,7 @@
     "client": "node server",
     "client-dev": "nodemon server",
     "flow": "flow",
+    "flow-typed": "flow-typed install",
     "heroku-postbuild": "npm run build"
   },
   "dependencies": {
@@ -48,6 +49,7 @@
   "devDependencies": {
     "concurrently": "^4.1.0",
     "flow-bin": "^0.91.0",
+    "flow-typed": "^2.5.1",
     "node-sass": "^4.11.0",
     "nodemon": "^1.18.9"
   },

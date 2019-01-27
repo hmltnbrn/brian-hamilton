@@ -1,3 +1,5 @@
+//@flow
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -8,11 +10,15 @@ import './index.scss';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
 
-ReactDOM.render((
-  <BrowserRouter>
-    <ScrollToTop>
-      <App />
-    </ScrollToTop>
-  </BrowserRouter>
-), document.getElementById('root'));
-serviceWorker.unregister();
+const root: ?Element = document.getElementById('root');
+
+if (root != null) {
+  ReactDOM.render((
+    <BrowserRouter>
+      <ScrollToTop>
+        <App />
+      </ScrollToTop>
+    </BrowserRouter>
+  ), root);
+  serviceWorker.unregister();
+}

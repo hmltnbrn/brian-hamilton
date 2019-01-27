@@ -1,20 +1,28 @@
-import React from 'react';
+//@flow
 
-const windowWidth = (InnerComponent) => {
-  class WindowWidth extends React.Component {
-    state = {
+import * as React from 'react';
+
+type State = {
+  windowWidth: ?number
+};
+
+function windowWidth<Config: {}>(
+  InnerComponent: React.ComponentType<Config>
+): React.ComponentType<$Diff<Config, State>> {
+  class WindowWidth extends React.Component<$Diff<Config, State>, State> {
+    state: State = {
       windowWidth: window.innerWidth
     };
 
-    componentDidMount() {
+    componentDidMount = ():void => {
       window.addEventListener('resize', this.handleResize);
     }
   
-    componentWillUnmount() {
+    componentWillUnmount = ():void => {
       window.removeEventListener('resize', this.handleResize);
     }
   
-    handleResize = () => {
+    handleResize = ():void => {
       this.setState({windowWidth: window.innerWidth});
     }
 
@@ -27,7 +35,6 @@ const windowWidth = (InnerComponent) => {
       );
     }
   }
-
   return WindowWidth;
 }
 

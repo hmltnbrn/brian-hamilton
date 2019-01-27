@@ -1,7 +1,9 @@
+//@flow
+
 import React from 'react';
 import './Banner.scss';
 
-class Banner extends React.Component {
+class Banner extends React.Component<{}> {
   render() {
     return (
       <div id="banner" className="banner-container">
