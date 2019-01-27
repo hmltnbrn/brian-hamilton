@@ -6,9 +6,11 @@ let express = require('express'),
     cors = require('cors'),
     sslRedirect = require('heroku-ssl-redirect'),
     nodemailer = require('nodemailer'),
+    { google } = require("googleapis"),
     bodyParser = require('body-parser'),
     dotenv = require('dotenv-safe'),
     axios = require('axios'),
+    asyncWrap = require('./middleware').asyncWrap,
     app = express();
 
 dotenv.load({
@@ -27,23 +29,37 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
-// The environment variables below are in the .env file for a local environment or set as config vars on the server
-let transporter = nodemailer.createTransport({
-  service: 'Gmail',
-  auth: {
-    type: 'OAuth2',
-    user: process.env.GMAIL_AUTH_EMAIL,
-    clientId: process.env.GMAIL_CLIENT_ID,
-    clientSecret: process.env.GMAIL_CLIENT_SECRET,
-    refreshToken: process.env.GMAIL_REFRESH_TOKEN,
-    accessToken: process.env.GMAIL_ACCESS_TOKEN,
-    expires: 3600
-  }
-});
+const OAuth2 = google.auth.OAuth2;
 
-app.post('/send', async (req, res, next) => {
+const oauth2Client = new OAuth2(
+  process.env.GMAIL_CLIENT_ID,
+  process.env.GMAIL_CLIENT_SECRET,
+  "https://developers.google.com/oauthplayground"
+);
 
-  let mailOptions = {
+app.post('/send', asyncWrap(async (req, res, next) => {
+
+  oauth2Client.setCredentials({
+    refresh_token: process.env.GMAIL_REFRESH_TOKEN
+  });
+
+  const { token } = await oauth2Client.getAccessToken();
+  
+  //The environment variables below are in the .env file for a local environment or set as config vars on the server
+  const transporter = nodemailer.createTransport({
+    service: 'Gmail',
+    auth: {
+      type: 'OAuth2',
+      user: process.env.GMAIL_AUTH_EMAIL,
+      clientId: process.env.GMAIL_CLIENT_ID,
+      clientSecret: process.env.GMAIL_CLIENT_SECRET,
+      refreshToken: process.env.GMAIL_REFRESH_TOKEN,
+      accessToken: token,
+      expires: 3600
+    }
+  });
+
+  const mailOptions = {
     replyTo: {
       name: req.body.name,
       address: req.body.email
@@ -53,37 +69,27 @@ app.post('/send', async (req, res, next) => {
     text: req.body.message
   };
 
-  let secret = process.env.REACT_APP_RECAPTCHA_SECRET_KEY;
-  let recaptcha = req.body.recaptcha;
-  let ip = req.ip;
+  const secret = process.env.REACT_APP_RECAPTCHA_SECRET_KEY;
+  const recaptcha = req.body.recaptcha;
+  const ip = req.ip;
 
-  try {
-    var captchaCall = await axios.post(
-      `https://www.google.com/recaptcha/api/siteverify?secret=${secret}&response=${recaptcha}&removeip=${ip}`, {}, {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded; charset=utf-8"
-        },
+  const captchaCall = await axios.post(
+    `https://www.google.com/recaptcha/api/siteverify?secret=${secret}&response=${recaptcha}&removeip=${ip}`, {}, {
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded; charset=utf-8"
       },
-    );
-  } catch (e) {
-    console.log(e);
-    return res.status(200).json({sent: false});
-  }
+    },
+  );
 
-  if(captchaCall.data.success === true) {
-    try {
-      var mail = await transporter.sendMail(mailOptions);
-      console.log('Message %s sent: %s', mail.messageId, mail.response);
-      return res.status(200).json({sent: true});
-    } catch (e) {
-      console.log(e);
-      return res.status(200).json({sent: false});
-    }
+  if(captchaCall.data.success) {
+    const mail = await transporter.sendMail(mailOptions);
+    console.log('Message %s sent: %s', mail.messageId, mail.response);
+    return res.status(200).json({sent: true});
   }
 
   return res.status(200).json({sent: false});
 
-});
+}));
 
 //Handle Main Page
 app.get('/*', function (req, res, next) {

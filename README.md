@@ -4,7 +4,7 @@
 
 This is the underlying code for my website, [brianhamilton.me](https://www.brianhamilton.me/).
 
-[Node.js](https://nodejs.org/en/) app using [Express](https://expressjs.com/), [React](https://reactjs.org/), [Nodemailer](https://nodemailer.com/about/), and [Material-UI](https://material-ui.com/).
+[Node.js](https://nodejs.org/en/) app using [Express](https://expressjs.com/), [React](https://reactjs.org/), [Nodemailer](https://nodemailer.com/about/), [Material-UI](https://material-ui.com/), and [Flow](https://flow.org/en/).
 
 ## Installation
 
@@ -18,9 +18,9 @@ This is the underlying code for my website, [brianhamilton.me](https://www.brian
     npm install
     ```
 
-4. Create your own **.env** file and copy everything over from the **.env.example** file. The values for each are necessary for implementing the mailing functionality in a local environment.
+4. Create your own **.env** file and copy everything over from the **.env.example** file. You will then need to fill in those values. They are necessary for implementing the mailing and reCAPTCHA functionality in a local environment. Refer to steps 2 and 3 in Usage Notes for more details.
     
-5. Type and run the command below to run the server. This will automatically open a browser window and navigate to [http://localhost:3000](http://localhost:3000).
+5. Type and run the command below to run the site. This will automatically open a browser window and navigate to [http://localhost:3000](http://localhost:3000). This also automatically runs the back-end server on port 8080. They will run concurrently.
 
     ```
     npm start
@@ -36,7 +36,11 @@ This is the underlying code for my website, [brianhamilton.me](https://www.brian
 
 4. The heroku-ssl-redirect module is included, but will only do anything with proper SSL certificates in use on Heroku.
 
-5. This site has been optimized for Chrome, Firefox, Safari, Edge, and mobile Android and iOS devices. It will not work properly on Internet Explorer.
+5. Flow testing has already been done on the React component files. To learn more on how to do this on your own, refer to the [Flow documentation](https://flow.org/en/docs/).
+
+6. While in development, both the back-end and front-end servers will automatically restart after a file is saved while editing.
+
+7. This site has been optimized for Chrome, Firefox, Safari, Edge, and mobile Android and iOS devices. It will not work properly on Internet Explorer.
 
 ---
 
