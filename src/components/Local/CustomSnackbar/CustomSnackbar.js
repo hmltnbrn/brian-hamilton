@@ -17,7 +17,7 @@ class CustomSnackbar extends React.Component<Props> {
 
   render() {
 
-    const type = this.props.type;
+    const { type } = this.props;
 
     const Icon = () => {
       switch(type) {

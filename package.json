@@ -23,8 +23,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "client": "node server",
-    "client-dev": "nodemon server",
+    "client": "node bin/www",
+    "client-dev": "nodemon bin/www",
     "flow": "flow",
     "flow-typed": "flow-typed install",
     "heroku-postbuild": "npm run build"
@@ -34,6 +34,7 @@
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "compression": "^1.7.3",
+    "cors": "^2.8.5",
     "dotenv-safe": "^6.1.0",
     "express": "^4.16.4",
     "heroku-ssl-redirect": "0.0.4",

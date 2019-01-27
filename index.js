@@ -3,6 +3,7 @@
 let express = require('express'),
     compression = require('compression'),
     path = require('path'),
+    cors = require('cors'),
     sslRedirect = require('heroku-ssl-redirect'),
     nodemailer = require('nodemailer'),
     bodyParser = require('body-parser'),
@@ -14,33 +15,17 @@ dotenv.load({
   allowEmptyValues: true
 });
 
-app.set('port', process.env.PORT || 8080); //sets port
+app.use(cors());
 
 if (process.env.NODE_ENV == 'production') app.use(sslRedirect());
 
-app.use('/', express.static(__dirname + '/build'));
+app.use('/', express.static(path.join(__dirname, 'build')));
 
 app.use(compression());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
-
-// Adding CORS support
-app.all('*', function (req, res, next) {
-  // Set CORS headers
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "GET, POST");
-  res.header("Access-Control-Allow-Headers", req.header('access-control-request-headers'));
-  res.header('Access-Control-Allow-Credentials', true);
-
-  if (req.method === 'OPTIONS') {
-    // CORS Preflight
-    res.send();
-  } else {
-    next();
-  }
-});
 
 // The environment variables below are in the .env file for a local environment or set as config vars on the server
 let transporter = nodemailer.createTransport({
@@ -101,15 +86,20 @@ app.post('/send', async (req, res, next) => {
 });
 
 //Handle Main Page
-app.get('*', function (req, res, next) {
+app.get('/*', function (req, res, next) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-//Handle 500
-app.use(function(err, req, res, next) {
-  res.status(500).send('500: Internal Server Error');
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  next(createError(404));
 });
 
-app.listen(app.get('port'), function () {
-  console.log('Express server listening on port ' + app.get('port'));
+// error handler
+app.use(function(err, req, res, next) {
+  if(err.status == 500) console.error(err);
+  console.log(err);
+  res.status(err.status || 500).send(err.message);
 });
+
+module.exports = app;

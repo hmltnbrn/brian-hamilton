@@ -150,7 +150,6 @@ class Contact extends React.Component<Props, State> {
   };
 
   render() {
-
     return (
       <div className="contact-container">
         <div className="contact-map"></div>
