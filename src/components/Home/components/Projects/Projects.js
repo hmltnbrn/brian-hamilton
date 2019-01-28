@@ -1,11 +1,13 @@
+//@flow
+
 import React from 'react';
-import './Projects.css';
+import './Projects.scss';
 
 import { Link } from 'react-router-dom';
 
 import Project from './components/Project/Project';
 
-class Projects extends React.Component {
+class Projects extends React.Component<{}> {
 
   render() {
 

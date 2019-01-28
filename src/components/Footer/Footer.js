@@ -1,5 +1,7 @@
+//@flow
+
 import React from 'react';
-import './Footer.css';
+import './Footer.scss';
 
 import { Link } from 'react-router-dom';
 
@@ -7,10 +9,8 @@ import { TwitterIcon } from '../../icons/Twitter';
 import { LinkedInIcon } from '../../icons/LinkedIn';
 import { GitHubIcon } from '../../icons/GitHub';
 
-class Footer extends React.Component {
-
+class Footer extends React.Component<{}> {
   render() {
-
     return (
       <footer>
         <p className="footer-name">Brian Hamilton © 2016-{(new Date().getFullYear())}</p>

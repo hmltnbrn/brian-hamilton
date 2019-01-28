@@ -1,14 +1,14 @@
+//@flow
+
 import React from 'react';
-import './Technologies.css';
+import './Technologies.scss';
 
 import { Link } from 'react-router-dom';
 
 import Technology from './components/Technology/Technology';
 
-class Technologies extends React.Component {
-
+class Technologies extends React.Component<{}> {
   render() {
-
     return (
       <div className="home-technologies">
         <p>Working with modern frameworks and languages, I build comprehensive web projects and interactive data visualizations.</p>

@@ -1,18 +1,18 @@
+// @flow
+
 import React from 'react';
-import './NotFound.css';
+import './NotFound.scss';
 
-class NotFound extends React.Component {
-  constructor(props){
-    super(props);
-    this.goBack = this.goBack.bind(this);
-  }
+import { withRouter } from 'react-router-dom';
+import type { ContextRouter } from 'react-router-dom';
 
-  goBack() {
+class NotFound extends React.Component<ContextRouter> {
+
+  goBack = ():void => {
     this.props.history.goBack();
   }
 
   render() {
-
     return (
       <div className="not-found">
         <div className="error-section">
@@ -26,4 +26,4 @@ class NotFound extends React.Component {
   }
 };
 
-export default NotFound;
+export default withRouter(NotFound);

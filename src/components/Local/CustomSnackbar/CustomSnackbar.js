@@ -1,14 +1,23 @@
+// @flow
+
 import React from 'react';
-import './CustomSnackbar.css';
+import './CustomSnackbar.scss';
 
 import Snackbar from '@material-ui/core/Snackbar';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
 
-class CustomSnackbar extends React.Component {
+type Props = {
+  type: string,
+  message: string,
+  open: boolean,
+  onClose: () => void
+};
+
+class CustomSnackbar extends React.Component<Props> {
 
   render() {
 
-    const type = this.props.type;
+    const { type } = this.props;
 
     const Icon = () => {
       switch(type) {
@@ -21,13 +30,13 @@ class CustomSnackbar extends React.Component {
         default:
           return null;
       }
-    }
+    };
 
     const backgroundColor = {
       success: "#2e7d32",
       warning: "#f9a825",
       error: "#c62828"
-    }
+    };
 
     return (
       <Snackbar

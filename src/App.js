@@ -1,6 +1,8 @@
-import React, { Component } from 'react';
+//@flow
+
+import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import './App.css';
+import './App.scss';
 
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
@@ -10,32 +12,11 @@ import Contact from './components/Contact/Contact';
 import Footer from './components/Footer/Footer';
 import NotFound from './components/NotFound/NotFound';
 
-class App extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      windowWidth: window.innerWidth
-    };
-    this.handleResize = this.handleResize.bind(this);
-  }
-
-  componentDidMount() {
-    window.addEventListener('resize', this.handleResize);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.handleResize);
-  }
-
-  handleResize() {
-    this.setState({windowWidth: window.innerWidth});
-  }
-
+class App extends React.Component<{}> {
   render() {
     return (
       <div className="app-components">
-        <Header windowWidth={this.state.windowWidth}/>
+        <Header/>
           <main>
             <Switch>
               <Route exact path="/" component={Home}/>

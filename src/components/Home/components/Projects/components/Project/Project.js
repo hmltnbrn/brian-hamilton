@@ -1,7 +1,18 @@
-import React from 'react';
-import './Project.css';
+//@flow
 
-class Project extends React.Component {
+import React from 'react';
+import './Project.scss';
+
+type Props = {
+  background: string,
+  title: string,
+  links: Array<{
+    href: string,
+    text: string
+  }>
+};
+
+class Project extends React.Component<Props> {
 
   render() {
 

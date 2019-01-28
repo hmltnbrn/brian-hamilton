@@ -1,22 +1,29 @@
+// @flow
+
 import React from 'react';
-import './TextArea.css';
+import './TextArea.scss';
 
-class TextArea extends React.Component {
+type Props = {
+  rows: number,
+  name: string,
+  placeholder: string,
+  value?: string,
+  errorText?: string | boolean,
+  onChange: (e:SyntheticEvent<HTMLButtonElement>) => void
+};
 
-  constructor(props) {
-    super(props);
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange(event) {
-    this.props.onChange(event);
-  }
-
+class TextArea extends React.Component<Props> {
   render() {
-
     return (
       <div className="form-group">
-        <textarea rows={this.props.rows} name={this.props.name} placeholder={this.props.placeholder} value={this.props.value} onChange={this.handleChange} className={this.props.errorText && !this.props.value ? 'error' : ''} />
+        <textarea
+          rows={this.props.rows}
+          name={this.props.name}
+          placeholder={this.props.placeholder}
+          value={this.props.value}
+          onChange={(e:SyntheticEvent<HTMLButtonElement>) => this.props.onChange(e)}
+          className={this.props.errorText && !this.props.value ? 'error' : ''}
+        />
         <div className="error-alert">{this.props.errorText}</div>
       </div>
     );

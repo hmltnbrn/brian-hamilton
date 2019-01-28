@@ -1,22 +1,29 @@
+// @flow
+
 import React from 'react';
-import './Input.css';
+import './Input.scss';
 
-class Input extends React.Component {
+type Props = {
+  type: string,
+  name: string,
+  placeholder: string,
+  value?: string,
+  errorText?: string | boolean,
+  onChange: (e:SyntheticEvent<HTMLButtonElement>) => void
+};
 
-  constructor(props) {
-    super(props);
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange(event) {
-    this.props.onChange(event);
-  }
-
+class Input extends React.Component<Props> {
   render() {
-
     return (
       <div className="form-group">
-        <input type={this.props.type} name={this.props.name} placeholder={this.props.placeholder} value={this.props.value} onChange={this.handleChange} className={this.props.errorText ? 'error' : ''}/>
+        <input
+          type={this.props.type}
+          name={this.props.name}
+          placeholder={this.props.placeholder}
+          value={this.props.value}
+          onChange={(e:SyntheticEvent<HTMLButtonElement>) => this.props.onChange(e)}
+          className={this.props.errorText ? 'error' : ''}
+        />
         <div className="error-alert">{this.props.errorText}</div>
       </div>
     );
