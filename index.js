@@ -44,7 +44,7 @@ oauth2Client.setCredentials({
 app.post('/send', asyncWrap(async (req, res, next) => {
 
   const { token } = await oauth2Client.getAccessToken();
-  
+
   //The environment variables below are in the .env file for a local environment or set as config vars on the server
   const transporter = nodemailer.createTransport({
     service: 'Gmail',

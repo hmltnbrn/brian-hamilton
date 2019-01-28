@@ -10,7 +10,7 @@ function windowWidth<Config: {}>(
   InnerComponent: React.ComponentType<Config>
 ): React.ComponentType<$Diff<Config, State>> {
   class WindowWidth extends React.Component<$Diff<Config, State>, State> {
-    state: State = {
+    state = {
       windowWidth: window.innerWidth
     };
 
