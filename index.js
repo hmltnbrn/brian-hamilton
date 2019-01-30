@@ -19,7 +19,8 @@ dotenv.load({
 
 app.use(cors());
 
-if (process.env.NODE_ENV == 'production') app.use(sslRedirect());
+// if (process.env.NODE_ENV == 'production') app.use(sslRedirect());
+app.use(sslRedirect(['production']));
 
 app.use('/', express.static(path.join(__dirname, 'build')));
 
