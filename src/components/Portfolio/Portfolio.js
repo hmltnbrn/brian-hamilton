@@ -3,7 +3,7 @@
 import React from 'react';
 import './Portfolio.scss';
 
-import Project from '../Home/components/Projects/components/Project/Project';
+import Project from '../Home/Projects/Project/Project';
 
 class Portfolio extends React.Component<{}> {
 

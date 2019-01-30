@@ -5,7 +5,7 @@ import './Projects.scss';
 
 import { Link } from 'react-router-dom';
 
-import Project from './components/Project/Project';
+import Project from './Project/Project';
 
 class Projects extends React.Component<{}> {
 

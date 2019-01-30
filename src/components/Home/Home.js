@@ -4,10 +4,10 @@ import React from 'react';
 import './Home.scss';
 
 import Banner from '../Banner/Banner';
-import About from './components/About/About';
-import Technologies from './components/Technologies/Technologies';
-import Projects from './components/Projects/Projects';
-import ContactMe from './components/ContactMe/ContactMe';
+import About from './About/About';
+import Technologies from './Technologies/Technologies';
+import Projects from './Projects/Projects';
+import ContactMe from './ContactMe/ContactMe';
 
 class Home extends React.Component<{}> {
   render() {

@@ -5,7 +5,7 @@ import './Technologies.scss';
 
 import { Link } from 'react-router-dom';
 
-import Technology from './components/Technology/Technology';
+import Technology from './Technology/Technology';
 
 class Technologies extends React.Component<{}> {
   render() {

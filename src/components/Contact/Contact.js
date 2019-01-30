@@ -3,6 +3,8 @@
 import React from 'react';
 import './Contact.scss';
 
+import axios from 'axios';
+
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import withMobileDialog from '@material-ui/core/withMobileDialog';
@@ -98,22 +100,8 @@ class Contact extends React.Component<Props, State> {
       message: this.state.message,
       recaptcha: this.state.recaptcha
     };
-    var url = `${process.env.REACT_APP_API || ""}/send`;
-    var json:{ sent:boolean } = {};
     try {
-      var response = await fetch(url, {
-        method: 'POST',
-        body: JSON.stringify(data), 
-        headers: new Headers({
-          'Content-Type': 'application/json'
-        })
-      });
-      json = await response.json();
-    } catch (e) {
-      this.setState({emailErrorSnackbar: true});
-    }
-
-    if(json.sent === true) {
+      await axios.post(`${process.env.REACT_APP_API || ""}/send`, data);
       this.setState({
         emailSuccessSnackbar: true,
         name: "",
@@ -126,14 +114,12 @@ class Contact extends React.Component<Props, State> {
         messageError: false,
         recaptcha: ""
       });
-    }
-    else {
+    } catch(e) {
       this.setState({
         emailErrorSnackbar: true,
         recaptcha: ""
       });
     }
-
   }
 
   clear = ():void => {
