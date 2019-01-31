@@ -1,7 +1,11 @@
 //@flow
 
 import React from 'react';
-import './Project.scss';
+import styles from './Project.module.scss';
+
+import classNames from 'classnames/bind';
+
+import { ButtonLink } from '../../../Local/Button/Button';
 
 type Props = {
   background: string,
@@ -11,6 +15,8 @@ type Props = {
     text: string
   }>
 };
+
+let cx = classNames.bind(styles);
 
 class Project extends React.Component<Props> {
 
@@ -22,14 +28,14 @@ class Project extends React.Component<Props> {
     };
 
     const links = this.props.links.map(link => 
-      <a key={link.text} href={link.href} target="_blank" rel="noopener noreferrer">{link.text}</a>
+      <ButtonLink type="a" key={link.text} href={link.href} target="_blank" rel="noopener noreferrer" white>{link.text}</ButtonLink>
     );
 
     return (
-      <div className="project" style={projectStyle}>
-        <div className="project-overlay" tabIndex="0">
-          <div className="project-title">{this.props.title}</div>
-          <div className="project-links">
+      <div className={cx("project")} style={projectStyle}>
+        <div className={cx("project-overlay")} tabIndex="0">
+          <div className={cx("project-title")}>{this.props.title}</div>
+          <div className={cx("project-links")}>
             {links}
           </div>
         </div>

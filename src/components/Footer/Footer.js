@@ -1,26 +1,30 @@
 //@flow
 
 import React from 'react';
-import './Footer.scss';
+import styles from './Footer.module.scss';
 
-import { Link } from 'react-router-dom';
+import classNames from 'classnames/bind';
 
 import { TwitterIcon } from '../../icons/Twitter';
 import { LinkedInIcon } from '../../icons/LinkedIn';
 import { GitHubIcon } from '../../icons/GitHub';
 
+import { Button } from '../Local/Button/Button';
+
+let cx = classNames.bind(styles);
+
 class Footer extends React.Component<{}> {
   render() {
     return (
       <footer>
-        <p className="footer-name">Brian Hamilton © 2016-{(new Date().getFullYear())}</p>
-        <div className="footer-nav">
-          <Link to="/" className="footer-link">Home</Link>
-          <Link to="/resume" className="footer-link">Resume</Link>
-          <Link to="/portfolio" className="footer-link">Portfolio</Link>
-          <Link to="/contact" className="footer-link">Contact</Link>
+        <p className={cx("footer-name")}>Brian Hamilton © 2016-{(new Date().getFullYear())}</p>
+        <div className={cx("footer-nav")}>
+          <Button type="link" to="/">Home</Button>
+          <Button type="link" to="/resume">Resume</Button>
+          <Button type="link" to="/portfolio">Portfolio</Button>
+          <Button type="link" to="/contact">Contact</Button>
         </div>
-        <div className="footer-nav">
+        <div className={cx("footer-nav")}>
           <a href="tel:1-518-391-5033" title="(518) 391-5033"><i className="material-icons">phone</i></a>
           <a href="mailto:hmltnbrn@gmail.com" title="hmltnbrn@gmail.com"><i className="material-icons">email</i></a>
           <a href="https://twitter.com/hmltnbrn" target="_blank" rel="noopener noreferrer"><TwitterIcon /></a>

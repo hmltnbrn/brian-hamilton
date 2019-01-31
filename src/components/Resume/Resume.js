@@ -1,33 +1,37 @@
 //@flow
 
 import React from 'react';
-import './Resume.scss';
+import styles from './Resume.module.scss';
+
+import classNames from 'classnames/bind';
+
+import { ButtonLink } from '../Local/Button/Button';
 
 import { MicrosoftWordIcon } from '../../icons/MicrosoftWord';
 import { AdobeAcrobatReaderIcon } from '../../icons/AdobeAcrobatReader';
 
-import { Link } from 'react-router-dom';
+let cx = classNames.bind(styles);
 
 class Resume extends React.Component<{}> {
   render() {
     return (
-      <div className="resume-page-container">
-        <div className="resume-download-container">
+      <div className={cx("resume-page-container")}>
+        <div className={cx("resume-download-container")}>
           <h2>Download resume as...</h2>
-          <div className="resume-download">
-            <a href="./files/resume/BrianHResume.docx" target="_blank" className="button-link"><MicrosoftWordIcon/>DOCX</a>
-            <a href="./files/resume/BrianHResume.pdf" target="_blank" className="button-link"><AdobeAcrobatReaderIcon/>PDF</a>
+          <div className={cx("resume-download")}>
+            <ButtonLink type="a" href="./files/resume/BrianHResume.docx" target="_blank"><MicrosoftWordIcon/>DOCX</ButtonLink>
+            <ButtonLink type="a" href="./files/resume/BrianHResume.pdf" target="_blank"><AdobeAcrobatReaderIcon/>PDF</ButtonLink>
           </div>
         </div>
-        <div className="resume-container">
-          <div className="resume-section">
-            <div className="section-left">
+        <div className={cx("resume-container")}>
+          <div className={cx("resume-section")}>
+            <div className={cx("section-left")}>
               <h1>Skills</h1>
             </div>
-            <div className="section-right">
-              <div className="side-by-side">
+            <div className={cx("section-right")}>
+              <div className={cx("side-by-side")}>
                 <div>
-                  <h2 className="primary-color">Software Development</h2>
+                  <h2 className={cx("primary-color")}>Software Development</h2>
                   <ul>
                     <li>Web Design
                       <ul>
@@ -67,9 +71,9 @@ class Resume extends React.Component<{}> {
                     </li>
                   </ul>
                 </div>
-                <div className="top-by-top">
+                <div className={cx("top-by-top")}>
                   <div>
-                    <h2 className="primary-color">Methodologies</h2>
+                    <h2 className={cx("primary-color")}>Methodologies</h2>
                     <ul>
                       <li>Agile Software Development</li>
                       <li>Cross-Browser Compatibility</li>
@@ -81,7 +85,7 @@ class Resume extends React.Component<{}> {
                     </ul>
                   </div>
                   <div>
-                    <h2 className="primary-color">AWS Services</h2>
+                    <h2 className={cx("primary-color")}>AWS Services</h2>
                     <ul>
                       <li>CloudFront</li>
                       <li>EC2</li>
@@ -92,13 +96,13 @@ class Resume extends React.Component<{}> {
               </div>
             </div>
           </div>
-          <div className="resume-section">
-            <div className="section-left">
+          <div className={cx("resume-section")}>
+            <div className={cx("section-left")}>
               <h1>Experience</h1>
             </div>
-            <div className="section-right">
-              <div className="resume-experience">
-                <div className="resume-header">
+            <div className={cx("section-right")}>
+              <div className={cx("resume-experience")}>
+                <div className={cx("resume-header")}>
                   <h2>Software Engineer</h2>
                   <h3>DGDean</h3>
                 </div>
@@ -109,8 +113,8 @@ class Resume extends React.Component<{}> {
                   <li>Developed an internal data manager for Steady with Node.js and Angular 5.</li>
                 </ul>
               </div>
-              <div className="resume-experience">
-                <div className="resume-header">
+              <div className={cx("resume-experience")}>
+                <div className={cx("resume-header")}>
                   <h2>Consultant Web Developer</h2>
                   <h3>New York City Transit</h3>
                 </div>
@@ -123,8 +127,8 @@ class Resume extends React.Component<{}> {
                   <li>Used real-time and scheduled data feeds to build static JSON files.</li>
                 </ul>
               </div>
-              <div className="resume-experience">
-                <div className="resume-header">
+              <div className={cx("resume-experience")}>
+                <div className={cx("resume-header")}>
                   <h2>Network Engineer</h2>
                   <h3>Kraft Kennedy</h3>
                 </div>
@@ -138,20 +142,20 @@ class Resume extends React.Component<{}> {
               </div>
             </div>
           </div>
-          <div className="resume-section">
-            <div className="section-left">
+          <div className={cx("resume-section")}>
+            <div className={cx("section-left")}>
               <h1>Education</h1>
             </div>
-            <div className="section-right">
-              <div className="resume-education">
-                <div className="resume-header">
+            <div className={cx("section-right")}>
+              <div className={cx("resume-education")}>
+                <div className={cx("resume-header")}>
                   <h2>Graduate Center at the City University of New York</h2>
                 </div>
                 <h4>New York, New York | 2016 - Present</h4>
                 <p>Studying for a Master of Arts in Liberal Studies, specializing in data visualization and digital humanities.</p>
               </div>
-              <div className="resume-education">
-                <div className="resume-header">
+              <div className={cx("resume-education")}>
+                <div className={cx("resume-header")}>
                   <h2>Rensselaer Polytechnic Institute</h2>
                 </div>
                 <h4>Troy, New York | 2010 - 2014</h4>
@@ -160,10 +164,10 @@ class Resume extends React.Component<{}> {
             </div>
           </div>
         </div>
-        <div className="resume-contact-me">
-          <div className="contact-banner-overlay">
+        <div className={cx("resume-contact-me")}>
+          <div className={cx("contact-banner-overlay")}>
             <h1>Like what you see?</h1>
-            <Link to="contact">Continue to Contact Me</Link>
+            <ButtonLink type="link" to="contact" white>Continue to Contact Me</ButtonLink>
           </div>
         </div>
       </div>

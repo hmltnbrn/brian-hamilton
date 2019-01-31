@@ -1,7 +1,9 @@
 //@flow
 
 import React from 'react';
-import './Home.scss';
+import styles from './Home.module.scss';
+
+import classNames from 'classnames/bind';
 
 import Banner from '../Banner/Banner';
 import About from './About/About';
@@ -9,10 +11,12 @@ import Technologies from './Technologies/Technologies';
 import Projects from './Projects/Projects';
 import ContactMe from './ContactMe/ContactMe';
 
+let cx = classNames.bind(styles);
+
 class Home extends React.Component<{}> {
   render() {
     return (
-      <div className="home-components">
+      <div className={cx("home-components")}>
         <Banner />
         <About />
         <Technologies />

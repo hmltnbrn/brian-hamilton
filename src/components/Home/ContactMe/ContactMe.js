@@ -1,18 +1,22 @@
 //@flow
 
 import React from 'react';
-import './ContactMe.scss';
+import styles from './ContactMe.module.scss';
 
-import { Link } from 'react-router-dom';
+import classNames from 'classnames/bind';
+
+import { ButtonLink } from '../../Local/Button/Button';
+
+let cx = classNames.bind(styles);
 
 class ContactMe extends React.Component<{}> {
   render() {
     return (
-      <div className="home-contact-me">
-        <div className="contact-banner-overlay">
+      <div className={cx("container")}>
+        <div className={cx("overlay")}>
           <h1>Want to chat?</h1>
           <p>Whether it's to talk about politics, a freelance opportunity, or the latest Angular, send me a message.</p>
-          <Link to="contact">Click Here to Contact Me</Link>
+          <ButtonLink type="link" to="contact" white>Click Here to Contact Me</ButtonLink>
         </div>
       </div>
     );

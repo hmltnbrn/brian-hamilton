@@ -1,7 +1,9 @@
 //@flow
 
 import React from 'react';
-import './Contact.scss';
+import styles from './Contact.module.scss';
+
+import classNames from 'classnames/bind';
 
 import axios from 'axios';
 
@@ -14,6 +16,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 import Input from '../Local/Input/Input';
 import TextArea from '../Local/TextArea/TextArea';
 import CustomSnackbar from '../Local/CustomSnackbar/CustomSnackbar';
+import { ButtonLink, RoundButtonLink } from '../Local/Button/Button';
 
 type Props = {};
 
@@ -33,6 +36,8 @@ type State = {
   recaptchaSnackbar: boolean,
   emailErrorSnackbar: boolean
 };
+
+let cx = classNames.bind(styles);
 
 class Contact extends React.Component<Props, State> {
 
@@ -137,17 +142,17 @@ class Contact extends React.Component<Props, State> {
 
   render() {
     return (
-      <div className="contact-container">
-        <div className="contact-map"></div>
-        <div className="contact-top-container">
-          <div className="contact-chooser">
-            <div className="contact-option" onClick={() => this.setState({emailDialog: true})}>
+      <div className={cx("contact-container")}>
+        <div className={cx("contact-map")}></div>
+        <div className={cx("contact-top-container")}>
+          <div className={cx("contact-chooser")}>
+            <div className={cx("contact-option")} onClick={() => this.setState({emailDialog: true})}>
               <i className="material-icons">email</i>
-              <div className="contact-text">Shoot me an email</div>
+              <div className={cx("contact-text")}>Shoot me an email</div>
             </div>
-            <div className="contact-option" onClick={() => this.setState({phoneDialog: true})}>
+            <div className={cx("contact-option")} onClick={() => this.setState({phoneDialog: true})}>
               <i className="material-icons">phone</i>
-              <div className="contact-text">Give me a ring</div>
+              <div className={cx("contact-text")}>Give me a ring</div>
             </div>
           </div>
         </div>
@@ -156,8 +161,8 @@ class Contact extends React.Component<Props, State> {
           open={this.state.emailDialog}
           onClose={() => this.setState({emailDialog: false})}
         >
-          <DialogContent className="contact-dialog">
-            <div className="dialog-exit"><i className="material-icons" onClick={() => this.setState({emailDialog: false})} tabIndex="0">clear</i></div>
+          <DialogContent className={cx("contact-dialog")}>
+            <div className={cx("dialog-exit")}><i className="material-icons" onClick={() => this.setState({emailDialog: false})} tabIndex="0">clear</i></div>
             <form onSubmit={this.handleSubmit} noValidate>
               <Input
                 type="text"
@@ -191,15 +196,15 @@ class Contact extends React.Component<Props, State> {
                 errorText={this.state.messageError}
                 onChange={this.handleInputChange}
               />
-              <div className="recaptcha-container">
+              <div className={cx("recaptcha-container")}>
                 <ReCAPTCHA
                   sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}
                   onChange={(value:string) => this.setState({recaptcha: value})}
                 />
               </div>
-              <div className="dialog-button-container">
-                <button type="button" className="button-link" onClick={this.clear}>Clear</button>
-                <button type="submit" className="button-link">Send Email</button>
+              <div className={cx("dialog-button-container")}>
+                <ButtonLink type="button" onButtonClick={this.clear}>Clear</ButtonLink>
+                <ButtonLink type="submit">Send Email</ButtonLink>
               </div>
             </form>
           </DialogContent>
@@ -209,13 +214,13 @@ class Contact extends React.Component<Props, State> {
           open={this.state.phoneDialog}
           onClose={() => this.setState({phoneDialog: false})}
         >
-          <DialogContent className="contact-dialog center">
-            <div className="dialog-exit"><i className="material-icons" onClick={() => this.setState({phoneDialog: false})} tabIndex="0">clear</i></div>
+          <DialogContent className={cx("contact-dialog", "center")}>
+            <div className={cx("dialog-exit")}><i className="material-icons" onClick={() => this.setState({phoneDialog: false})} tabIndex="0">clear</i></div>
             <p>On a phone? Tap the button below.</p>
-            <div className="dialog-button-container phone">
-              <a href="tel:1-518-391-5033" className="round-button-link" onClick={() => this.setState({phoneDialog: false})}><i className="material-icons">phone</i></a>
+            <div className={cx("dialog-button-container", "phone")}>
+              <RoundButtonLink type="a" href="tel:1-518-391-5033" onClick={() => this.setState({phoneDialog: false})}><i className="material-icons">phone</i></RoundButtonLink>
             </div>
-            <p className="phone-wrap"><span>Otherwise, call me at </span><span><strong>(518) 391-5033</strong>.</span></p>
+            <p className={cx("phone-wrap")}><span>Otherwise, call me at </span><span><strong>(518) 391-5033</strong>.</span></p>
             <span></span>
           </DialogContent>
         </Dialog>

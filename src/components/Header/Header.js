@@ -1,13 +1,15 @@
 // @flow
 
 import React from 'react';
-import './Header.scss';
+import styles from './Header.module.scss';
 
-import windowWidth from '../../WindowWidth';
+import classNames from 'classnames/bind';
 
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 
-import { NavLink } from 'react-router-dom';
+import { Button } from '../Local/Button/Button';
+
+import windowWidth from '../../WindowWidth';
 
 import { LinkedInIcon } from '../../icons/LinkedIn';
 import { GitHubIcon } from '../../icons/GitHub';
@@ -20,6 +22,8 @@ type State = {
   drawer: boolean
 };
 
+let cx = classNames.bind(styles);
+
 class Header extends React.Component<Props, State> {
 
   state = {
@@ -29,26 +33,26 @@ class Header extends React.Component<Props, State> {
   render() {
     return (
       <header>
-        <div className="header-container">
-          <div className="header-left">
+        <div className={cx("container")}>
+          <div className={cx("header-left")}>
           {this.props.windowWidth < 800 ?
-            <i className="material-icons drawer-opener" onClick={() => this.setState({drawer: true})}>menu</i>
+            <i className={`material-icons ${cx("drawer-opener")}`} onClick={() => this.setState({drawer: true})}>menu</i>
             : <span></span>
           }
           </div>
-          <div className="header-right">
+          <div className={cx("header-right")}>
             {this.props.windowWidth >= 800 ?
-              <div className="header-links">
-                <NavLink exact to="/" className="header-link" activeClassName="active">Home</NavLink>
-                <NavLink to="/resume" className="header-link" activeClassName="active">Resume</NavLink>
-                <NavLink to="/portfolio" className="header-link" activeClassName="active">Portfolio</NavLink>
-                <NavLink to="/contact" className="header-link" activeClassName="active">Contact</NavLink>
-                <div className="vertical-rule"></div>
+              <div className={cx("header-links")}>
+                <Button type="nav-link" exact to="/" classNames={[cx("header-link")]} activeClassName={cx("active")}>Home</Button>
+                <Button type="nav-link" to="/resume" classNames={[cx("header-link")]} activeClassName={cx("active")}>Resume</Button>
+                <Button type="nav-link" to="/portfolio" classNames={[cx("header-link")]} activeClassName={cx("active")}>Portfolio</Button>
+                <Button type="nav-link" to="/contact" classNames={[cx("header-link")]} activeClassName={cx("active")}>Contact</Button>
+                <div className={cx("vertical-rule")}></div>
                 <a href="https://www.linkedin.com/in/brian-hamilton-520835a8" target="_blank" rel="noopener noreferrer"><LinkedInIcon /></a>
                 <a href="https://github.com/hmltnbrn" target="_blank" rel="noopener noreferrer"><GitHubIcon /></a>
               </div>
               : 
-              <div className="header-links">
+              <div className={cx("header-links")}>
                 <a href="https://www.linkedin.com/in/brian-hamilton-520835a8" target="_blank" rel="noopener noreferrer"><LinkedInIcon /></a>
                 <a href="https://github.com/hmltnbrn" target="_blank" rel="noopener noreferrer"><GitHubIcon /></a>
               </div>
@@ -66,11 +70,11 @@ class Header extends React.Component<Props, State> {
             onClick={() => this.setState({drawer: false})}
             onKeyDown={() => this.setState({drawer: false})}
           >
-            <div className="links-container">
-              <NavLink exact to="/" className="drawer-link" activeClassName="active">Home</NavLink>
-              <NavLink to="/resume" className="drawer-link" activeClassName="active">Resume</NavLink>
-              <NavLink to="/portfolio" className="drawer-link" activeClassName="active">Portfolio</NavLink>
-              <NavLink to="/contact" className="drawer-link" activeClassName="active">Contact</NavLink>
+            <div className={cx("links-container")}>
+              <Button type="nav-link" exact to="/" classNames={[cx("drawer-link")]} activeClassName={cx("active")}>Home</Button>
+              <Button type="nav-link" to="/resume" classNames={[cx("drawer-link")]} activeClassName={cx("active")}>Resume</Button>
+              <Button type="nav-link" to="/portfolio" classNames={[cx("drawer-link")]} activeClassName={cx("active")}>Portfolio</Button>
+              <Button type="nav-link" to="/contact" classNames={[cx("drawer-link")]} activeClassName={cx("active")}>Contact</Button>
             </div>
           </div>
         </SwipeableDrawer>

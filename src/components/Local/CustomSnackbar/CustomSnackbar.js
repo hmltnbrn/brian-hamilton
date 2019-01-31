@@ -1,7 +1,9 @@
 // @flow
 
 import React from 'react';
-import './CustomSnackbar.scss';
+import styles from './CustomSnackbar.module.scss';
+
+import classNames from 'classnames/bind';
 
 import Snackbar from '@material-ui/core/Snackbar';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
@@ -12,6 +14,8 @@ type Props = {
   open: boolean,
   onClose: () => void
 };
+
+let cx = classNames.bind(styles);
 
 class CustomSnackbar extends React.Component<Props> {
 
@@ -52,13 +56,13 @@ class CustomSnackbar extends React.Component<Props> {
           aria-describedby="bh-snackbar"
           style={{backgroundColor: backgroundColor[type]}}
           message={
-            <span id="bh-snackbar" className="snackbar-message">
+            <span id="bh-snackbar" className={cx("snackbar-message")}>
               {Icon()}
               <span>{this.props.message}</span>
             </span>
           }
           action={[
-            <div key="clear" onClick={this.props.onClose} className="snackbar-close"><i className="material-icons">clear</i></div>
+            <div key="clear" onClick={this.props.onClose} className={cx("snackbar-close")}><i className="material-icons">clear</i></div>
           ]}
         />
       </Snackbar>

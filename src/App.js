@@ -2,7 +2,9 @@
 
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import './App.scss';
+import styles from './App.module.scss';
+
+import classNames from 'classnames/bind';
 
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
@@ -12,10 +14,12 @@ import Contact from './components/Contact/Contact';
 import Footer from './components/Footer/Footer';
 import NotFound from './components/NotFound/NotFound';
 
+let cx = classNames.bind(styles);
+
 class App extends React.Component<{}> {
   render() {
     return (
-      <div className="app-components">
+      <div className={cx("app-components")}>
         <Header/>
           <main>
             <Switch>
