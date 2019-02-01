@@ -142,7 +142,7 @@ class Contact extends React.Component<Props, State> {
 
   render() {
     return (
-      <div className={cx("contact-container")}>
+      <>
         <div className={cx("contact-map")}></div>
         <div className={cx("contact-top-container")}>
           <div className={cx("contact-chooser")}>
@@ -242,7 +242,7 @@ class Contact extends React.Component<Props, State> {
           onClose={() => this.setState({emailErrorSnackbar: false})}
           type="error"
         />
-      </div>
+      </>
     );
   }
 };

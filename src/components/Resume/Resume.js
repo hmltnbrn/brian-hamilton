@@ -15,7 +15,7 @@ let cx = classNames.bind(styles);
 class Resume extends React.Component<{}> {
   render() {
     return (
-      <div className={cx("resume-page-container")}>
+      <>
         <div className={cx("resume-download-container")}>
           <h2>Download resume as...</h2>
           <div className={cx("resume-download")}>
@@ -170,7 +170,7 @@ class Resume extends React.Component<{}> {
             <ButtonLink type="link" to="contact" white>Continue to Contact Me</ButtonLink>
           </div>
         </div>
-      </div>
+      </>
     );
   }
 };
