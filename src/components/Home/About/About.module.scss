@@ -1,10 +1,10 @@
 @import "./styles/variables.scss";
 
-.home-about {
+.about-container {
   background: $dark-gray;
 }
 
-.about-container {
+.about-text {
   max-width: 1280px;
   margin: 0 auto;
   padding: 75px 0;
@@ -17,7 +17,7 @@
 }
 
 @media (max-width: 500px) {
-  .about-container {
+  .about-text {
     padding: 25px 0;
     p {
       font-size: 20px;

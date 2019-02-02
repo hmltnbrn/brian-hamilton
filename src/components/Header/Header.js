@@ -33,7 +33,7 @@ class Header extends React.Component<Props, State> {
   render() {
     return (
       <header>
-        <div className={cx("container")}>
+        <div className={cx("header-container")}>
           <div className={cx("header-left")}>
           {this.props.windowWidth < 800 ?
             <i className={`material-icons ${cx("drawer-opener")}`} onClick={() => this.setState({drawer: true})}>menu</i>
@@ -48,13 +48,13 @@ class Header extends React.Component<Props, State> {
                 <Button type="nav-link" to="/portfolio" classNames={[cx("header-link")]} activeClassName={cx("active")}>Portfolio</Button>
                 <Button type="nav-link" to="/contact" classNames={[cx("header-link")]} activeClassName={cx("active")}>Contact</Button>
                 <div className={cx("vertical-rule")}></div>
-                <a href="https://www.linkedin.com/in/brian-hamilton-520835a8" target="_blank" rel="noopener noreferrer"><LinkedInIcon /></a>
-                <a href="https://github.com/hmltnbrn" target="_blank" rel="noopener noreferrer"><GitHubIcon /></a>
+                <Button type="a" href="https://www.linkedin.com/in/brian-hamilton-520835a8" target="_blank" rel="noopener noreferrer"><LinkedInIcon /></Button>
+                <Button type="a" href="https://github.com/hmltnbrn" target="_blank" rel="noopener noreferrer"><GitHubIcon /></Button>
               </div>
               : 
               <div className={cx("header-links")}>
-                <a href="https://www.linkedin.com/in/brian-hamilton-520835a8" target="_blank" rel="noopener noreferrer"><LinkedInIcon /></a>
-                <a href="https://github.com/hmltnbrn" target="_blank" rel="noopener noreferrer"><GitHubIcon /></a>
+                <Button type="a" href="https://www.linkedin.com/in/brian-hamilton-520835a8" target="_blank" rel="noopener noreferrer"><LinkedInIcon /></Button>
+                <Button type="a" href="https://github.com/hmltnbrn" target="_blank" rel="noopener noreferrer"><GitHubIcon /></Button>
               </div>
             }
           </div>

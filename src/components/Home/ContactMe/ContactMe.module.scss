@@ -1,7 +1,7 @@
 @import "./styles/variables.scss";
 @import "./styles/mixins.scss";
 
-.container {
+.contact-me-container {
   background: url('/images/backgrounds/orange-envelope.jpg') no-repeat center center;
   background-size: cover;
   width: 100%;
@@ -47,7 +47,7 @@
 }
 
 @media (max-width: 500px) {
-  .container {
+  .contact-me-container {
     height: calc(100vh - 200px);
   }
   .overlay {

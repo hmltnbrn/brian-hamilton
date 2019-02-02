@@ -1,8 +1,9 @@
 //@flow
 
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
 import styles from './App.module.scss';
+
+import { Switch, Route } from 'react-router-dom';
 
 import classNames from 'classnames/bind';
 
