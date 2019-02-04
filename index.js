@@ -19,7 +19,8 @@ dotenv.load({
 
 app.use(cors());
 
-if (process.env.NODE_ENV == 'production') app.use(sslRedirect());
+// Only for Heroku use on a production envionment
+app.use(sslRedirect(['production']));
 
 app.use('/', express.static(path.join(__dirname, 'build')));
 
@@ -78,21 +79,21 @@ app.post('/send', asyncWrap(async (req, res, next) => {
       headers: {
         "Content-Type": "application/x-www-form-urlencoded; charset=utf-8"
       },
-    },
+    }
   );
 
   if(captchaCall.data.success) {
     const mail = await transporter.sendMail(mailOptions);
     console.log('Message %s sent: %s', mail.messageId, mail.response);
-    return res.status(200).json({sent: true});
+    return res.status(200).send();
   }
 
-  return res.status(200).json({sent: false});
+  return res.status(500).send();
 
 }));
 
 //Handle Main Page
-app.get('/*', function (req, res, next) {
+app.get('/*', function(req, res, next) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 

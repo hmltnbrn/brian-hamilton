@@ -11,7 +11,6 @@ type ChildrenProps = {
 type Props = ChildrenProps & ContextRouter;
 
 class ScrollToTop extends React.Component<Props> {
-
   componentDidUpdate(prevProps: Props) {
     if (this.props.location !== prevProps.location) {
       window.scrollTo(0, 0);
@@ -19,7 +18,7 @@ class ScrollToTop extends React.Component<Props> {
   }
 
   render() {
-    return <div>{this.props.children}</div>;
+    return <>{this.props.children}</>;
   }
 }
 

@@ -1,7 +1,7 @@
-@import "../../../../styles/variables.scss";
-@import "../../../../styles/mixins.scss";
+@import "./styles/variables.scss";
+@import "./styles/mixins.scss";
 
-.home-contact-me {
+.contact-me-container {
   background: url('/images/backgrounds/orange-envelope.jpg') no-repeat center center;
   background-size: cover;
   width: 100%;
@@ -11,7 +11,7 @@
   position: relative;
 }
 
-.contact-banner-overlay {
+.overlay {
   padding: 100px 25px;
   position: absolute;
   width: 100%;
@@ -41,33 +41,16 @@
     line-height: 1.5;
   }
   a {
-    transition: background .4s cubic-bezier(.25,.8,.25,1), color .4s cubic-bezier(.25,.8,.25,1);
-    color: #ffffff;
     padding: 20px 40px;
-    margin: 10px;
-    text-align: center;
-    text-transform: uppercase;
     font-size: 20px;
-    border: 2px solid #ffffff;  
-    text-decoration: none;
-    font-weight: 300;
-    &:link, &:visited {
-      color: #ffffff;
-      text-decoration: none;
-    }
-    &:hover, &:focus {
-      background: #ffffff;
-      color: #000000;
-      text-decoration: none;
-    }
   }
 }
 
 @media (max-width: 500px) {
-  .home-contact-me {
+  .contact-me-container {
     height: calc(100vh - 200px);
   }
-  .contact-banner-overlay {
+  .overlay {
     padding: 75px 25px;
     h1 {
       font-size: 40px;

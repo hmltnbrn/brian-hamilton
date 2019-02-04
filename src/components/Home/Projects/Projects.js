@@ -1,11 +1,15 @@
 //@flow
 
 import React from 'react';
-import './Projects.scss';
+import styles from './Projects.module.scss';
 
-import { Link } from 'react-router-dom';
+import classNames from 'classnames/bind';
 
-import Project from './components/Project/Project';
+import Project from './Project/Project';
+
+import { ButtonLink } from '../../Local/Button/Button';
+
+let cx = classNames.bind(styles);
 
 class Projects extends React.Component<{}> {
 
@@ -21,9 +25,9 @@ class Projects extends React.Component<{}> {
     ];
 
     return (
-      <div className="home-projects">
+      <div className={cx("home-projects")}>
         <h1>Featured projects</h1>
-        <div className="project-container">
+        <div className={cx("project-container")}>
           <Project
             background="'./images/projects/classroom-library.png'"
             title="Classroom Library"
@@ -35,8 +39,8 @@ class Projects extends React.Component<{}> {
             links={projectTwoLinks}
           />
         </div>
-        <div className="projects-link-container">
-          <Link to="portfolio" className="button-link">View More on My Portfolio</Link>
+        <div className={cx("projects-link-container")}>
+          <ButtonLink type="link" to="portfolio">View More on My Portfolio</ButtonLink>
         </div>
       </div>
     );

@@ -1,18 +1,22 @@
 //@flow
 
 import React from 'react';
-import './Technologies.scss';
+import styles from './Technologies.module.scss';
 
-import { Link } from 'react-router-dom';
+import classNames from 'classnames/bind';
 
-import Technology from './components/Technology/Technology';
+import { ButtonLink } from '../../Local/Button/Button';
+
+import Technology from './Technology/Technology';
+
+let cx = classNames.bind(styles);
 
 class Technologies extends React.Component<{}> {
   render() {
     return (
-      <div className="home-technologies">
+      <div className={cx("home-technologies")}>
         <p>Working with modern frameworks and languages, I build comprehensive web projects and interactive data visualizations.</p>
-        <div className="all-tech">
+        <div className={cx("all-tech")}>
           <Technology
             href="https://angular.io/"
             src="images/tech-logos/angular.png"
@@ -50,8 +54,8 @@ class Technologies extends React.Component<{}> {
             title="React"
           />
         </div>
-        <div className="resume-link-container">
-          <Link to="resume" className="button-link inverse">Take a Look at My Resume</Link>
+        <div className={cx("resume-link-container")}>
+          <ButtonLink type="link" to="resume" inverse>Take a Look at My Resume</ButtonLink>
         </div>
       </div>
     );

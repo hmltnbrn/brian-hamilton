@@ -1,9 +1,13 @@
 //@flow
 
 import React from 'react';
-import './Portfolio.scss';
+import styles from './Portfolio.module.scss';
 
-import Project from '../Home/components/Projects/components/Project/Project';
+import classNames from 'classnames/bind';
+
+import Project from '../Home/Projects/Project/Project';
+
+let cx = classNames.bind(styles);
 
 class Portfolio extends React.Component<{}> {
 
@@ -40,11 +44,11 @@ class Portfolio extends React.Component<{}> {
     const projectEightLinks = [];
 
     return (
-      <div className="portfolio-container">
-        <div className="portfolio-sections">
-          <div className="portfolio-section completed-projects">
+      <>
+        <div className={cx("portfolio-sections")}>
+          <div className={cx("portfolio-section", "completed-projects")}>
             <h1>Completed projects</h1>
-            <div className="portfolio-project-container">
+            <div className={cx("portfolio-project-container")}>
               <Project
                 background="'./images/projects/classroom-library.png'"
                 title="Classroom Library"
@@ -82,9 +86,9 @@ class Portfolio extends React.Component<{}> {
               />
             </div>
           </div>
-          <div className="portfolio-section in-progress-projects">
+          <div className={cx("portfolio-section", "in-progress-projects")}>
             <h1>Under construction</h1>
-            <div className="portfolio-project-container">
+            <div className={cx("portfolio-project-container")}>
             <Project
               background="'./images/projects/book-bin.png'"
               title="BookBin"
@@ -93,7 +97,7 @@ class Portfolio extends React.Component<{}> {
             </div>
           </div>
         </div>
-      </div>
+      </>
     );
   }
 };
