@@ -92,6 +92,13 @@ class Resume extends React.Component<{}> {
                       <li>S3</li>
                     </ul>
                   </div>
+                  <div>
+                    <h2 className={cx("primary-color")}>Image Editors</h2>
+                    <ul>
+                      <li>GIMP</li>
+                      <li>Inkscape</li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
