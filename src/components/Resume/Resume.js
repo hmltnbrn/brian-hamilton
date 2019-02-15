@@ -15,12 +15,14 @@ let cx = classNames.bind(styles);
 class Resume extends React.Component<{}> {
   render() {
     return (
-      <>
+      <section>
         <div className={cx("resume-download-container")}>
-          <h2>Download resume as...</h2>
-          <div className={cx("resume-download")}>
-            <ButtonLink type="a" href="./files/resume/BrianHResume.docx" target="_blank"><MicrosoftWordIcon/>DOCX</ButtonLink>
-            <ButtonLink type="a" href="./files/resume/BrianHResume.pdf" target="_blank"><AdobeAcrobatReaderIcon/>PDF</ButtonLink>
+          <div className={cx("resume-download-inner")}>
+            <h2>Download your own copy</h2>
+            <div className={cx("resume-download")}>
+              <ButtonLink type="a" href="./files/resume/BrianHResume.docx" target="_blank" white><MicrosoftWordIcon/>DOCX</ButtonLink>
+              <ButtonLink type="a" href="./files/resume/BrianHResume.pdf" target="_blank" white><AdobeAcrobatReaderIcon/>PDF</ButtonLink>
+            </div>
           </div>
         </div>
         <div className={cx("resume-container")}>
@@ -177,7 +179,7 @@ class Resume extends React.Component<{}> {
             <ButtonLink type="link" to="contact" white>Continue to Contact Me</ButtonLink>
           </div>
         </div>
-      </>
+      </section>
     );
   }
 };
