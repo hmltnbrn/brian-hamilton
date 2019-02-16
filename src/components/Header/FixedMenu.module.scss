@@ -1,0 +1,35 @@
+@import "./styles/variables.scss";
+
+.top-menu {
+  position: fixed;
+  left: 10px;
+  top: 50px;
+  transition: top .3s;
+  z-index: 100;
+  button {
+    width: 75px;
+    height: 75px;
+    color: $primary-color;
+    padding: 15px 25px;
+    margin: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 20px;
+    border: 2px solid #ffffff;
+    text-decoration: none;
+    font-weight: 300;
+    letter-spacing: 1px;
+    background: #ffffff;
+    outline: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 200px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
+  }
+}
+
+.hide {
+  top: -200px
+}

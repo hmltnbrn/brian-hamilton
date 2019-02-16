@@ -9,16 +9,20 @@ import 'normalize.css';
 import './index.scss';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from './store';
 
 const root: ?Element = document.getElementById('root');
 
 if (root != null) {
   ReactDOM.render((
-    <BrowserRouter>
-      <ScrollToTop>
-        <App />
-      </ScrollToTop>
-    </BrowserRouter>
+    <Provider store = { store }>
+      <BrowserRouter>
+        <ScrollToTop>
+          <App />
+        </ScrollToTop>
+      </BrowserRouter>
+    </Provider>
   ), root);
   serviceWorker.unregister();
 }
