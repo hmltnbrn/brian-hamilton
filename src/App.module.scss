@@ -2,7 +2,7 @@
 
 .app-components {
   width: 100%;
-  min-height: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
@@ -14,32 +14,25 @@ main {
   position: relative;
 }
 
-div.transition-group {
-  position: relative;
-}
-
 section.route-section {
-  position: absolute;
-  width: 100%;
-  top: 0;
-  left: 0;
+  &.fade-exit {
+    display: none;
+  }
 }
 
 .fade-enter {
   opacity: 0.01;
   z-index: 1;
-}
-
-.fade-enter-active {
-  opacity: 1;
-  transition: opacity 250ms ease-in;
+  &.fade-enter-active {
+    opacity: 1;
+    transition: opacity 250ms ease-in;
+  }
 }
 
 .fade-exit {
   opacity: 1;
-}
-
-.fade-exit-active {
-  opacity: 0.01;
-  transition: opacity 250ms ease-in;
+  &.fade-exit-active {
+    opacity: 0.01;
+    transition: opacity 250ms ease-in;
+  }
 }

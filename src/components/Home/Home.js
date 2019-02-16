@@ -11,13 +11,13 @@ import ContactMe from './ContactMe/ContactMe';
 class Home extends React.Component<{}> {
   render() {
     return (
-      <section>
+      <>
         <Banner />
         <About />
         <Technologies />
         <Projects />
         <ContactMe />
-      </section>
+      </>
     );
   }
 }

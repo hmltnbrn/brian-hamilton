@@ -28,7 +28,7 @@ class App extends React.Component<Props> {
       <div className={cx("app-components")}>
         <Header/>
           <main>
-            <TransitionGroup className="transition-group">
+            <TransitionGroup>
               <CSSTransition
                 key={this.props.location.key}
                 classNames={{
@@ -40,7 +40,7 @@ class App extends React.Component<Props> {
                 timeout={300}
                 unmountOnExit
               >
-                <section className="route-section">
+                <section className={cx("route-section")}>
                   <Switch location={this.props.location}>
                     <Route exact path="/" component={Home}/>
                     <Route path="/resume" component={Resume}/>

@@ -44,7 +44,7 @@ class Portfolio extends React.Component<{}> {
     const projectEightLinks = [];
 
     return (
-      <section>
+      <>
         <div className={cx("portfolio-sections")}>
           <div className={cx("portfolio-section", "completed-projects")}>
             <h1>Completed projects</h1>
@@ -97,7 +97,7 @@ class Portfolio extends React.Component<{}> {
             </div>
           </div>
         </div>
-      </section>
+      </>
     );
   }
 };
