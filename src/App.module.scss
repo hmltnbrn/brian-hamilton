@@ -2,7 +2,7 @@
 
 .app-components {
   width: 100%;
-  min-height: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
@@ -12,4 +12,27 @@ main {
   -ms-flex: 1;
   -webkit-flex: 1;
   position: relative;
+}
+
+section.route-section {
+  &.fade-exit {
+    display: none;
+  }
+}
+
+.fade-enter {
+  opacity: 0.01;
+  z-index: 1;
+  &.fade-enter-active {
+    opacity: 1;
+    transition: opacity 250ms ease-in;
+  }
+}
+
+.fade-exit {
+  opacity: 1;
+  &.fade-exit-active {
+    opacity: 0.01;
+    transition: opacity 250ms ease-in;
+  }
 }

@@ -17,10 +17,12 @@ class Resume extends React.Component<{}> {
     return (
       <>
         <div className={cx("resume-download-container")}>
-          <h2>Download resume as...</h2>
-          <div className={cx("resume-download")}>
-            <ButtonLink type="a" href="./files/resume/BrianHResume.docx" target="_blank"><MicrosoftWordIcon/>DOCX</ButtonLink>
-            <ButtonLink type="a" href="./files/resume/BrianHResume.pdf" target="_blank"><AdobeAcrobatReaderIcon/>PDF</ButtonLink>
+          <div className={cx("resume-download-inner")}>
+            <h2>Download your own copy</h2>
+            <div className={cx("resume-download")}>
+              <ButtonLink type="a" href="./files/resume/BrianHResume.docx" target="_blank" white><MicrosoftWordIcon/>DOCX</ButtonLink>
+              <ButtonLink type="a" href="./files/resume/BrianHResume.pdf" target="_blank" white><AdobeAcrobatReaderIcon/>PDF</ButtonLink>
+            </div>
           </div>
         </div>
         <div className={cx("resume-container")}>
@@ -46,7 +48,7 @@ class Resume extends React.Component<{}> {
                     <li>Web Frameworks / Server-Side Tech
                       <ul>
                         <li>Node.js / Express</li>
-                        <li>React</li>
+                        <li>React / Redux</li>
                         <li>Angular 2+</li>
                         <li>Nginx</li>
                       </ul>

@@ -94,23 +94,32 @@ ul {
 }
 
 .resume-download-container {
-  background: $dark-gray;
-  padding: 50px 25px;
+  background: $dark-primary-color;
+  padding: 75px 25px;
   & > * {
     max-width: 1280px;
     margin: 0 auto;
   }
-  h2 {
-    text-align: center;
-    font-weight: 300;
-    font-size: 40px;
-  }
-  .resume-download {
-    padding: 25px 10px 0 10px;
-    max-width: 500px;
+  .resume-download-inner {
     display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    h2 {
+      text-align: center;
+      font-weight: 300;
+      font-size: 40px;
+      color: #ffffff;
+      width: 300px;
+      margin: 0;
+    }
+    .resume-download {
+      max-width: 500px;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      flex-direction: column;
+      align-items: center;
+    }
   }
 }
 
@@ -175,8 +184,10 @@ ul {
   }
   .resume-download-container {
     padding: 40px 25px;
-    h2 {
-      font-size: 30px;
+    .resume-download-inner {
+      h2 {
+        font-size: 30px;
+      }
     }
   }
   .resume-contact-me {
@@ -208,6 +219,13 @@ ul {
     a {
       padding: 15px 20px;
       font-size: 15px;
+    }
+  }
+  .resume-download-container {
+    .resume-download-inner {
+      h2 {
+        font-size: 25px;
+      }
     }
   }
 }
