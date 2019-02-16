@@ -48,7 +48,7 @@ class Resume extends React.Component<{}> {
                     <li>Web Frameworks / Server-Side Tech
                       <ul>
                         <li>Node.js / Express</li>
-                        <li>React</li>
+                        <li>React / Redux</li>
                         <li>Angular 2+</li>
                         <li>Nginx</li>
                       </ul>
