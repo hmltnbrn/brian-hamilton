@@ -2,6 +2,7 @@
 
 import React from 'react';
 import styles from './Contact.module.scss';
+import { Helmet } from "react-helmet";
 
 import classNames from 'classnames/bind';
 
@@ -143,6 +144,9 @@ class Contact extends React.Component<Props, State> {
   render() {
     return (
       <>
+        <Helmet>
+          <title>Brian Hamilton | Contact</title>
+        </Helmet>
         <div className={cx("contact-map")}></div>
         <div className={cx("contact-top-container")}>
           <div className={cx("contact-chooser")}>

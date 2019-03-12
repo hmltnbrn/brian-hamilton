@@ -11,6 +11,7 @@ let express = require('express'),
     dotenv = require('dotenv-safe'),
     axios = require('axios'),
     asyncWrap = require('./middleware').asyncWrap,
+    jsonfile = require('jsonfile'),
     app = express();
 
 dotenv.load({
@@ -90,6 +91,19 @@ app.post('/send', asyncWrap(async (req, res, next) => {
 
   return res.status(500).send();
 
+}));
+
+const file = './portfolio.json';
+
+app.get('/portfolio', asyncWrap(async (req, res, next) => {
+  const data = await jsonfile.readFile(file);
+  return res.status(200).json(data);
+}));
+
+app.get('/project/:id', asyncWrap(async (req, res, next) => {
+  const data = await jsonfile.readFile(file);
+  let project = data.filter((project) => project.id == req.params.id)[0];
+  return res.status(200).json(project);
 }));
 
 //Handle Main Page

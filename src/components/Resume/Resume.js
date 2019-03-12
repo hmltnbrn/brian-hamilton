@@ -2,6 +2,7 @@
 
 import React from 'react';
 import styles from './Resume.module.scss';
+import { Helmet } from "react-helmet";
 
 import classNames from 'classnames/bind';
 
@@ -16,6 +17,9 @@ class Resume extends React.Component<{}> {
   render() {
     return (
       <>
+        <Helmet>
+          <title>Brian Hamilton | Resume</title>
+        </Helmet>
         <div className={cx("resume-download-container")}>
           <div className={cx("resume-download-inner")}>
             <h2>Download your own copy</h2>

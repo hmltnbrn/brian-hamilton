@@ -1,6 +1,7 @@
 //@flow
 
 import React from 'react';
+import { Helmet } from "react-helmet";
 
 import Banner from '../Banner/Banner';
 import About from './About/About';
@@ -12,6 +13,9 @@ class Home extends React.Component<{}> {
   render() {
     return (
       <>
+        <Helmet>
+          <title>Brian Hamilton</title>
+        </Helmet>
         <Banner />
         <About />
         <Technologies />
