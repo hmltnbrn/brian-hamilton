@@ -12,8 +12,6 @@ import withMobileDialog from '@material-ui/core/withMobileDialog';
 
 import classNames from 'classnames/bind';
 
-import { Button } from '../../Local/Button/Button';
-
 type Props = {
   project: {
     id: number,
@@ -22,7 +20,8 @@ type Props = {
     links: Array<{
       href: string,
       text: string
-    }>
+    }>,
+    complete: boolean
   },
   dialog: boolean,
   toggleDialog: () => void
@@ -37,9 +36,11 @@ class ProjectDialog extends React.Component<Props> {
         fullScreen={false}
         open={this.props.dialog}
         onClose={() => this.props.toggleDialog()}
+        maxWidth="md"
+        fullWidth={true}
       >
-        <DialogContent className={cx("contact-dialog", "center")}>
-          {this.props.project.title}
+        <DialogContent className={cx("project-dialog", "center")}>
+          <h2>{this.props.project.title}</h2>
           <button type="button" onClick={() => this.props.toggleDialog()}>Close</button>
         </DialogContent>
       </Dialog>

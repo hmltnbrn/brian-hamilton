@@ -29,6 +29,41 @@
   },
   {
     "id": 4,
+    "title": "NYCT Train Movement",
+    "background": "'./images/projects/train-movement.png'",
+    "links": [],
+    "complete": true
+  },
+  {
+    "id": 5,
+    "title": "NYC School Crimes",
+    "background": "'./images/projects/school-crimes.png'",
+    "links": [
+      { "href": "https://github.com/hmltnbrn/nyc-school-crimes", "text": "Repository" },
+      { "href": "http://schools.brianhamilton.me/", "text": "View Project" }
+    ],
+    "complete": true
+  },
+  {
+    "id": 6,
+    "title": "Trebot",
+    "background": "'./images/projects/trebot.jpg'",
+    "links": [
+        { "href": "https://github.com/hmltnbrn/trebot", "text": "Repository" }
+      ],
+    "complete": true
+  },
+  {
+    "id": 7,
+    "title": "What Is Your State Doing to Affect Access to Adequate Health Insurance?",
+    "background": "'./images/projects/health-insurance.png'",
+    "links": [
+      { "href": "https://www.commonwealthfund.org/blog/2018/understand-how-consumers-are-faring-individual-health-insurance-markets-watch-states", "text": "Live Site" }
+    ],
+    "complete": true
+  },
+  {
+    "id": 8,
     "title": "BookBin",
     "background": "'./images/projects/book-bin.png'",
     "links": [],

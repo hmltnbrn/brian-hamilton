@@ -15,6 +15,7 @@ type Props = {
     href: string,
     text: string
   }>,
+  complete: boolean,
   dialog: boolean,
   toggleDialog: () => void,
   getProject: (id: number) => void
