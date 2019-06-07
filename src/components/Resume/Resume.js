@@ -38,9 +38,9 @@ class Resume extends React.Component<{}> {
                     <li>Web Design
                       <ul>
                         <li>HTML5</li>
-                        <li>CSS3 / SASS</li>
+                        <li>CSS3 / SASS / JSS</li>
                         <li>JavaScript / jQuery</li>
-                        <li>TypeScript</li>
+                        <li>TypeScript / Flow</li>
                         <li>PHP</li>
                         <li>Bootstrap</li>
                       </ul>
@@ -49,6 +49,7 @@ class Resume extends React.Component<{}> {
                       <ul>
                         <li>Node.js / Express</li>
                         <li>React / Redux</li>
+                        <li>React Native</li>
                         <li>Angular 2+</li>
                         <li>Nginx</li>
                       </ul>
