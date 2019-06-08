@@ -1,6 +1,7 @@
-@import "./styles/mixins.scss";
+@import "./styles/variables.scss";
 
 .project-dialog {
+  position: relative;
   & > * {
     margin: 0 auto;
     text-align: center;
@@ -13,20 +14,12 @@
     text-align: center;
     align-items: center;
   }
-  .dialog-exit {
-    display: flex;
-    justify-content: flex-end;
-    & > i {
-      font-size: 30px;
-      cursor: pointer;
-      &:focus {
-        border: none;
-        outline: none;
-      }
-    }
+  .dialog-banner {
+    height: 200px;
+    width: 100%;
   }
   h2 {
-    margin: 20px 0;
+    margin: 15px 0 5px 0;
     font-size: 30px;
     text-align: left;
     font-weight: normal;
@@ -37,17 +30,57 @@
   }
 }
 
-.dialog-banner {
-  height: 200px;
-  width: 100%;
+.exit-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 35px;
+  height: 35px;
+  border-radius: 50px;
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .drawer-exit {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    & > i {
+      font-size: 25px;
+      cursor: pointer;
+      &:focus {
+        border: none;
+        outline: none;
+      }
+    }
+  }
 }
 
 .project-links {
   display: flex;
   justify-content: flex-end;
-  margin: 20px 0 0 0;
+  margin: 15px 0 0 0;
   a {
     padding: 10px 20px;
     font-size: 13px;
+  }
+}
+
+.badge-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 0 20px 0;
+  .tech-badge {
+    background: $charcoal;
+    padding: 5px;
+    color: #ffffff;
+    font-weight: 300;
+    margin: 0 5px 5px 0;
+  }
+}
+
+@media (max-width: 500px) {
+  .project-links {
+    justify-content: center;
   }
 }

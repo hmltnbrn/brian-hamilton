@@ -24,13 +24,11 @@ type Props = {
 let cx = classNames.bind(styles);
 
 class Project extends React.Component<Props> {
-
   render() {
     const projectStyle = {
       background: `url(${this.props.background}) no-repeat center center`,
       backgroundSize: "cover"
     };
-
     return (
       <>
         <div className={cx("project")} style={projectStyle} onClick={()=>this.props.getProject(this.props.id)}>

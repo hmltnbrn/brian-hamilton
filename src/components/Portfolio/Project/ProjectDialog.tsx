@@ -39,6 +39,7 @@ class ProjectDialog extends React.Component<Props> {
       backgroundSize: "cover"
     };
     let projectLinks = project.links || [];
+    let projectTech = project.technology || [];
     return (
       <Dialog
         fullScreen={false}
@@ -49,12 +50,19 @@ class ProjectDialog extends React.Component<Props> {
       >
         <DialogContent className={cx("project-dialog", "center")}>
           <div className={cx("dialog-banner")} style={projectStyle}></div>
+          <div className={cx("exit-container")}>
+            <div className={cx("drawer-exit")} onClick={() => this.props.toggleDialog()}><i className="material-icons" tabIndex={0}>clear</i></div>
+          </div>
           <h2 className={cx("primary-color")}>{project.title}</h2>
+          <div className={cx("badge-container")}>
+            {projectTech.map((tech, index) => {
+              return <div key={index} className={cx("tech-badge")}>{tech}</div>
+            })}
+          </div>
           <p>{project.description}</p>
-          {/* <button type="button" onClick={() => this.props.toggleDialog()}>Close</button> */}
           <div className={cx("project-links")}>
-            {projectLinks.map(link => {
-              return <ButtonLink type="a" key={link.text} href={link.href} target="_blank" rel="noopener noreferrer">{link.text}</ButtonLink>
+            {projectLinks.map((link, index) => {
+              return <ButtonLink type="a" key={index} href={link.href} target="_blank" rel="noopener noreferrer">{link.text}</ButtonLink>
             })}
           </div>
         </DialogContent>
