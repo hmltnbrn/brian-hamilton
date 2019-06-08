@@ -45,6 +45,7 @@ class Resume extends React.Component<{}> {
                         <li>TypeScript / Flow</li>
                         <li>PHP</li>
                         <li>Bootstrap</li>
+                        <li>Blueprint</li>
                       </ul>
                     </li>
                     <li>Web Frameworks / Server-Side Tech
@@ -53,6 +54,7 @@ class Resume extends React.Component<{}> {
                         <li>React / Redux</li>
                         <li>React Native</li>
                         <li>Angular 2+</li>
+                        <li>GraphQL</li>
                         <li>Nginx</li>
                       </ul>
                     </li>
@@ -120,6 +122,7 @@ class Resume extends React.Component<{}> {
                 </div>
                 <h4>New York, New York | July 2017 - Present</h4>
                 <ul>
+                  <li>Front-end engineer for the National Kitchen and Bath Association platform (React).</li>
                   <li>Co-developer for the Sweet Defeat platform, using HTML5, CSS3, and PHP.</li>
                   <li>Maintained HelpRx and other associated ScriptRelief websites, using Ruby on Rails, Nginx, and Linux.</li>
                   <li>Developed an internal data manager for Steady with Node.js and Angular 5.</li>

@@ -27,12 +27,12 @@ class Projects extends React.Component<{}> {
         <h1>Featured projects</h1>
         <div className={cx("project-container")}>
           <Project
-            background="'./images/projects/classroom-library.png'"
+            background="'https://i.brianhamilton.me/classroom-library.png'"
             title="Classroom Library"
             links={projectOneLinks}
           />
           <Project
-            background="'./images/projects/health-insurance.png'"
+            background="'https://i.brianhamilton.me/health-insurance.png'"
             title="What Is Your State Doing to Affect Access to Adequate Health Insurance?"
             links={projectTwoLinks}
           />

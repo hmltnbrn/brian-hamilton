@@ -15,6 +15,8 @@ type ProjectType = {
   id: number,
   background: string,
   title: string,
+  description: string,
+  technology: Array<string>,
   links: Array<{
     href: string,
     text: string

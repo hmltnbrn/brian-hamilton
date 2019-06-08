@@ -93,7 +93,7 @@ app.post('/send', asyncWrap(async (req, res, next) => {
 
 }));
 
-const file = './portfolio.json';
+const file = './data/portfolio.json';
 
 app.get('/portfolio', asyncWrap(async (req, res, next) => {
   const data = await jsonfile.readFile(file);

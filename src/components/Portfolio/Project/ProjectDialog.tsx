@@ -8,6 +8,8 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import withMobileDialog from '@material-ui/core/withMobileDialog';
 
+import { ButtonLink } from '../../Local/Button/Button';
+
 import classNames from 'classnames/bind';
 
 type Props = {
@@ -15,6 +17,8 @@ type Props = {
     id: number,
     background: string,
     title: string,
+    description: string,
+    technology: Array<string>,
     links: Array<{
       href: string,
       text: string
@@ -29,6 +33,12 @@ let cx = classNames.bind(styles);
 
 class ProjectDialog extends React.Component<Props> {
   render() {
+    const { project } = this.props;
+    const projectStyle = {
+      background: `url(${project.background}) no-repeat center center`,
+      backgroundSize: "cover"
+    };
+    let projectLinks = project.links || [];
     return (
       <Dialog
         fullScreen={false}
@@ -38,8 +48,15 @@ class ProjectDialog extends React.Component<Props> {
         fullWidth={true}
       >
         <DialogContent className={cx("project-dialog", "center")}>
-          <h2>{this.props.project.title}</h2>
-          <button type="button" onClick={() => this.props.toggleDialog()}>Close</button>
+          <div className={cx("dialog-banner")} style={projectStyle}></div>
+          <h2 className={cx("primary-color")}>{project.title}</h2>
+          <p>{project.description}</p>
+          {/* <button type="button" onClick={() => this.props.toggleDialog()}>Close</button> */}
+          <div className={cx("project-links")}>
+            {projectLinks.map(link => {
+              return <ButtonLink type="a" key={link.text} href={link.href} target="_blank" rel="noopener noreferrer">{link.text}</ButtonLink>
+            })}
+          </div>
         </DialogContent>
       </Dialog>
     );

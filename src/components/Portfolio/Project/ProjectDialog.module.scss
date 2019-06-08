@@ -25,4 +25,29 @@
       }
     }
   }
+  h2 {
+    margin: 20px 0;
+    font-size: 30px;
+    text-align: left;
+    font-weight: normal;
+  }
+  p {
+    text-align: left;
+    font-size: 18px;
+  }
+}
+
+.dialog-banner {
+  height: 200px;
+  width: 100%;
+}
+
+.project-links {
+  display: flex;
+  justify-content: flex-end;
+  margin: 20px 0 0 0;
+  a {
+    padding: 10px 20px;
+    font-size: 13px;
+  }
 }
