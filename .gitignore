@@ -23,6 +23,3 @@ yarn-error.log*
 
 # css
 src/**/*.css
-
-# flow-typed
-flow-typed
