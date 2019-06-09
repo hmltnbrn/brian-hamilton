@@ -1,16 +1,16 @@
 import React from 'react';
 import styles from './ProjectDialog.module.scss';
 import { connect } from 'react-redux';
-import { toggleDialog, getProject } from '../actions';
+import { toggleDialog } from '../actions';
 import { compose } from 'redux';
+
+import classNames from 'classnames/bind';
 
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import withMobileDialog from '@material-ui/core/withMobileDialog';
 
 import { ButtonLink } from '../../Local/Button/Button';
-
-import classNames from 'classnames/bind';
 
 type Props = {
   project: {
@@ -47,13 +47,14 @@ class ProjectDialog extends React.Component<Props> {
         onClose={() => this.props.toggleDialog()}
         maxWidth="md"
         fullWidth={true}
+        scroll={"body"}
       >
         <DialogContent className={cx("project-dialog", "center")}>
           <div className={cx("dialog-banner")} style={projectStyle}></div>
           <div className={cx("exit-container")}>
             <div className={cx("drawer-exit")} onClick={() => this.props.toggleDialog()}><i className="material-icons" tabIndex={0}>clear</i></div>
           </div>
-          <h2 className={cx("primary-color")}>{project.title}</h2>
+          <h2>{project.title}</h2>
           <div className={cx("badge-container")}>
             {projectTech.map((tech, index) => {
               return <div key={index} className={cx("tech-badge")}>{tech}</div>
@@ -78,5 +79,5 @@ const mapStateToProps = (state: any) => ({
 
 export default compose<any>(
   withMobileDialog(),
-  connect(mapStateToProps, { toggleDialog, getProject })
+  connect(mapStateToProps, { toggleDialog })
 )(ProjectDialog);

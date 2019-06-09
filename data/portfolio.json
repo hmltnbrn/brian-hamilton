@@ -67,7 +67,7 @@
   },
   {
     "id": 7,
-    "title": "What Is Your State Doing to Affect Access to Adequate Health Insurance?",
+    "title": "States and the Affordable Care Act",
     "description": "An intricate data map that illustrates how each state is using the Affordable Care Act. It was made in coordination with the Commonwealth Fund, a private health care foundation.",
     "technology": ["HTML5", "CSS3", "D3.js"],
     "background": "'https://i.brianhamilton.me/health-insurance.png'",

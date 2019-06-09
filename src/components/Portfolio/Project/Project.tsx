@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Project.module.scss';
 import { connect } from 'react-redux';
-import { toggleDialog, getProject } from '../actions';
+import { getProject } from '../actions';
 
 import classNames from 'classnames/bind';
 
@@ -17,7 +17,6 @@ type Props = {
   }>,
   complete: boolean,
   dialog: boolean,
-  toggleDialog: () => void,
   getProject: (id: number) => void
 };
 
@@ -45,4 +44,4 @@ const mapStateToProps = (state: any) => ({
   dialog: state.portfolio.dialog
 });
 
-export default connect(mapStateToProps, { toggleDialog, getProject })(Project);
+export default connect(mapStateToProps, { getProject })(Project);

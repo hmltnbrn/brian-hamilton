@@ -102,14 +102,14 @@ class BaseButton extends React.Component<Props> {
   }
 };
 
-export const Button = (props:Props) => (
+export const Button = (props: Props) => (
   <BaseButton { ...props } isButtonLink={false}>{props.children}</BaseButton>
 );
 
-export const ButtonLink = (props:Props) => (
+export const ButtonLink = (props: Props) => (
   <BaseButton { ...props } isButtonLink isRoundButtonLink={false}>{props.children}</BaseButton>
 );
 
-export const RoundButtonLink = (props:Props) => (
+export const RoundButtonLink = (props: Props) => (
   <BaseButton { ...props } isButtonLink={false} isRoundButtonLink>{props.children}</BaseButton>
 );

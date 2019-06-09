@@ -1,4 +1,5 @@
 @import "./styles/variables.scss";
+@import "./styles/mixins.scss";
 
 .project-dialog {
   position: relative;
@@ -20,13 +21,15 @@
   }
   h2 {
     margin: 15px 0 5px 0;
-    font-size: 30px;
+    font-size: 35px;
     text-align: left;
     font-weight: normal;
+    color: $primary-color;
   }
   p {
     text-align: left;
     font-size: 18px;
+    color: $charcoal;
   }
 }
 
@@ -71,15 +74,22 @@
   flex-wrap: wrap;
   margin: 0 0 20px 0;
   .tech-badge {
-    background: $charcoal;
+    @include rgba_primary(0.6);
+    // background: $charcoal;
     padding: 5px;
     color: #ffffff;
     font-weight: 300;
     margin: 0 5px 5px 0;
+    font-size: 14px;
   }
 }
 
 @media (max-width: 500px) {
+  .project-dialog {
+    h2 {
+      font-size: 30px;
+    }
+  }
   .project-links {
     justify-content: center;
   }

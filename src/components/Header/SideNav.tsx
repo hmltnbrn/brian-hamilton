@@ -15,30 +15,16 @@ type Props = {
   toggleDrawer: () => void
 };
 
-type State = {
-  drawer: boolean
-};
-
 let cx = classNames.bind(styles);
 
-class SideNav extends React.Component<Props, State> {
-
-  state = {
-    drawer: false
-  };
-
-  componentWillReceiveProps(nextProps: any) {
-    this.setState({
-      drawer: nextProps.drawer
-    });
-  }
-
+class SideNav extends React.Component<Props> {
   render() {
+    const { drawer } = this.props;
     return (
       <SwipeableDrawer
-        open={this.state.drawer}
+        open={drawer}
         onClose={() => this.props.toggleDrawer()}
-        onOpen={() => this.setState({drawer: true})}
+        onOpen={() => this.props.toggleDrawer()}
       >
         <div
           tabIndex={0}

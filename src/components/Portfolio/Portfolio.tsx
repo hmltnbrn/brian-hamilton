@@ -29,31 +29,15 @@ type Props = {
   getPortfolio: () => void
 }
 
-type State = {
-  portfolio: Array<ProjectType>
-};
-
-class Portfolio extends React.Component<Props, State> {
-
-  state: State = {
-    portfolio: []
-  };
+class Portfolio extends React.Component<Props> {
 
   componentDidMount() {
     this.props.getPortfolio();
   }
 
-  componentWillReceiveProps(nextProps: any) {
-    if(nextProps.portfolio) {
-      this.setState({
-        portfolio: nextProps.portfolio
-      });
-    }
-  }
-
   render() {
 
-    const { portfolio } = this.state;
+    const { portfolio } = this.props;
 
     const completeProjects = portfolio.filter(project => project.complete).map((project) => {
       return (<Project key={project.id} { ...project }/>);

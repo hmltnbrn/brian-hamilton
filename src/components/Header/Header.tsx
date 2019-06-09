@@ -27,18 +27,19 @@ let cx = classNames.bind(styles);
 
 class Header extends React.Component<Props> {
   render() {
+    const { windowWidth } = this.props;
     return (
       <header>
         <FixedMenu/>
         <div className={cx("header-container")}>
           <div className={cx("header-left")}>
-          {this.props.windowWidth < 800 ?
+          {windowWidth < 800 ?
             <i className={`material-icons ${cx("drawer-opener")}`} onClick={() => this.props.toggleDrawer()}>menu</i>
             : <span></span>
           }
           </div>
           <div className={cx("header-right")}>
-            {this.props.windowWidth >= 800 ?
+            {windowWidth >= 800 ?
               <div className={cx("header-links")}>
                 <Button type="nav-link" exact to="/" classNames={[cx("header-link")]} activeClassName={cx("active")}>Home</Button>
                 <Button type="nav-link" to="/resume" classNames={[cx("header-link")]} activeClassName={cx("active")}>Resume</Button>
