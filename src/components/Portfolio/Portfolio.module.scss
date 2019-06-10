@@ -1,19 +1,29 @@
 @import "./styles/variables.scss";
 
 .lead-container {
-  background: $dark-primary-color;
+  background: url('/images/backgrounds/portfolio-agenda.jpg') no-repeat center center;
+  background-size: cover;
+  position: relative;
+  height: 200px;
 }
 
 .lead-text {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 50px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, .6);
   p {
     font-size: 25px;
     padding: 0 50px;
     font-weight: 300;
     line-height: 1.4;
     color: #ffffff;
+    max-width: 1280px;
   }
 }
 
@@ -54,7 +64,6 @@
 
 @media (max-width: 500px) {
   .lead-text {
-    padding: 25px 0;
     p {
       font-size: 20px;
       padding: 0 25px;

@@ -17,6 +17,7 @@ type Props = {
     id: number,
     background: string,
     title: string,
+    year: string,
     description: string,
     technology: Array<string>,
     links: Array<{
@@ -55,6 +56,7 @@ class ProjectDialog extends React.Component<Props> {
             <div className={cx("drawer-exit")} onClick={() => this.props.toggleDialog()}><i className="material-icons" tabIndex={0}>clear</i></div>
           </div>
           <h2>{project.title}</h2>
+          <h3>{project.year}</h3>
           <div className={cx("badge-container")}>
             {projectTech.map((tech, index) => {
               return <div key={index} className={cx("tech-badge")}>{tech}</div>

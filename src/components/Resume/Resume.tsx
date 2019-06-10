@@ -22,8 +22,8 @@ class Resume extends React.Component<{}> {
           <div className={cx("resume-download-inner")}>
             <h2>Download your own copy</h2>
             <div className={cx("resume-download")}>
-              <ButtonLink type="a" href="./files/resume/BrianHResume.docx" target="_blank" white><MicrosoftWordIcon/>DOCX</ButtonLink>
-              <ButtonLink type="a" href="./files/resume/BrianHResume.pdf" target="_blank" white><AdobeAcrobatReaderIcon/>PDF</ButtonLink>
+              <ButtonLink type="a" href="https://storage.brianhamilton.me/files/BrianHResume.docx" target="_blank" white><MicrosoftWordIcon/>DOCX</ButtonLink>
+              <ButtonLink type="a" href="https://storage.brianhamilton.me/files/BrianHResume.pdf" target="_blank" white><AdobeAcrobatReaderIcon/>PDF</ButtonLink>
             </div>
           </div>
         </div>
@@ -167,7 +167,7 @@ class Resume extends React.Component<{}> {
                   <h2>Graduate Center at the City University of New York</h2>
                 </div>
                 <h4>New York, New York | 2016 - Present</h4>
-                <p>Studying for a Master of Arts in Liberal Studies, specializing in data visualization and digital humanities.</p>
+                <p>Studying for a Master of Arts in Liberal Studies, specializing in Data Visualization and Digital Humanities.</p>
               </div>
               <div className={cx("resume-education")}>
                 <div className={cx("resume-header")}>

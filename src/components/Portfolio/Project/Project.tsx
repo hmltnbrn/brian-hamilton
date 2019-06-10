@@ -9,6 +9,7 @@ type Props = {
   id: number,
   background: string,
   title: string,
+  year: string,
   description: string,
   technology: Array<string>,
   links: Array<{
