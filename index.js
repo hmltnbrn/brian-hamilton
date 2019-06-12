@@ -95,12 +95,12 @@ app.post('/send', asyncWrap(async (req, res, next) => {
 
 const file = './data/portfolio.json';
 
-app.get('/portfolio', asyncWrap(async (req, res, next) => {
+app.get('/api/portfolio', asyncWrap(async (req, res, next) => {
   const data = await jsonfile.readFile(file);
   return res.status(200).json(data);
 }));
 
-app.get('/project/:id', asyncWrap(async (req, res, next) => {
+app.get('/api/project/:id', asyncWrap(async (req, res, next) => {
   const data = await jsonfile.readFile(file);
   let project = data.filter((project) => project.id == req.params.id)[0];
   return res.status(200).json(project);

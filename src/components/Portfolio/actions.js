@@ -14,7 +14,7 @@ export const toggleDialog = () => dispatch => {
 
 export const getPortfolio = () => async dispatch => {
   try {
-    var res = await axios.get(`${url}/portfolio`);
+    var res = await axios.get(`${url}/api/portfolio`);
     dispatch({ type: GET_PORTFOLIO, payload: res.data })
   } catch(err) {
     console.log(err);
@@ -23,7 +23,7 @@ export const getPortfolio = () => async dispatch => {
 
 export const getProject = (id) => async dispatch => {
   try {
-    var res = await axios.get(`${url}/project/${id}`);
+    var res = await axios.get(`${url}/api/project/${id}`);
     dispatch({ type: GET_PROJECT, payload: res.data })
   } catch(err) {
     console.log(err);
