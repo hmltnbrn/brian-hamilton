@@ -1,0 +1,108 @@
+[
+  {
+    "id": 1,
+    "title": "Classroom Library",
+    "year": "2016",
+    "description": "Small-scale library management for a grade school classroom. It was made for one individual teacher and allowed for them to upload books and students to a database and then check out/in books under their names.",
+    "technology": ["Node.js", "Express", "React", "PostgreSQL"],
+    "background": "'https://i.brianhamilton.me/classroom-library.png'",
+    "links": [
+      { "href": "https://github.com/hmltnbrn/classroom-library", "text": "Repository" },
+      { "href": "http://classroomlibrary.brianhamilton.me/", "text": "Live Demo" }
+    ],
+    "complete": true
+  },
+  {
+    "id": 2,
+    "title": "end/line",
+    "year": "2017",
+    "description": "For students and teachers of poetry, interested in engaging more deeply with texts through TEI encoding. Find a poem, encode it, validate your work, and collaborate with others. This was made for a graduate school project.",
+    "technology": ["Node.js", "Express", "PostgreSQL", "EJS"],
+    "background": "'https://i.brianhamilton.me/end-line.png'",
+    "links": [
+      { "href": "https://github.com/end-line/end-line", "text": "Repository" }
+    ],
+    "complete": true
+  },
+  {
+    "id": 3,
+    "title": "Mirror, Mirror 2017",
+    "year": "2017",
+    "description": "A comparison between the health care systems of the United States and multiple other countries told through a series of visualizations. It was made in coordination with the Commonwealth Fund, a private health care foundation.",
+    "technology": ["HTML5", "CSS3", "D3.js"],
+    "background": "'https://i.brianhamilton.me/mirror-mirror.png'",
+    "links": [
+      { "href": "http://www.commonwealthfund.org/interactives/2017/july/mirror-mirror/", "text": "Live Site" }
+    ],
+    "complete": true
+  },
+  {
+    "id": 4,
+    "title": "NYCT Train Movement",
+    "year": "2015-2017",
+    "description": "A complex data visualization showing New York City Transit subway trains moving along their respective routes. It could also display other data, including on-time performance and ridership statistics. Code is unfortunately not available until it gets cleaned up.",
+    "technology": ["HTML5", "CSS3", "D3.js", "Python", "OracleDB"],
+    "background": "'https://i.brianhamilton.me/train-movement.png'",
+    "links": [],
+    "complete": true
+  },
+  {
+    "id": 5,
+    "title": "NYC School Crimes",
+    "year": "2016",
+    "description": "This is a very simple project that takes data from NYC OpenData, normalizes it, and visualizes it on top of the Google Maps API. It was made for a graduate school project. Further description can be found by following the link to the project.",
+    "technology": ["Node.js", "React", "PostgreSQL", "Python", "Google Maps API"],
+    "background": "'https://i.brianhamilton.me/school-crimes.png'",
+    "links": [
+      { "href": "https://github.com/hmltnbrn/nyc-school-crimes", "text": "Repository" },
+      { "href": "http://schools.brianhamilton.me/", "text": "View Project" }
+    ],
+    "complete": true
+  },
+  {
+    "id": 6,
+    "title": "Trebot",
+    "year": "2018",
+    "description": "A Discord bot that allows users to ask for Jeopardy clues and then for their respective answer. To get the data, the website jArchive was scraped with a Python script and all clues and their answers were stored in a Mongo database.",
+    "technology": ["Node.js", "Express", "MongoDB", "Python", "Discord API"],
+    "background": "'https://i.brianhamilton.me/trebot.jpg'",
+    "links": [
+        { "href": "https://github.com/hmltnbrn/trebot", "text": "Repository" }
+      ],
+    "complete": true
+  },
+  {
+    "id": 7,
+    "title": "States and the Affordable Care Act",
+    "year": "2018",
+    "description": "An intricate data map that illustrates how each state is using the Affordable Care Act. It was made in coordination with the Commonwealth Fund, a private health care foundation.",
+    "technology": ["HTML5", "CSS3", "D3.js"],
+    "background": "'https://i.brianhamilton.me/health-insurance.png'",
+    "links": [
+      { "href": "https://www.commonwealthfund.org/blog/2018/understand-how-consumers-are-faring-individual-health-insurance-markets-watch-states", "text": "Live Site" }
+    ],
+    "complete": true
+  },
+  {
+    "id": 8,
+    "title": "The Many Varieties of Universal Coverage",
+    "year": "2019",
+    "description": "Data continuum that displays the current proposals for an overhaul of the United States health care system, as well as descriptions of prominent international counterparts. It was made in coordination with the Commonwealth Fund, a private health care foundation.",
+    "technology": ["HTML5", "CSS3", "D3.js", "Babel", "PostCSS"],
+    "background": "'https://i.brianhamilton.me/health-proposals.png'",
+    "links": [
+      { "href": "https://www.commonwealthfund.org/many-varieties-universal-coverage", "text": "Live Site" }
+    ],
+    "complete": true
+  },
+  {
+    "id": 9,
+    "title": "BookBin",
+    "year": "2017",
+    "description": "A modern refresh of the Classroom Library project. Currently on hold.",
+    "technology": ["Node.js", "Express", "Angular", "PostgreSQL"],
+    "background": "'https://i.brianhamilton.me/book-bin.png'",
+    "links": [],
+    "complete": false
+  }
+]

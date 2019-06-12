@@ -4,7 +4,7 @@
 
 This is the underlying code for my website, [brianhamilton.me](https://www.brianhamilton.me/).
 
-[Node.js](https://nodejs.org/en/) app using [Express](https://expressjs.com/), [React](https://reactjs.org/), [Nodemailer](https://nodemailer.com/about/), [Material-UI](https://material-ui.com/), and [Flow](https://flow.org/en/).
+[Node.js](https://nodejs.org/en/) app using [Express](https://expressjs.com/), [React](https://reactjs.org/), [Nodemailer](https://nodemailer.com/about/), [Material-UI](https://material-ui.com/), and [TypeScript](https://www.typescriptlang.org/).
 
 ## Installation
 
@@ -36,7 +36,7 @@ This is the underlying code for my website, [brianhamilton.me](https://www.brian
 
 4. The heroku-ssl-redirect module is included, but will only do anything with proper SSL certificates in use on Heroku.
 
-5. Flow testing has already been done on the React component files. To learn more on how to do this on your own, refer to the [Flow documentation](https://flow.org/en/docs/).
+5. TypeScript testing has already been done on the React component files. To learn more on how to do this on your own, refer to the [TypeScript documentation](https://www.typescriptlang.org/docs/home.html).
 
 6. While in development, both the back-end and front-end servers will automatically restart after a file is saved while editing.
 
