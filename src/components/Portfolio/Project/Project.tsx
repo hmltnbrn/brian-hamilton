@@ -17,6 +17,7 @@ type Props = {
     text: string
   }>,
   complete: boolean,
+  active: boolean,
   dialog: boolean,
   getProject: (id: number) => void
 };

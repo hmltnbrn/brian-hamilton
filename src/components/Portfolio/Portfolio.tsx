@@ -22,7 +22,8 @@ type ProjectType = {
     href: string,
     text: string
   }>,
-  complete: boolean
+  complete: boolean,
+  active: boolean
 }
 
 type Props = {
