@@ -10,7 +10,8 @@
       { "href": "https://github.com/hmltnbrn/classroom-library", "text": "Repository" },
       { "href": "http://classroomlibrary.brianhamilton.me/", "text": "Live Demo" }
     ],
-    "complete": true
+    "complete": true,
+    "active": false
   },
   {
     "id": 2,
@@ -22,7 +23,8 @@
     "links": [
       { "href": "https://github.com/end-line/end-line", "text": "Repository" }
     ],
-    "complete": true
+    "complete": true,
+    "active": false
   },
   {
     "id": 3,
@@ -34,7 +36,8 @@
     "links": [
       { "href": "http://www.commonwealthfund.org/interactives/2017/july/mirror-mirror/", "text": "Live Site" }
     ],
-    "complete": true
+    "complete": true,
+    "active": true
   },
   {
     "id": 4,
@@ -44,7 +47,8 @@
     "technology": ["HTML5", "CSS3", "D3.js", "Python", "OracleDB"],
     "background": "'https://i.brianhamilton.me/train-movement.png'",
     "links": [],
-    "complete": true
+    "complete": true,
+    "active": false
   },
   {
     "id": 5,
@@ -57,7 +61,8 @@
       { "href": "https://github.com/hmltnbrn/nyc-school-crimes", "text": "Repository" },
       { "href": "http://schools.brianhamilton.me/", "text": "View Project" }
     ],
-    "complete": true
+    "complete": true,
+    "active": false
   },
   {
     "id": 6,
@@ -67,9 +72,10 @@
     "technology": ["Node.js", "Express", "MongoDB", "Python", "Discord API"],
     "background": "'https://i.brianhamilton.me/trebot.jpg'",
     "links": [
-        { "href": "https://github.com/hmltnbrn/trebot", "text": "Repository" }
-      ],
-    "complete": true
+      { "href": "https://github.com/hmltnbrn/trebot", "text": "Repository" }
+    ],
+    "complete": true,
+    "active": true
   },
   {
     "id": 7,
@@ -81,7 +87,8 @@
     "links": [
       { "href": "https://www.commonwealthfund.org/blog/2018/understand-how-consumers-are-faring-individual-health-insurance-markets-watch-states", "text": "Live Site" }
     ],
-    "complete": true
+    "complete": true,
+    "active": true
   },
   {
     "id": 8,
@@ -93,7 +100,8 @@
     "links": [
       { "href": "https://www.commonwealthfund.org/many-varieties-universal-coverage", "text": "Live Site" }
     ],
-    "complete": true
+    "complete": true,
+    "active": true
   },
   {
     "id": 9,
@@ -103,6 +111,21 @@
     "technology": ["Node.js", "Express", "Angular", "PostgreSQL"],
     "background": "'https://i.brianhamilton.me/book-bin.png'",
     "links": [],
-    "complete": false
+    "complete": false,
+    "active": false
+  },
+  {
+    "id": 10,
+    "title": "Spotify Shuffle",
+    "year": "2019",
+    "description": "A third-party Spotify app for Android that fetches playlists and allows random shuffling. It prevents interference from Spotify's own sorting algorithm, which can cause the same songs to be replayed constantly.",
+    "technology": ["Node.js", "Express", "React Native", "React Redux", "Flow", "EC2"],
+    "background": "'https://i.brianhamilton.me/rn-spotify-shuffle.png'",
+    "links": [
+      { "href": "https://github.com/hmltnbrn/spotify-shuffle", "text": "Native Repository" },
+      { "href": "https://github.com/hmltnbrn/spotify-shuffle-server", "text": "Server Repository" }
+    ],
+    "complete": false,
+    "active": true
   }
 ]

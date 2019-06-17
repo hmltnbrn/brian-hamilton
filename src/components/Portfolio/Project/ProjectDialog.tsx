@@ -24,7 +24,8 @@ type Props = {
       href: string,
       text: string
     }>,
-    complete: boolean
+    complete: boolean,
+    active: boolean
   },
   dialog: boolean,
   toggleDialog: () => void
@@ -51,9 +52,15 @@ class ProjectDialog extends React.Component<Props> {
         scroll={"body"}
       >
         <DialogContent className={cx("project-dialog", "center")}>
-          <div className={cx("dialog-banner")} style={projectStyle}></div>
+          <div className={cx("dialog-banner")} style={projectStyle}>
+            <div className={cx("dialog-banner-overlay")}></div>
+          </div>
           <div className={cx("exit-container")}>
             <div className={cx("drawer-exit")} onClick={() => this.props.toggleDialog()}><i className="material-icons" tabIndex={0}>clear</i></div>
+          </div>
+          <div className={cx("active-container")}>
+            <div className={cx("active-dot", { "inactive": !project.active })}></div>
+            <h4 className={cx({ "inactive": !project.active })}>{project.active ? "Active" : "Inactive"}</h4>
           </div>
           <h2>{project.title}</h2>
           <h3>{project.year}</h3>
