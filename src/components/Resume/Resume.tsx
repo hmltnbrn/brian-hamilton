@@ -22,8 +22,8 @@ class Resume extends React.Component<{}> {
           <div className={cx("resume-download-inner")}>
             <h2>Download your own copy</h2>
             <div className={cx("resume-download")}>
-              <ButtonLink type="a" href="https://storage.brianhamilton.me/files/BrianHResume.docx" target="_blank" white><MicrosoftWordIcon/>DOCX</ButtonLink>
-              <ButtonLink type="a" href="https://storage.brianhamilton.me/files/BrianHResume.pdf" target="_blank" white><AdobeAcrobatReaderIcon/>PDF</ButtonLink>
+              <ButtonLink type="a" href="https://storage.brianhamilton.me/files/BrianResume.docx" target="_blank" white><MicrosoftWordIcon/>DOCX</ButtonLink>
+              <ButtonLink type="a" href="https://storage.brianhamilton.me/files/BrianResume.pdf" target="_blank" white><AdobeAcrobatReaderIcon/>PDF</ButtonLink>
             </div>
           </div>
         </div>
@@ -45,7 +45,6 @@ class Resume extends React.Component<{}> {
                         <li>TypeScript / Flow</li>
                         <li>PHP</li>
                         <li>Bootstrap</li>
-                        <li>Blueprint</li>
                       </ul>
                     </li>
                     <li>Web Frameworks / Server-Side Tech
@@ -56,6 +55,7 @@ class Resume extends React.Component<{}> {
                         <li>Angular 2+</li>
                         <li>GraphQL</li>
                         <li>Nginx</li>
+                        <li>Ruby on Rails</li>
                       </ul>
                     </li>
                     <li>Database / Data Visualization
@@ -92,11 +92,19 @@ class Resume extends React.Component<{}> {
                     </ul>
                   </div>
                   <div>
-                    <h2 className={cx("primary-color")}>AWS Services</h2>
+                    <h2 className={cx("primary-color")}>AWS / Other Services</h2>
                     <ul>
                       <li>CloudFront</li>
                       <li>EC2</li>
                       <li>S3</li>
+                      <li>Heroku</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h2 className={cx("primary-color")}>Operating Systems</h2>
+                    <ul>
+                      <li>Windows</li>
+                      <li>Linux</li>
                     </ul>
                   </div>
                   <div>
