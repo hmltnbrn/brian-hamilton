@@ -47,15 +47,16 @@ class Resume extends React.Component<{}> {
                         <li>Bootstrap</li>
                       </ul>
                     </li>
-                    <li>Web Frameworks / Server-Side Tech
+                    <li>Web Frameworks / Libraries
                       <ul>
                         <li>Node.js / Express</li>
                         <li>React / Redux</li>
                         <li>React Native</li>
                         <li>Angular 2+</li>
-                        <li>GraphQL</li>
-                        <li>Nginx</li>
                         <li>Ruby on Rails</li>
+                        <li>GraphQL</li>
+                        <li>Webpack / Babel</li>
+                        <li>PostCSS</li>
                       </ul>
                     </li>
                     <li>Database / Data Visualization
@@ -63,10 +64,9 @@ class Resume extends React.Component<{}> {
                         <li>PostgreSQL</li>
                         <li>MySQL</li>
                         <li>MongoDB</li>
-                        <li>Oracle</li>
+                        <li>OracleDB</li>
                         <li>Tableau</li>
                         <li>D3.js</li>
-                        <li>JSON / XML</li>
                       </ul>
                     </li>
                     <li>Object-Oriented
