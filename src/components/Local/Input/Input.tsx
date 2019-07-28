@@ -14,22 +14,20 @@ type Props = {
 
 let cx = classNames.bind(styles);
 
-class Input extends React.Component<Props> {
-  render() {
-    return (
-      <div className={cx("form-group")}>
-        <input
-          type={this.props.type}
-          name={this.props.name}
-          placeholder={this.props.placeholder}
-          value={this.props.value}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.props.onChange(e)}
-          className={cx({"error": this.props.errorText})}
-        />
-        <div className={cx("error-alert")}>{this.props.errorText}</div>
-      </div>
-    );
-  }
+const Input = ({ type, name, placeholder, value, errorText, onChange }: Props) => {
+  return (
+    <div className={cx("form-group")}>
+      <input
+        type={type}
+        name={name}
+        placeholder={placeholder}
+        value={value}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange(e)}
+        className={cx({"error": errorText})}
+      />
+      <div className={cx("error-alert")}>{errorText}</div>
+    </div>
+  );
 };
 
 export default Input;

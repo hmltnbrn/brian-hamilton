@@ -14,22 +14,20 @@ type Props = {
 
 let cx = classNames.bind(styles);
 
-class TextArea extends React.Component<Props> {
-  render() {
-    return (
-      <div className={cx("form-group")}>
-        <textarea
-          rows={this.props.rows}
-          name={this.props.name}
-          placeholder={this.props.placeholder}
-          value={this.props.value}
-          onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => this.props.onChange(e)}
-          className={cx({"error": this.props.errorText && !this.props.value})}
-        />
-        <div className={cx("error-alert")}>{this.props.errorText}</div>
-      </div>
-    );
-  }
+const TextArea = ({ rows, name, placeholder, value, errorText, onChange }: Props) => {
+  return (
+    <div className={cx("form-group")}>
+      <textarea
+        rows={rows}
+        name={name}
+        placeholder={placeholder}
+        value={value}
+        onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => onChange(e)}
+        className={cx({"error": errorText && !value})}
+      />
+      <div className={cx("error-alert")}>{errorText}</div>
+    </div>
+  );
 };
 
 export default TextArea;
