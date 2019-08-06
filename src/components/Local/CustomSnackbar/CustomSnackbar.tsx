@@ -15,57 +15,52 @@ type Props = {
 
 let cx = classNames.bind(styles);
 
-class CustomSnackbar extends React.Component<Props> {
+const CustomSnackbar = ({ type, message, open, onClose }: Props) => {
 
-  render() {
+  const Icon = () => {
+    switch(type) {
+      case 'success':
+        return <i className="material-icons">done</i>;
+      case 'warning':
+        return <i className="material-icons">warning</i>;
+      case 'error':
+        return <i className="material-icons">error</i>;
+      default:
+        return null;
+    }
+  };
 
-    const { type } = this.props;
+  const backgroundColor: any = {
+    success: "#2e7d32",
+    warning: "#f9a825",
+    error: "#c62828"
+  };
 
-    const Icon = () => {
-      switch(type) {
-        case 'success':
-          return <i className="material-icons">done</i>;
-        case 'warning':
-          return <i className="material-icons">warning</i>;
-        case 'error':
-          return <i className="material-icons">error</i>;
-        default:
-          return null;
-      }
-    };
-
-    const backgroundColor: any = {
-      success: "#2e7d32",
-      warning: "#f9a825",
-      error: "#c62828"
-    };
-
-    return (
-      <Snackbar
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'left',
-        }}
-        open={this.props.open}
-        autoHideDuration={6000}
-        onClose={this.props.onClose}
-      >
-        <SnackbarContent
-          aria-describedby="bh-snackbar"
-          style={{backgroundColor: backgroundColor[type]}}
-          message={
-            <span id="bh-snackbar" className={cx("snackbar-message")}>
-              {Icon()}
-              <span>{this.props.message}</span>
-            </span>
-          }
-          action={[
-            <div key="clear" onClick={this.props.onClose} className={cx("snackbar-close")}><i className="material-icons">clear</i></div>
-          ]}
-        />
-      </Snackbar>
-    );
-  }
+  return (
+    <Snackbar
+      anchorOrigin={{
+        vertical: 'bottom',
+        horizontal: 'left',
+      }}
+      open={open}
+      autoHideDuration={6000}
+      onClose={() => onClose()}
+    >
+      <SnackbarContent
+        aria-describedby="bh-snackbar"
+        style={{backgroundColor: backgroundColor[type]}}
+        message={
+          <span id="bh-snackbar" className={cx("snackbar-message")}>
+            {Icon()}
+            <span>{message}</span>
+          </span>
+        }
+        action={[
+          <div key="clear" onClick={() => onClose()} className={cx("snackbar-close")}><i className="material-icons">clear</i></div>
+        ]}
+      />
+    </Snackbar>
+  );
 };
 
 export default CustomSnackbar;

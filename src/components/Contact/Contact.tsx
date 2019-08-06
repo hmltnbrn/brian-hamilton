@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './Contact.module.scss';
 import { Helmet } from "react-helmet";
 
@@ -17,236 +17,188 @@ import TextArea from '../Local/TextArea/TextArea';
 import CustomSnackbar from '../Local/CustomSnackbar/CustomSnackbar';
 import { ButtonLink, RoundButtonLink } from '../Local/Button/Button';
 
-type Props = {};
-
-type State = {
-  name: string,
-  email: string,
-  subject: string,
-  message: string,
-  recaptcha: string | null,
-  nameError: boolean | string,
-  emailError: boolean | string,
-  subjectError: boolean | string,
-  messageError: boolean | string,
-  emailDialog: boolean,
-  phoneDialog: boolean,
-  emailSuccessSnackbar: boolean,
-  recaptchaSnackbar: boolean,
-  emailErrorSnackbar: boolean
-};
-
 let cx = classNames.bind(styles);
 
-class Contact extends React.Component<Props, State> {
+const Contact = () => {
+  const [name, setName] = useState<string>("");
+  const [nameError, setNameError] = useState<boolean | string>(false);
+  const [email, setEmail] = useState<string>("");
+  const [emailError, setEmailError] = useState<boolean | string>(false);
+  const [subject, setSubject] = useState<string>("");
+  const [subjectError, setSubjectError] = useState<boolean | string>(false);
+  const [message, setMessage] = useState<string>("");
+  const [messageError, setMessageError] = useState<boolean | string>(false);
+  const [recaptcha, setRecaptcha] = useState<string | null>("");
+  const [emailDialog, setEmailDialog] = useState<boolean>(false);
+  const [phoneDialog, setPhoneDialog] = useState<boolean>(false);
+  const [emailSuccessSnackbar, setEmailSuccessSnackbar] = useState<boolean>(false);
+  const [recaptchaSnackbar, setRecaptchaSnackbar] = useState<boolean>(false);
+  const [emailErrorSnackbar, setEmailErrorSnackbar] = useState<boolean>(false);
 
-  state = {
-    name: "",
-    nameError: false,
-    email: "",
-    emailError: false,
-    subject: "",
-    subjectError: false,
-    message: "",
-    messageError: false,
-    recaptcha: "",
-    emailDialog: false,
-    phoneDialog: false,
-    emailSuccessSnackbar: false,
-    recaptchaSnackbar: false,
-    emailErrorSnackbar: false
-  };
-
-  handleInputChange = (event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>): void => {
-    const newState: any = {};
-    let target = event.currentTarget;
-    let value = target.value;
-    let name = target.name;
-    newState[name] = value;
-    this.setState(newState);
-  };
-
-  handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
     let emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(.\w{2,63})+$/;
     let validEmail = true;
 
-    !this.state.name ? this.setState({nameError: "Required field"}) : this.setState({nameError: false});
-    !this.state.subject ? this.setState({subjectError: "Required field"}) : this.setState({subjectError: false});
-    !this.state.message ? this.setState({messageError: "Required field"}) : this.setState({messageError: false});
-    !this.state.recaptcha ? this.setState({recaptchaSnackbar: true}) : this.setState({recaptchaSnackbar: false});
+    !name ? setNameError("Required field") : setNameError(false);
+    !subject ? setSubjectError("Required field") : setSubjectError(false);
+    !message ? setMessageError("Required field") : setMessageError(false);
+    !recaptcha ? setRecaptchaSnackbar(true) : setRecaptchaSnackbar(false);
 
-    if (!this.state.email) {
-      this.setState({emailError: "Required field"})
+    if (!email) {
+      setEmailError("Required field")
       validEmail = false;
     }
-    else if(!emailRegex.test(this.state.email)) {
-      this.setState({emailError: "Not a valid email"});
+    else if(!emailRegex.test(email)) {
+      setEmailError("Not a valid email");
       validEmail = false;
     }
     else {
-      this.setState({emailError: false});
+      setEmailError(false);
       validEmail = true;
     }
 
-    if (this.state.name && validEmail === true && this.state.subject && this.state.message && this.state.recaptcha) {
-      this.setState({
-        emailDialog: false,
-      }, this.sendEmail);
+    if (name && validEmail === true && subject && message && recaptcha) {
+      setEmailDialog(false);
+      sendEmail();
     }
     event.preventDefault();
-  };
+  }; 
 
-  async sendEmail() {
+  const sendEmail = async () => {
     var data = {
-      name: this.state.name,
-      email: this.state.email,
-      subject: this.state.subject,
-      message: this.state.message,
-      recaptcha: this.state.recaptcha
+      name: name,
+      email: email,
+      subject: subject,
+      message: message,
+      recaptcha: recaptcha
     };
     try {
       await axios.post(`${process.env.REACT_APP_API || ""}/send`, data);
-      this.setState({
-        emailSuccessSnackbar: true,
-        name: "",
-        nameError: false,
-        email: "",
-        emailError: false,
-        subject: "",
-        subjectError: false,
-        message: "",
-        messageError: false,
-        recaptcha: ""
-      });
+      setEmailSuccessSnackbar(true);
+      clear();
     } catch(e) {
-      this.setState({
-        emailErrorSnackbar: true,
-        recaptcha: ""
-      });
+      setEmailErrorSnackbar(true);
+      setRecaptcha("");
     }
   }
 
-  clear = ():void => {
-    this.setState({
-      name: "",
-      nameError: false,
-      email: "",
-      emailError: false,
-      subject: "",
-      subjectError: false,
-      message: "",
-      messageError: false
-    });
+  const clear = ():void => {
+    setName("");
+    setNameError(false);
+    setEmail("");
+    setEmailError(false);
+    setSubject("");
+    setSubjectError(false);
+    setMessage("");
+    setMessageError(false);
   };
 
-  render() {
-    return (
-      <>
-        <Helmet>
-          <title>Brian Hamilton | Contact</title>
-        </Helmet>
-        <div className={cx("contact-map")}></div>
-        <div className={cx("contact-top-container")}>
-          <div className={cx("contact-chooser")}>
-            <div className={cx("contact-option")} onClick={() => this.setState({emailDialog: true})}>
-              <i className="material-icons">email</i>
-              <div className={cx("contact-text")}>Shoot me an email</div>
-            </div>
-            <div className={cx("contact-option")} onClick={() => this.setState({phoneDialog: true})}>
-              <i className="material-icons">phone</i>
-              <div className={cx("contact-text")}>Give me a ring</div>
-            </div>
+  return (
+    <>
+      <Helmet>
+        <title>Brian Hamilton | Contact</title>
+      </Helmet>
+      <div className={cx("contact-map")}></div>
+      <div className={cx("contact-top-container")}>
+        <div className={cx("contact-chooser")}>
+          <div className={cx("contact-option")} onClick={() => setEmailDialog(true)}>
+            <i className="material-icons">email</i>
+            <div className={cx("contact-text")}>Shoot me an email</div>
+          </div>
+          <div className={cx("contact-option")} onClick={() => setPhoneDialog(true)}>
+            <i className="material-icons">phone</i>
+            <div className={cx("contact-text")}>Give me a ring</div>
           </div>
         </div>
-        <Dialog
-          fullScreen={true}
-          open={this.state.emailDialog}
-          onClose={() => this.setState({emailDialog: false})}
-        >
-          <DialogContent className={cx("contact-dialog")}>
-            <div className={cx("dialog-exit")}><i className="material-icons" onClick={() => this.setState({emailDialog: false})} tabIndex={0}>clear</i></div>
-            <form onSubmit={this.handleSubmit} noValidate>
-              <Input
-                type="text"
-                name="name"
-                placeholder="Full Name *"
-                value={this.state.name}
-                errorText={this.state.nameError}
-                onChange={this.handleInputChange}
+      </div>
+      <Dialog
+        fullScreen={true}
+        open={emailDialog}
+        onClose={() => setEmailDialog(false)}
+      >
+        <DialogContent className={cx("contact-dialog")}>
+          <div className={cx("dialog-exit")}><i className="material-icons" onClick={() => setEmailDialog(false)} tabIndex={0}>clear</i></div>
+          <form onSubmit={handleSubmit} noValidate>
+            <Input
+              type="text"
+              name="name"
+              placeholder="Full Name *"
+              value={name}
+              errorText={nameError}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.currentTarget.value)}
+            />
+            <Input
+              type="email"
+              name="email"
+              placeholder="Email Address *"
+              value={email}
+              errorText={emailError}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.currentTarget.value)}
+            />
+            <Input
+              type="text"
+              name="subject"
+              placeholder="Subject *"
+              value={subject}
+              errorText={subjectError}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSubject(e.currentTarget.value)}
+            />
+            <TextArea
+              name="message"
+              rows={6}
+              placeholder="Message *"
+              value={message}
+              errorText={messageError}
+              onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setMessage(e.currentTarget.value)}
+            />
+            <div className={cx("recaptcha-container")}>
+              <ReCAPTCHA
+                sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY || ""}
+                onChange={(token: string | null) => setRecaptcha(token)}
               />
-              <Input
-                type="email"
-                name="email"
-                placeholder="Email Address *"
-                value={this.state.email}
-                errorText={this.state.emailError}
-                onChange={this.handleInputChange}
-              />
-              <Input
-                type="text"
-                name="subject"
-                placeholder="Subject *"
-                value={this.state.subject}
-                errorText={this.state.subjectError}
-                onChange={this.handleInputChange}
-              />
-              <TextArea
-                name="message"
-                rows={6}
-                placeholder="Message *"
-                value={this.state.message}
-                errorText={this.state.messageError}
-                onChange={this.handleInputChange}
-              />
-              <div className={cx("recaptcha-container")}>
-                <ReCAPTCHA
-                  sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY || ""}
-                  onChange={(token: string | null) => this.setState({recaptcha: token})}
-                />
-              </div>
-              <div className={cx("dialog-button-container")}>
-                <ButtonLink type="button" onButtonClick={this.clear}>Clear</ButtonLink>
-                <ButtonLink type="submit">Send Email</ButtonLink>
-              </div>
-            </form>
-          </DialogContent>
-        </Dialog>
-        <Dialog
-          fullScreen={true}
-          open={this.state.phoneDialog}
-          onClose={() => this.setState({phoneDialog: false})}
-        >
-          <DialogContent className={cx("contact-dialog", "center")}>
-            <div className={cx("dialog-exit")}><i className="material-icons" onClick={() => this.setState({phoneDialog: false})} tabIndex={0}>clear</i></div>
-            <p>On a phone? Tap the button below.</p>
-            <div className={cx("dialog-button-container", "phone")}>
-              <RoundButtonLink type="a" href="tel:1-518-391-5033" onButtonClick={() => this.setState({phoneDialog: false})}><i className="material-icons">phone</i></RoundButtonLink>
             </div>
-            <p className={cx("phone-wrap")}><span>Otherwise, call me at </span><span><strong>(518) 391-5033</strong>.</span></p>
-            <span></span>
-          </DialogContent>
-        </Dialog>
-        <CustomSnackbar
-          open={this.state.emailSuccessSnackbar}
-          message="Email sent!"
-          onClose={() => this.setState({emailSuccessSnackbar: false})}
-          type="success"
-        />
-        <CustomSnackbar
-          open={this.state.recaptchaSnackbar}
-          message="Are you a robot?"
-          onClose={() => this.setState({recaptchaSnackbar: false})}
-          type="warning"
-        />
-        <CustomSnackbar
-          open={this.state.emailErrorSnackbar}
-          message="Email failed to send"
-          onClose={() => this.setState({emailErrorSnackbar: false})}
-          type="error"
-        />
-      </>
-    );
-  }
+            <div className={cx("dialog-button-container")}>
+              <ButtonLink type="button" onButtonClick={clear}>Clear</ButtonLink>
+              <ButtonLink type="submit">Send Email</ButtonLink>
+            </div>
+          </form>
+        </DialogContent>
+      </Dialog>
+      <Dialog
+        fullScreen={true}
+        open={phoneDialog}
+        onClose={() => setPhoneDialog(false)}
+      >
+        <DialogContent className={cx("contact-dialog", "center")}>
+          <div className={cx("dialog-exit")}><i className="material-icons" onClick={() => setPhoneDialog(false)} tabIndex={0}>clear</i></div>
+          <p>On a phone? Tap the button below.</p>
+          <div className={cx("dialog-button-container", "phone")}>
+            <RoundButtonLink type="a" href="tel:1-518-391-5033" onButtonClick={() => setPhoneDialog(false)}><i className="material-icons">phone</i></RoundButtonLink>
+          </div>
+          <p className={cx("phone-wrap")}><span>Otherwise, call me at </span><span><strong>(518) 391-5033</strong>.</span></p>
+          <span></span>
+        </DialogContent>
+      </Dialog>
+      <CustomSnackbar
+        open={emailSuccessSnackbar}
+        message="Email sent!"
+        onClose={() => setEmailSuccessSnackbar(false)}
+        type="success"
+      />
+      <CustomSnackbar
+        open={recaptchaSnackbar}
+        message="Are you a robot?"
+        onClose={() => setRecaptchaSnackbar(false)}
+        type="warning"
+      />
+      <CustomSnackbar
+        open={emailErrorSnackbar}
+        message="Email failed to send"
+        onClose={() => setEmailErrorSnackbar(false)}
+        type="error"
+      />
+    </>
+  );
 };
 
 export default withMobileDialog()(Contact);

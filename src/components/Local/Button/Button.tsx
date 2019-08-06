@@ -24,82 +24,77 @@ type Props = {
 
 let cx = classNames.bind(styles);
 
-class BaseButton extends React.Component<Props> {
+const BaseButton = (props: Props) => {
 
-  render() {
+  var btnClass = cx({
+    "button-link": props.isButtonLink,
+    "round-button-link": props.isRoundButtonLink,
+    "white": props.white,
+    "inverse": props.inverse
+  }, props.classNames);
 
-    const { type, classNames } = this.props;
+  const Button = () => {
+    switch(props.type) {
+      case 'button':
+        return (
+          <button
+            type="button"
+            className={btnClass}
+            onClick={props.onButtonClick}
+          >
+            {props.children}
+          </button>
+        );
+      case 'submit':
+        return (
+          <button
+            type="submit"
+            className={btnClass}
+          >
+            {props.children}
+          </button>
+        );
+      case 'a':
+        return (
+          <a
+            href={props.href}
+            target={props.target}
+            rel={props.rel}
+            className={btnClass}
+          >
+            {props.children}
+          </a>
+        );
+      case 'link':
+        return (
+          <Link
+            to={props.to || "/"}
+            className={btnClass}
+          >
+            {props.children}
+          </Link>
+        );
+      case 'nav-link':
+        return (
+          <NavLink
+            exact={props.exact || false}
+            className={btnClass}
+            to={props.to || "/"}
+            activeClassName={props.activeClassName}
+          >
+            {props.children}
+          </NavLink>
+        );
+      default:
+        return null;
+    }
+  };
 
-    var btnClass = cx({
-      "button-link": this.props.isButtonLink,
-      "round-button-link": this.props.isRoundButtonLink,
-      "white": this.props.white,
-      "inverse": this.props.inverse
-    }, classNames);
-
-    const Button = () => {
-      switch(type) {
-        case 'button':
-          return (
-            <button
-              type="button"
-              className={btnClass}
-              onClick={this.props.onButtonClick}
-            >
-              {this.props.children}
-            </button>
-          );
-        case 'submit':
-          return (
-            <button
-              type="submit"
-              className={btnClass}
-            >
-              {this.props.children}
-            </button>
-          );
-        case 'a':
-          return (
-            <a
-              href={this.props.href}
-              target={this.props.target}
-              rel={this.props.rel}
-              className={btnClass}
-            >
-              {this.props.children}
-            </a>
-          );
-        case 'link':
-          return (
-            <Link
-              to={this.props.to || "/"}
-              className={btnClass}
-            >
-              {this.props.children}
-            </Link>
-          );
-        case 'nav-link':
-          return (
-            <NavLink
-              exact={this.props.exact || false}
-              className={btnClass}
-              to={this.props.to || "/"}
-              activeClassName={this.props.activeClassName}
-            >
-              {this.props.children}
-            </NavLink>
-          );
-        default:
-          return null;
-      }
-    };
-
-    return (
-      <>
-        {Button()}
-      </>
-    );
-  }
+  return (
+    <>
+      {Button()}
+    </>
+  );
 };
 
 export const Button = (props: Props) => (

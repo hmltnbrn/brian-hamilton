@@ -7,21 +7,19 @@ import Technologies from './Technologies/Technologies';
 import Projects from './Projects/Projects';
 import ContactMe from './ContactMe/ContactMe';
 
-class Home extends React.Component<{}> {
-  render() {
-    return (
-      <>
-        <Helmet>
-          <title>Brian Hamilton</title>
-        </Helmet>
-        <Banner />
-        <About />
-        <Technologies />
-        <Projects />
-        <ContactMe />
-      </>
-    );
-  }
-}
+const Home = () => {
+  return (
+    <>
+      <Helmet>
+        <title>Brian Hamilton</title>
+      </Helmet>
+      <Banner />
+      <About />
+      <Technologies />
+      <Projects />
+      <ContactMe />
+    </>
+  );
+};
 
 export default Home;
