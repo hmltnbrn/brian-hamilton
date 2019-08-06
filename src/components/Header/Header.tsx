@@ -31,13 +31,12 @@ const Header = ({ windowWidth, toggleDrawer }: Props) => {
       <FixedMenu/>
       <div className={cx("header-container")}>
         <div className={cx("header-left")}>
-        {windowWidth < 800 ?
+        {windowWidth < 800 && (
           <i className={`material-icons ${cx("drawer-opener")}`} onClick={() => toggleDrawer()}>menu</i>
-          : <span></span>
-        }
+        )}
         </div>
         <div className={cx("header-right")}>
-          {windowWidth >= 800 ?
+          {windowWidth >= 800 ? (
             <div className={cx("header-links")}>
               <Button type="nav-link" exact to="/" classNames={[cx("header-link")]} activeClassName={cx("active")}>Home</Button>
               <Button type="nav-link" to="/resume" classNames={[cx("header-link")]} activeClassName={cx("active")}>Resume</Button>
@@ -46,13 +45,12 @@ const Header = ({ windowWidth, toggleDrawer }: Props) => {
               <div className={cx("vertical-rule")}></div>
               <Button type="a" href="https://www.linkedin.com/in/brian-hamilton-520835a8" target="_blank" rel="noopener noreferrer"><LinkedInIcon /></Button>
               <Button type="a" href="https://github.com/hmltnbrn" target="_blank" rel="noopener noreferrer"><GitHubIcon /></Button>
-            </div>
-            : 
+            </div> ) : (
             <div className={cx("header-links")}>
               <Button type="a" href="https://www.linkedin.com/in/brian-hamilton-520835a8" target="_blank" rel="noopener noreferrer"><LinkedInIcon /></Button>
               <Button type="a" href="https://github.com/hmltnbrn" target="_blank" rel="noopener noreferrer"><GitHubIcon /></Button>
             </div>
-          }
+          )}
         </div>
       </div>
       <SideNav/>
