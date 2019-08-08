@@ -3,6 +3,8 @@ import styles from './Project.module.scss';
 import { connect } from 'react-redux';
 import { getProject } from '../actions';
 
+import { AppState } from "../../../store";
+
 import classNames from 'classnames/bind';
 
 type Props = {
@@ -40,7 +42,7 @@ const Project = (props: Props) => {
   );
 };
 
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = (state: AppState) => ({
   dialog: state.portfolio.dialog
 });
 

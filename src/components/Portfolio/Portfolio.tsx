@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { getPortfolio } from './actions';
 import { Helmet } from "react-helmet";
 
+import { AppState } from "../../store";
+
 import classNames from 'classnames/bind';
 
 import Project from './Project/Project';
@@ -74,7 +76,7 @@ const Portfolio = ({ portfolio, getPortfolio }: Props) => {
   );
 };
 
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = (state: AppState) => ({
   portfolio: state.portfolio.portfolio
 });
 

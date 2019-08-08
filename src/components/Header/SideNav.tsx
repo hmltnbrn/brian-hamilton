@@ -4,6 +4,8 @@ import styles from './SideNav.module.scss';
 import { connect } from 'react-redux';
 import { toggleDrawer } from './actions';
 
+import { AppState } from "../../store";
+
 import classNames from 'classnames/bind';
 
 import { Button } from '../Local/Button/Button';
@@ -42,7 +44,7 @@ const SideNav = ({ drawer, toggleDrawer }: Props) => {
   );
 };
 
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = (state: AppState) => ({
   drawer: state.header.drawer
 });
 

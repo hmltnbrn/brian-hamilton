@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { toggleDialog } from '../actions';
 import { compose } from 'redux';
 
+import { AppState } from "../../../store";
+
 import classNames from 'classnames/bind';
 
 import Dialog from '@material-ui/core/Dialog';
@@ -78,7 +80,7 @@ const ProjectDialog = ({ project, dialog, toggleDialog }: Props) => {
   );
 };
 
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = (state: AppState) => ({
   dialog: state.portfolio.dialog,
   project: state.portfolio.project
 });

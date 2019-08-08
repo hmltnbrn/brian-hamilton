@@ -7,6 +7,8 @@ const initialState = {};
 
 const composeEnhancers = composeWithDevTools({});
 
+export type AppState = ReturnType<typeof rootReducer>;
+
 const store = createStore(rootReducer, initialState, composeEnhancers(
   applyMiddleware(thunk)
 ));

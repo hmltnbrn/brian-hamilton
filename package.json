@@ -1,6 +1,6 @@
 {
   "name": "brian-hamilton",
-  "version": "2.2.3",
+  "version": "2.2.4",
   "description": "My personal website.",
   "main": "index.js",
   "license": "MIT",
@@ -31,8 +31,8 @@
     "@material-ui/core": "^4.3.1",
     "@types/classnames": "^2.2.9",
     "@types/jest": "^24.0.17",
-    "@types/node": "^12.6.9",
-    "@types/react": "^16.8.24",
+    "@types/node": "^12.7.1",
+    "@types/react": "^16.8.25",
     "@types/react-dom": "^16.8.5",
     "@types/react-google-recaptcha": "^1.1.0",
     "@types/react-helmet": "^5.0.9",
