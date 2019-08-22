@@ -6,8 +6,6 @@ import { toggleDrawer } from './actions';
 import { compose } from 'redux';
 import { withRouter } from 'react-router-dom';
 
-import { AppState } from "../../store";
-
 import classNames from 'classnames/bind';
 
 import { Button } from '../Local/Button/Button';
@@ -20,52 +18,114 @@ import { GitHubIcon } from '../../icons/GitHub';
 import FixedMenu from './FixedMenu';
 import SideNav from './SideNav';
 
-type Props = {
-  windowWidth: number,
-  toggleDrawer: () => void
-};
+interface Props {
+  windowWidth: number;
+  toggleDrawer: () => void;
+}
 
-let cx = classNames.bind(styles);
+const cx = classNames.bind(styles);
 
-const Header = ({ windowWidth, toggleDrawer }: Props) => {
+const Header = ({ ...props }: Props): JSX.Element => {
   return (
     <header>
-      <FixedMenu/>
-      <div className={cx("header-container")}>
-        <div className={cx("header-left")}>
-        {windowWidth < 800 && (
-          <i className={`material-icons ${cx("drawer-opener")}`} onClick={() => toggleDrawer()}>menu</i>
-        )}
+      <FixedMenu />
+      <div className={cx('header-container')}>
+        <div className={cx('header-left')}>
+          {props.windowWidth < 800 && (
+            <i
+              className={`material-icons ${cx('drawer-opener')}`}
+              onClick={props.toggleDrawer}
+            >
+              menu
+            </i>
+          )}
         </div>
-        <div className={cx("header-right")}>
-          {windowWidth >= 800 ? (
-            <div className={cx("header-links")}>
-              <Button type="nav-link" exact to="/" classNames={[cx("header-link")]} activeClassName={cx("active")}>Home</Button>
-              <Button type="nav-link" to="/resume" classNames={[cx("header-link")]} activeClassName={cx("active")}>Resume</Button>
-              <Button type="nav-link" to="/portfolio" classNames={[cx("header-link")]} activeClassName={cx("active")}>Portfolio</Button>
-              <Button type="nav-link" to="/contact" classNames={[cx("header-link")]} activeClassName={cx("active")}>Contact</Button>
-              <div className={cx("vertical-rule")}></div>
-              <Button type="a" href="https://www.linkedin.com/in/brian-hamilton-520835a8" target="_blank" rel="noopener noreferrer"><LinkedInIcon /></Button>
-              <Button type="a" href="https://github.com/hmltnbrn" target="_blank" rel="noopener noreferrer"><GitHubIcon /></Button>
-            </div> ) : (
-            <div className={cx("header-links")}>
-              <Button type="a" href="https://www.linkedin.com/in/brian-hamilton-520835a8" target="_blank" rel="noopener noreferrer"><LinkedInIcon /></Button>
-              <Button type="a" href="https://github.com/hmltnbrn" target="_blank" rel="noopener noreferrer"><GitHubIcon /></Button>
+        <div className={cx('header-right')}>
+          {props.windowWidth >= 800 ? (
+            <div className={cx('header-links')}>
+              <Button
+                type="nav-link"
+                exact={true}
+                to="/"
+                classNames={[cx('header-link')]}
+                activeClassName={cx('active')}
+              >
+                Home
+              </Button>
+              <Button
+                type="nav-link"
+                to="/resume"
+                classNames={[cx('header-link')]}
+                activeClassName={cx('active')}
+              >
+                Resume
+              </Button>
+              <Button
+                type="nav-link"
+                to="/portfolio"
+                classNames={[cx('header-link')]}
+                activeClassName={cx('active')}
+              >
+                Portfolio
+              </Button>
+              <Button
+                type="nav-link"
+                to="/contact"
+                classNames={[cx('header-link')]}
+                activeClassName={cx('active')}
+              >
+                Contact
+              </Button>
+              <div className={cx('vertical-rule')} />
+              <Button
+                type="a"
+                href="https://www.linkedin.com/in/brian-hamilton-520835a8"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <LinkedInIcon />
+              </Button>
+              <Button
+                type="a"
+                href="https://github.com/hmltnbrn"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <GitHubIcon />
+              </Button>
+            </div>
+          ) : (
+            <div className={cx('header-links')}>
+              <Button
+                type="a"
+                href="https://www.linkedin.com/in/brian-hamilton-520835a8"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <LinkedInIcon />
+              </Button>
+              <Button
+                type="a"
+                href="https://github.com/hmltnbrn"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <GitHubIcon />
+              </Button>
             </div>
           )}
         </div>
       </div>
-      <SideNav/>
+      <SideNav />
     </header>
   );
 };
 
-const mapStateToProps = (state: AppState) => ({
-  drawer: state.header.drawer
-});
-
 export default compose<any>(
   withRouter,
-  connect(mapStateToProps, { toggleDrawer }),
+  connect(
+    null,
+    { toggleDrawer }
+  ),
   windowWidth
 )(Header);

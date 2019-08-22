@@ -6,40 +6,42 @@ import { toggleDrawer } from './actions';
 
 import classNames from 'classnames/bind';
 
-type Props = {
-  toggleDrawer: () => void
-};
+interface Props {
+  toggleDrawer: () => void;
+}
 
-let cx = classNames.bind(styles);
+const cx = classNames.bind(styles);
 
-const FixedMenu = ({ toggleDrawer }: Props) => {
+const FixedMenu = ({ ...props }: Props): JSX.Element => {
   const [isHide, setIsHide] = useState<boolean>(true);
-  const appearValue: number = 100;
+  const appearValue = 100;
 
   useEffect(() => {
-    const hideBar = () => {
+    const hideBar = (): void => {
       if (window.scrollY < appearValue || window.innerWidth < 800) {
         setIsHide(true);
-      }
-      else {
+      } else {
         setIsHide(false);
       }
-    }
+    };
 
     window.addEventListener('scroll', hideBar);
 
-    return function cleanup() {
+    return function cleanup(): void {
       window.removeEventListener('scroll', hideBar);
     };
   }, [isHide, appearValue]);
 
   return (
-    <div className={cx("top-menu", isHide ? 'hide' : '')}>
-      <button onClick={() => toggleDrawer()}>
+    <div className={cx('top-menu', isHide ? 'hide' : '')}>
+      <button onClick={props.toggleDrawer}>
         <i className="material-icons">menu</i>
       </button>
     </div>
   );
 };
 
-export default connect(null, { toggleDrawer })(FixedMenu);
+export default connect(
+  null,
+  { toggleDrawer }
+)(FixedMenu);

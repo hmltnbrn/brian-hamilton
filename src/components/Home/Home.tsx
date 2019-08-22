@@ -1,5 +1,5 @@
 import React from 'react';
-import { Helmet } from "react-helmet";
+import { Helmet } from 'react-helmet';
 
 import Banner from '../Banner/Banner';
 import About from './About/About';
@@ -7,7 +7,7 @@ import Technologies from './Technologies/Technologies';
 import Projects from './Projects/Projects';
 import ContactMe from './ContactMe/ContactMe';
 
-const Home = () => {
+const Home = (): JSX.Element => {
   return (
     <>
       <Helmet>

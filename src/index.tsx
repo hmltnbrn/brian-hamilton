@@ -13,14 +13,15 @@ import store from './store';
 const root: HTMLElement | null = document.getElementById('root');
 
 if (root != null) {
-  ReactDOM.render((
-    <Provider store = { store }>
+  ReactDOM.render(
+    <Provider store={store}>
       <BrowserRouter>
         <ScrollToTop>
           <App />
         </ScrollToTop>
       </BrowserRouter>
-    </Provider>
-  ), root);
+    </Provider>,
+    root
+  );
   serviceWorker.unregister();
 }

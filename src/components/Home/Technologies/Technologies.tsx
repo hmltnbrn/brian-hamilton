@@ -7,13 +7,16 @@ import { ButtonLink } from '../../Local/Button/Button';
 
 import Technology from './Technology/Technology';
 
-let cx = classNames.bind(styles);
+const cx = classNames.bind(styles);
 
-const Technologies = () => {
+const Technologies = (): JSX.Element => {
   return (
-    <div className={cx("home-technologies")}>
-      <p>Working with modern frameworks and languages, I build comprehensive web projects and interactive data visualizations.</p>
-      <div className={cx("all-tech")}>
+    <div className={cx('home-technologies')}>
+      <p>
+        Working with modern frameworks and languages, I build comprehensive web
+        projects and interactive data visualizations.
+      </p>
+      <div className={cx('all-tech')}>
         <Technology
           href="https://angular.io/"
           src="images/tech-logos/angular.png"
@@ -51,8 +54,10 @@ const Technologies = () => {
           title="React"
         />
       </div>
-      <div className={cx("resume-link-container")}>
-        <ButtonLink type="link" to="resume" inverse>Take a Look at My Resume</ButtonLink>
+      <div className={cx('resume-link-container')}>
+        <ButtonLink type="link" to="resume" inverse={true}>
+          Take a Look at My Resume
+        </ButtonLink>
       </div>
     </div>
   );

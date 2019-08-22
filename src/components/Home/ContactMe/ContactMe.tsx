@@ -5,15 +5,20 @@ import classNames from 'classnames/bind';
 
 import { ButtonLink } from '../../Local/Button/Button';
 
-let cx = classNames.bind(styles);
+const cx = classNames.bind(styles);
 
-const ContactMe = () => {
+const ContactMe = (): JSX.Element => {
   return (
-    <div className={cx("contact-me-container")}>
-      <div className={cx("overlay")}>
+    <div className={cx('contact-me-container')}>
+      <div className={cx('overlay')}>
         <h1>Want to chat?</h1>
-        <p>Whether it's to talk about politics, a freelance opportunity, or the latest React, send me a message.</p>
-        <ButtonLink type="link" to="contact" white>Click Here to Contact Me</ButtonLink>
+        <p>
+          Whether it's to talk about politics, a freelance opportunity, or the
+          latest React, send me a message.
+        </p>
+        <ButtonLink type="link" to="contact" white={true}>
+          Click Here to Contact Me
+        </ButtonLink>
       </div>
     </div>
   );

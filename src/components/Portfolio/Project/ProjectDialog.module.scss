@@ -1,5 +1,5 @@
-@import "./styles/variables.scss";
-@import "./styles/mixins.scss";
+@import './styles/variables.scss';
+@import './styles/mixins.scss';
 
 .project-dialog {
   position: relative;
@@ -25,7 +25,7 @@
       height: 100%;
       top: 0;
       left: 0;
-      background: rgba(0, 0, 0, .1);
+      background: rgba(0, 0, 0, 0.1);
     }
   }
   h2 {
@@ -52,7 +52,7 @@
 
 .exit-container {
   position: absolute;
-  top: 15px;
+  top: 27px;
   right: 31px;
   width: 30px;
   height: 30px;
@@ -78,7 +78,7 @@
 
 .active-container {
   position: absolute;
-  top: 15px;
+  top: 27px;
   left: 31px;
   width: auto;
   height: auto;
