@@ -8,13 +8,12 @@ let express = require('express'),
     nodemailer = require('nodemailer'),
     { google } = require("googleapis"),
     bodyParser = require('body-parser'),
-    dotenv = require('dotenv-safe'),
     axios = require('axios'),
     asyncWrap = require('./middleware').asyncWrap,
     jsonfile = require('jsonfile'),
     app = express();
 
-dotenv.load({
+require('dotenv-safe').config({
   allowEmptyValues: true
 });
 

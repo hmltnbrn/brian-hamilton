@@ -12,10 +12,11 @@ This is the underlying code for my website, [brianhamilton.me](https://www.brian
 
 2. Clone the repository either through command line or a ZIP download.
 
-3. Use terminal/cmd/powershell/something similar to navigate to the directory with the files and type the command below. This will automatically install all dependencies listed in the **package.json** file.
+3. Use terminal/cmd/powershell/something similar to navigate to the directory with the files and type the two commands below. This will automatically install all dependencies listed in the **package.json** file and a few necessary global modules.
 
     ```
-    npm install
+    yarn global add nodemon tslint typescript
+    yarn install
     ```
 
 4. Create your own **.env** file and copy everything over from the **.env.example** file. You will then need to fill in those values. They are necessary for implementing the mailing and reCAPTCHA functionality in a local environment. Refer to steps 2 and 3 in Usage Notes for more details.
@@ -23,7 +24,7 @@ This is the underlying code for my website, [brianhamilton.me](https://www.brian
 5. Type and run the command below to run the site. This will automatically open a browser window and navigate to [http://localhost:3000](http://localhost:3000). This also automatically runs the back-end server on port 8080. They will run concurrently.
 
     ```
-    npm start
+    yarn start
     ```
 
 ## Usage Notes
@@ -36,7 +37,11 @@ This is the underlying code for my website, [brianhamilton.me](https://www.brian
 
 4. The heroku-ssl-redirect module is included, but will only do anything with proper SSL certificates in use on Heroku.
 
-5. TypeScript testing has already been done on the React component files. To learn more on how to do this on your own, refer to the [TypeScript documentation](https://www.typescriptlang.org/docs/home.html).
+5. TypeScript testing has already been done on the React component files. To learn more on how to do this on your own, refer to the [TypeScript documentation](https://www.typescriptlang.org/docs/home.html). You can also run the [TSLint](https://palantir.github.io/tslint/) command below:
+
+    ```
+    yarn run lint
+    ```
 
 6. While in development, both the back-end and front-end servers will automatically restart after a file is saved while editing.
 
