@@ -37,10 +37,14 @@ interface Props {
   getPortfolio: () => void;
 }
 
-const Portfolio = ({ portfolio, ...props }: Props): JSX.Element => {
+// tslint:disable-next-line: no-shadowed-variable
+const Portfolio = ({ portfolio, getPortfolio }: Props): JSX.Element => {
   useEffect(() => {
-    props.getPortfolio();
-  }, [props]);
+    const fetchData = (): void => {
+      return getPortfolio();
+    };
+    fetchData();
+  }, [getPortfolio]);
 
   const completeProjects = portfolio
     .filter((project: ProjectType) => project.complete)

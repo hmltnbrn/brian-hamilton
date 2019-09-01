@@ -118,6 +118,20 @@
   },
   {
     "id": 10,
+    "title": "Brian Hamilton Dot Me",
+    "year": "2016 - 2019",
+    "description": "My own personal website. I use this site as a test bed for learning different Node.js/React technologies or new techniques. It's gone through a series of iterations, ending with this one.",
+    "technology": ["Node.js", "Express", "React", "React Redux", "TypeScript", "TSLint", "SCSS"],
+    "background": "'https://i.brianhamilton.me/brian-hamilton.png'",
+    "links": [
+      { "href": "https://github.com/hmltnbrn/brian-hamilton", "text": "Repository" },
+      { "href": "https://www.brianhamilton.me/", "text": "Live Site" }
+    ],
+    "complete": true,
+    "active": true
+  },
+  {
+    "id": 11,
     "title": "BookBin",
     "year": "2017",
     "description": "A modern refresh of the Classroom Library project. Currently on hold.",
@@ -128,7 +142,7 @@
     "active": false
   },
   {
-    "id": 11,
+    "id": 12,
     "title": "Spotify Shuffle",
     "year": "2019",
     "description": "A third-party Spotify app for Android that fetches playlists and allows random shuffling. It prevents interference from Spotify's own sorting algorithm, which can cause the same songs to be replayed constantly.",
