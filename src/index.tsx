@@ -23,5 +23,5 @@ if (root != null) {
     </Provider>,
     root
   );
-  serviceWorker.unregister();
+  serviceWorker.register();
 }
