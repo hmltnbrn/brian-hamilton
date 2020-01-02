@@ -74,6 +74,7 @@ const Resume = (): JSX.Element => {
                       <li>GraphQL</li>
                       <li>Webpack / Babel</li>
                       <li>PostCSS</li>
+                      <li>Wordpress</li>
                     </ul>
                   </li>
                   <li>
@@ -147,7 +148,7 @@ const Resume = (): JSX.Element => {
                 <h2>Software Engineer</h2>
                 <h3>DGDean</h3>
               </div>
-              <h4>New York, New York | July 2017 - Present</h4>
+              <h4>New York, New York | July 2017 - December 2019</h4>
               <ul>
                 <li>
                   Front-end engineer for the National Kitchen and Bath
