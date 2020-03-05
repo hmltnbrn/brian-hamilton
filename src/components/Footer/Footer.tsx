@@ -39,7 +39,7 @@ const Footer = (): JSX.Element => {
           <i className="material-icons">email</i>
         </a>
         <a
-          href="https://twitter.com/hmltnbrn"
+          href="https://twitter.com/waynejohnaton"
           target="_blank"
           rel="noopener noreferrer"
         >

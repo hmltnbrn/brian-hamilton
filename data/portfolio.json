@@ -154,5 +154,18 @@
     ],
     "complete": false,
     "active": true
+  },
+  {
+    "id": 13,
+    "title": "A Data Exploration of Jeopardy! from 1984 to the Present",
+    "year": "2020",
+    "description": "My master's capstone project, diving into the data behind Jeopardy!. The website jArchive was scraped with a Python script and everything stored in a PostgreSQL database. After a series of analyses, the results will be visualized using D3.js.",
+    "technology": ["Node.js", "Express", "D3.js", "PostgreSQL", "Python"],
+    "background": "'https://i.brianhamilton.me/trebot.jpg'",
+    "links": [
+      { "href": "https://github.com/hmltnbrn/jeopardy-scrape", "text": "Python Repository" }
+    ],
+    "complete": false,
+    "active": true
   }
 ]

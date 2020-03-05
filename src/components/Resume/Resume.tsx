@@ -86,6 +86,7 @@ const Resume = (): JSX.Element => {
                       <li>OracleDB</li>
                       <li>Tableau</li>
                       <li>D3.js</li>
+                      <li>MALLET</li>
                     </ul>
                   </li>
                   <li>

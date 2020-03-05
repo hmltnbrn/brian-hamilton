@@ -29,15 +29,18 @@ const CustomSnackbar = ({
         return <i className="material-icons">warning</i>;
       case 'error':
         return <i className="material-icons">error</i>;
+      case 'notification':
+        return <i className="material-icons">notifications</i>;
       default:
         return null;
     }
   };
 
   const backgroundColor: any = {
-    success: '#2e7d32',
-    warning: '#f9a825',
-    error: '#c62828'
+    success: '#4caf50',
+    warning: '#ff9800',
+    error: '#f44336',
+    notification: '#2196f3'
   };
 
   return (

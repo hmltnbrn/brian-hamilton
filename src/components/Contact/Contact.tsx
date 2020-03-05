@@ -31,6 +31,10 @@ const Contact = (): JSX.Element => {
   const [recaptcha, setRecaptcha] = useState<string | null>('');
   const [emailDialog, setEmailDialog] = useState<boolean>(false);
   const [phoneDialog, setPhoneDialog] = useState<boolean>(false);
+  const [emailSendingSnackbar, setEmailSendingSnackbar] = useState<boolean>(
+    // tslint:disable-next-line: trailing-comma
+    false
+  );
   const [emailSuccessSnackbar, setEmailSuccessSnackbar] = useState<boolean>(
     // tslint:disable-next-line: trailing-comma
     false
@@ -74,10 +78,14 @@ const Contact = (): JSX.Element => {
       recaptcha
     };
     try {
+      setEmailSendingSnackbar(true);
       await axios.post(`${process.env.REACT_APP_API || ''}/send`, data);
+      setEmailSendingSnackbar(false);
       setEmailSuccessSnackbar(true);
+      setRecaptcha('');
       clear();
     } catch (e) {
+      setEmailSendingSnackbar(false);
       setEmailErrorSnackbar(true);
       setRecaptcha('');
     }
@@ -215,7 +223,7 @@ const Contact = (): JSX.Element => {
             </RoundButtonLink>
           </div>
           <p className={cx('phone-wrap')}>
-            <span>Otherwise, call me at </span>
+            <span>If not, call me at </span>
             <span>
               <strong>(518) 391-5033</strong>.
             </span>
@@ -223,6 +231,12 @@ const Contact = (): JSX.Element => {
           <span />
         </DialogContent>
       </Dialog>
+      <CustomSnackbar
+        open={emailSendingSnackbar}
+        message="Sending email..."
+        onClose={(): void => setEmailSendingSnackbar(false)}
+        type="notification"
+      />
       <CustomSnackbar
         open={emailSuccessSnackbar}
         message="Email sent!"
