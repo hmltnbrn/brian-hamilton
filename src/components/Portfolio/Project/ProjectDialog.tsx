@@ -3,6 +3,7 @@ import styles from './ProjectDialog.module.scss';
 import { connect } from 'react-redux';
 import { toggleDialog } from '../actions';
 import { compose } from 'redux';
+import parse from 'html-react-parser';
 
 import { AppState } from '../../../store';
 
@@ -14,17 +15,24 @@ import withMobileDialog from '@material-ui/core/withMobileDialog';
 
 import { ButtonLink } from '../../Local/Button/Button';
 
+interface Links {
+  href: string;
+  text: string;
+}
+
+interface Background {
+  src: string;
+  position: string;
+}
+
 interface ProjectType {
   id?: number;
-  background?: string;
+  background?: Background;
   title?: string;
   year?: string;
   description?: string;
   technology?: string[];
-  links?: Array<{
-    href: string;
-    text: string;
-  }>;
+  links?: Links[];
   complete?: boolean;
   active?: boolean;
 }
@@ -44,7 +52,8 @@ const cx = classNames.bind(styles);
 
 const ProjectDialog = ({ project, dialog, ...props }: Props): JSX.Element => {
   const projectStyle = {
-    background: `url(${project.background}) no-repeat center center`,
+    // tslint:disable-next-line: prettier
+    background: `url(${project.background ? project.background.src : ''}) no-repeat top center`,
     backgroundSize: 'cover'
   };
   const projectLinks = project.links || [];
@@ -78,7 +87,7 @@ const ProjectDialog = ({ project, dialog, ...props }: Props): JSX.Element => {
         <h2>{project.title}</h2>
         <h3>{project.year}</h3>
         <div className={cx('badge-container')}>
-          {projectTech.map((tech: any, index: number) => {
+          {projectTech.map((tech: any, index: number): any => {
             return (
               <div key={index} className={cx('tech-badge')}>
                 {tech}
@@ -86,9 +95,9 @@ const ProjectDialog = ({ project, dialog, ...props }: Props): JSX.Element => {
             );
           })}
         </div>
-        <p>{project.description}</p>
+        <p>{parse(project.description || '')}</p>
         <div className={cx('project-links')}>
-          {projectLinks.map((link: any, index: number) => {
+          {projectLinks.map((link: any, index: number): any => {
             return (
               <ButtonLink
                 type="a"
@@ -114,8 +123,5 @@ const mapStateToProps = (state: AppState): StateProps => ({
 
 export default compose<any>(
   withMobileDialog(),
-  connect(
-    mapStateToProps,
-    { toggleDialog }
-  )
+  connect(mapStateToProps, { toggleDialog })
 )(ProjectDialog);

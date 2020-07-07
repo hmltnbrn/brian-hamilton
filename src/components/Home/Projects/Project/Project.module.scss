@@ -34,6 +34,7 @@
   .project-links {
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
     a {
       padding: 10px 20px;
       font-size: 13px;
@@ -43,8 +44,10 @@
 
 @media (max-width: 500px) {
   .project-overlay {
+    padding: 15px;
     .project-title {
       font-size: 25px;
+      text-align: center;
     }
   }
 }

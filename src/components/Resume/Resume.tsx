@@ -61,6 +61,7 @@ const Resume = (): JSX.Element => {
                       <li>TypeScript / Flow</li>
                       <li>PHP</li>
                       <li>Bootstrap</li>
+                      <li>EJS / Handlebars</li>
                     </ul>
                   </li>
                   <li>
@@ -74,7 +75,9 @@ const Resume = (): JSX.Element => {
                       <li>GraphQL</li>
                       <li>Webpack / Babel</li>
                       <li>PostCSS</li>
-                      <li>Wordpress</li>
+                      <li>WordPress</li>
+                      <li>Progressive Web Apps</li>
+                      <li>MVC</li>
                     </ul>
                   </li>
                   <li>
@@ -86,7 +89,7 @@ const Resume = (): JSX.Element => {
                       <li>OracleDB</li>
                       <li>Tableau</li>
                       <li>D3.js</li>
-                      <li>MALLET</li>
+                      <li>MALLET / NLP</li>
                     </ul>
                   </li>
                   <li>
@@ -152,8 +155,8 @@ const Resume = (): JSX.Element => {
               <h4>New York, New York | July 2017 - December 2019</h4>
               <ul>
                 <li>
-                  Front-end engineer for the National Kitchen and Bath
-                  Association platform (React).
+                  Node.js and React engineer for the National Kitchen and Bath
+                  Association platform.
                 </li>
                 <li>
                   Co-developer for the Sweet Defeat platform, using HTML5, CSS3,
@@ -177,17 +180,17 @@ const Resume = (): JSX.Element => {
               <h4>New York, New York | March 2015 - March 2017</h4>
               <ul>
                 <li>
+                  Worked on adapting open-source projects for visualizing
+                  scheduled and real-time train movement, using Python,
+                  JavaScript (D3.js library), JSON, SQL, and Bootstrap.
+                </li>
+                <li>
                   Built data visualizations for subway and bus performance,
                   using BIRT reports, JavaScript, jQuery, HTML5, and SQL.
                 </li>
                 <li>
                   Created a dashboard for real-time data display, using Node.js,
                   React.js, Socket.IO, and RabbitMQ.
-                </li>
-                <li>
-                  Worked on adapting open-source projects for visualizing
-                  scheduled and real-time train movement, using Python,
-                  JavaScript (D3.js library), JSON, SQL, and Bootstrap.
                 </li>
                 <li>
                   Queried from an Oracle database, which included data for
@@ -236,9 +239,9 @@ const Resume = (): JSX.Element => {
               <div className={cx('resume-header')}>
                 <h2>Graduate Center at the City University of New York</h2>
               </div>
-              <h4>New York, New York | 2016 - Present</h4>
+              <h4>New York, New York | 2016 - 2020</h4>
               <p>
-                Studying for a Master of Arts in Liberal Studies, specializing
+                Graduated as a Master of Arts in Liberal Studies, specializing
                 in Data Visualization and Digital Humanities.
               </p>
             </div>

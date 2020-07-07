@@ -12,10 +12,17 @@ const cx = classNames.bind(styles);
 const Projects = (): JSX.Element => {
   const projectOneLinks = [
     {
-      href: 'https://github.com/hmltnbrn/classroom-library',
-      text: 'Repository'
+      href: 'https://github.com/hmltnbrn/jeopardy-scrape',
+      text: 'Python Repository'
     },
-    { href: 'http://classroomlibrary.brianhamilton.me/', text: 'Live Demo' }
+    {
+      href: 'https://github.com/hmltnbrn/jeopardy-viz',
+      text: 'JS Repository'
+    },
+    {
+      href: 'https://jeopardy.brianhamilton.me/',
+      text: 'Live Site'
+    }
   ];
 
   const projectTwoLinks = [
@@ -31,12 +38,18 @@ const Projects = (): JSX.Element => {
       <h1>Featured projects</h1>
       <div className={cx('project-container')}>
         <Project
-          background="'https://i.brianhamilton.me/classroom-library.png'"
-          title="Classroom Library"
+          background={{
+            src: 'https://i.brianhamilton.me/jeopardy-exploration.png',
+            position: 'top center'
+          }}
+          title="A Data Exploration of Jeopardy! from 1984 to the Present"
           links={projectOneLinks}
         />
         <Project
-          background="'https://i.brianhamilton.me/health-insurance.png'"
+          background={{
+            src: 'https://i.brianhamilton.me/health-insurance.png',
+            position: 'center center'
+          }}
           title="What Is Your State Doing to Affect Access to Adequate Health Insurance?"
           links={projectTwoLinks}
         />

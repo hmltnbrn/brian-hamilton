@@ -85,7 +85,4 @@ const mapStateToProps = (state: AppState): StateProps => ({
   drawer: state.header.drawer
 });
 
-export default connect(
-  mapStateToProps,
-  { toggleDrawer }
-)(SideNav);
+export default connect(mapStateToProps, { toggleDrawer })(SideNav);

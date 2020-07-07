@@ -1,17 +1,24 @@
 import { TOGGLE_DIALOG, GET_PORTFOLIO, GET_PROJECT } from './actions';
 import { Reducer, AnyAction } from 'redux';
 
+interface Links {
+  href: string;
+  text: string;
+}
+
+interface Background {
+  src: string;
+  position: string;
+}
+
 interface ProjectType {
   id: number;
-  background: string;
+  background: Background;
   title: string;
   year: string;
   description: string;
   technology: string[];
-  links: Array<{
-    href: string;
-    text: string;
-  }>;
+  links: Links[];
   complete: boolean;
   active: boolean;
 }

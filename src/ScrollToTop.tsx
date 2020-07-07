@@ -8,7 +8,7 @@ interface ChildrenProps {
 type Props = ChildrenProps & RouteComponentProps;
 
 const ScrollToTop = ({ children }: Props): JSX.Element => {
-  useEffect(() => {
+  useEffect((): any => {
     window.scrollTo(0, 0);
   });
   return <>{children}</>;

@@ -16,7 +16,7 @@ const FixedMenu = ({ ...props }: Props): JSX.Element => {
   const [isHide, setIsHide] = useState<boolean>(true);
   const appearValue = 100;
 
-  useEffect(() => {
+  useEffect((): any => {
     const hideBar = (): void => {
       if (window.scrollY < appearValue || window.innerWidth < 800) {
         setIsHide(true);
@@ -41,7 +41,4 @@ const FixedMenu = ({ ...props }: Props): JSX.Element => {
   );
 };
 
-export default connect(
-  null,
-  { toggleDrawer }
-)(FixedMenu);
+export default connect(null, { toggleDrawer })(FixedMenu);

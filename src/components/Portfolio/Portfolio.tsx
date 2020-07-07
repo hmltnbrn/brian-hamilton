@@ -13,17 +13,24 @@ import ProjectDialog from './Project/ProjectDialog';
 
 const cx = classNames.bind(styles);
 
+interface Links {
+  href: string;
+  text: string;
+}
+
+interface Background {
+  src: string;
+  position: string;
+}
+
 interface ProjectType {
   id: number;
-  background: string;
+  background: Background;
   title: string;
   year: string;
   description: string;
   technology: string[];
-  links: Array<{
-    href: string;
-    text: string;
-  }>;
+  links: Links[];
   complete: boolean;
   active: boolean;
 }
@@ -39,7 +46,7 @@ interface Props {
 
 // tslint:disable-next-line: no-shadowed-variable
 const Portfolio = ({ portfolio, getPortfolio }: Props): JSX.Element => {
-  useEffect(() => {
+  useEffect((): any => {
     const fetchData = (): void => {
       return getPortfolio();
     };
@@ -47,16 +54,20 @@ const Portfolio = ({ portfolio, getPortfolio }: Props): JSX.Element => {
   }, [getPortfolio]);
 
   const completeProjects = portfolio
-    .filter((project: ProjectType) => project.complete)
-    .map((project: ProjectType) => {
-      return <Project key={project.id} {...project} />;
-    });
+    .filter((project: ProjectType): boolean => project.complete)
+    .map(
+      (project: ProjectType): JSX.Element => {
+        return <Project key={project.id} {...project} />;
+      }
+    );
 
   const inCompleteProjects = portfolio
-    .filter((project: ProjectType) => !project.complete)
-    .map((project: ProjectType) => {
-      return <Project key={project.id} {...project} />;
-    });
+    .filter((project: ProjectType): boolean => !project.complete)
+    .map(
+      (project: ProjectType): JSX.Element => {
+        return <Project key={project.id} {...project} />;
+      }
+    );
 
   return (
     <>
@@ -95,7 +106,4 @@ const mapStateToProps = (state: AppState): StateProps => ({
   portfolio: state.portfolio.portfolio
 });
 
-export default connect(
-  mapStateToProps,
-  { getPortfolio }
-)(Portfolio);
+export default connect(mapStateToProps, { getPortfolio })(Portfolio);

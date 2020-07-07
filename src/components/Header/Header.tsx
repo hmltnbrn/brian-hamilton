@@ -123,9 +123,6 @@ const Header = ({ ...props }: Props): JSX.Element => {
 
 export default compose<any>(
   withRouter,
-  connect(
-    null,
-    { toggleDrawer }
-  ),
+  connect(null, { toggleDrawer }),
   windowWidth
 )(Header);

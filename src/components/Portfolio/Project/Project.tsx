@@ -7,21 +7,28 @@ import { AppState } from '../../../store';
 
 import classNames from 'classnames/bind';
 
+interface Links {
+  href: string;
+  text: string;
+}
+
+interface Background {
+  src: string;
+  position: string;
+}
+
 interface StateProps {
   dialog: boolean;
 }
 
 interface Props {
   id: number;
-  background: string;
+  background: Background;
   title: string;
   year: string;
   description: string;
   technology: string[];
-  links: Array<{
-    href: string;
-    text: string;
-  }>;
+  links: Links[];
   complete: boolean;
   active: boolean;
   dialog: boolean;
@@ -32,7 +39,8 @@ const cx = classNames.bind(styles);
 
 const Project = (props: Props): JSX.Element => {
   const projectStyle = {
-    background: `url(${props.background}) no-repeat center center`,
+    // tslint:disable-next-line: prettier
+    background: `url(${props.background.src}) no-repeat ${props.background.position}`,
     backgroundSize: 'cover'
   };
 
@@ -53,7 +61,4 @@ const mapStateToProps = (state: AppState): StateProps => ({
   dialog: state.portfolio.dialog
 });
 
-export default connect(
-  mapStateToProps,
-  { getProject }
-)(Project);
+export default connect(mapStateToProps, { getProject })(Project);

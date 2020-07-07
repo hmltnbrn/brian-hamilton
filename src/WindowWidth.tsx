@@ -8,7 +8,7 @@ const windowWidth = <P extends object>(
       window.innerWidth
     );
 
-    useEffect(() => {
+    useEffect((): any => {
       const handleResize = (): void => {
         setWindowWidth(window.innerWidth);
       };
