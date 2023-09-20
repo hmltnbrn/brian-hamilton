@@ -75,7 +75,6 @@ const Resume = (): JSX.Element => {
                       <li>Angular 2+</li>
                       <li>REST API</li>
                       <li>Ruby on Rails</li>
-                      <li>GraphQL</li>
                       <li>Webpack / Babel</li>
                       <li>PostCSS</li>
                       <li>WordPress</li>
