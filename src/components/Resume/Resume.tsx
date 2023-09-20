@@ -69,15 +69,17 @@ const Resume = (): JSX.Element => {
                     <ul>
                       <li>Node.js / Express</li>
                       <li>React / Redux</li>
+                      <li>Next.js</li>
+                      <li>GraphQL / Relay</li>
                       <li>React Native</li>
                       <li>Angular 2+</li>
+                      <li>REST API</li>
                       <li>Ruby on Rails</li>
                       <li>GraphQL</li>
                       <li>Webpack / Babel</li>
                       <li>PostCSS</li>
                       <li>WordPress</li>
                       <li>Progressive Web Apps</li>
-                      <li>MVC</li>
                     </ul>
                   </li>
                   <li>
@@ -128,6 +130,7 @@ const Resume = (): JSX.Element => {
                   <h2 className={cx('primary-color')}>Operating Systems</h2>
                   <ul>
                     <li>Windows</li>
+                    <li>Mac</li>
                     <li>Linux</li>
                   </ul>
                 </div>
@@ -147,6 +150,39 @@ const Resume = (): JSX.Element => {
             <h1>Experience</h1>
           </div>
           <div className={cx('section-right')}>
+            <div className={cx('resume-experience')}>
+              <div className={cx('resume-header')}>
+                <h2>Senior Software Engineer</h2>
+                <h3>1stDibs</h3>
+              </div>
+              <h4>New York, New York | October 2021 - July 2023</h4>
+              <ul>
+                <li>
+                  Developer for customer-facing projects on the frontend, with React, Relay, and SCSS.
+                </li>
+                <li>
+                  Built queries and mutations with GraphQL for interacting with the backend.
+                </li>
+                <li>
+                  Worked on the design, development, and A/B testing of new features.
+                </li>
+              </ul>
+            </div>
+            <div className={cx('resume-experience')}>
+              <div className={cx('resume-header')}>
+                <h2>Senior Software Engineer</h2>
+                <h3>HCTG, LLC</h3>
+              </div>
+              <h4>New York, New York | July 2020 - September 2021</h4>
+              <ul>
+                <li>
+                  Full-stack engineer for multiple platforms, using PHP, React, and Node.js.
+                </li>
+                <li>
+                  Led React and Node.js engineer for development of a new company-wide CMS.
+                </li>
+              </ul>
+            </div>
             <div className={cx('resume-experience')}>
               <div className={cx('resume-header')}>
                 <h2>Software Engineer</h2>
