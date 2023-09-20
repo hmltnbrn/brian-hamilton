@@ -72,7 +72,7 @@
     "@types/react-redux": "^7.1.2",
     "@types/react-router-dom": "^5.1.2",
     "concurrently": "^5.0.0",
-    "node-sass": "^4.12.0",
+    "sass": "^1.67.0",
     "nodemon": "^2.0.2",
     "prettier": "^2.0.5",
     "tslint": "^6.0.0",
