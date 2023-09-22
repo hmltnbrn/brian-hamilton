@@ -1,44 +1,40 @@
-import React, { useState, useEffect } from 'react';
+import { FC, useEffect, useState } from 'react';
 import styles from './FixedMenu.module.scss';
 
-import { connect } from 'react-redux';
-import { toggleDrawer } from './actions';
+import classNames from 'classnames';
 
-import classNames from 'classnames/bind';
-
-interface Props {
-  toggleDrawer: () => void;
-}
-
-const cx = classNames.bind(styles);
-
-const FixedMenu = ({ ...props }: Props): JSX.Element => {
-  const [isHide, setIsHide] = useState<boolean>(true);
-  const appearValue = 100;
-
-  useEffect((): any => {
-    const hideBar = (): void => {
-      if (window.scrollY < appearValue || window.innerWidth < 800) {
-        setIsHide(true);
-      } else {
-        setIsHide(false);
-      }
-    };
-
-    window.addEventListener('scroll', hideBar);
-
-    return function cleanup(): void {
-      window.removeEventListener('scroll', hideBar);
-    };
-  }, [isHide, appearValue]);
-
-  return (
-    <div className={cx('top-menu', isHide ? 'hide' : '')}>
-      <button onClick={props.toggleDrawer}>
-        <i className="material-icons">menu</i>
-      </button>
-    </div>
-  );
+type Props = {
+    toggleDrawer: () => void;
 };
 
-export default connect(null, { toggleDrawer })(FixedMenu);
+const APPEAR_VALUE = 100;
+
+const FixedMenu: FC<Props> = ({ toggleDrawer }) => {
+    const [isHide, setIsHide] = useState<boolean>(true);
+
+    useEffect(() => {
+        const hideBar = () => {
+            if (window.scrollY < APPEAR_VALUE || window.innerWidth < 800) {
+                setIsHide(true);
+            } else {
+                setIsHide(false);
+            }
+        };
+
+        window.addEventListener('scroll', hideBar);
+
+        return () => {
+            window.removeEventListener('scroll', hideBar);
+        };
+    }, [isHide]);
+
+    return (
+        <div className={classNames(styles.topMenu, { [styles.hide]: isHide })}>
+            <button onClick={() => toggleDrawer()}>
+                <i className="material-icons">menu</i>
+            </button>
+        </div>
+    );
+};
+
+export default FixedMenu;

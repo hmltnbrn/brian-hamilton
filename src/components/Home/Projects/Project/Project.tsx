@@ -1,57 +1,52 @@
-import React from 'react';
-import styles from './Project.module.scss';
-
-import classNames from 'classnames/bind';
+import { FC } from 'react';
 
 import { ButtonLink } from '../../../Local/Button/Button';
 
-interface Links {
-  href: string;
-  text: string;
-}
+import styles from './Project.module.scss';
 
-interface Background {
-  src: string;
-  position: string;
-}
+type Links = {
+    href: string;
+    text: string;
+};
 
-interface Props {
-  background: Background;
-  title: string;
-  links: Links[];
-}
+type Background = {
+    src: string;
+    position: string;
+};
 
-const cx = classNames.bind(styles);
+type Props = {
+    background: Background;
+    title: string;
+    links: Links[];
+};
 
-const Project = ({ title, background, links }: Props): JSX.Element => {
-  const projectStyle = {
-    background: `url(${background.src}) no-repeat ${background.position}`,
-    backgroundSize: 'cover'
-  };
+const Project: FC<Props> = ({ title, background, links }) => {
+    const projectStyle = {
+        background: `url(${background.src}) no-repeat ${background.position}`,
+        backgroundSize: 'cover',
+    };
 
-  const buttonLinks = links.map(
-    (link: Links): JSX.Element => (
-      <ButtonLink
-        type="a"
-        key={link.text}
-        href={link.href}
-        target="_blank"
-        rel="noopener noreferrer"
-        white={true}
-      >
-        {link.text}
-      </ButtonLink>
-    )
-  );
+    const buttonLinks = links.map((link: Links) => (
+        <ButtonLink
+            type="a"
+            key={link.text}
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            white
+        >
+            {link.text}
+        </ButtonLink>
+    ));
 
-  return (
-    <div className={cx('project')} style={projectStyle}>
-      <div className={cx('project-overlay')} tabIndex={0}>
-        <div className={cx('project-title')}>{title}</div>
-        <div className={cx('project-links')}>{buttonLinks}</div>
-      </div>
-    </div>
-  );
+    return (
+        <div className={styles.project} style={projectStyle}>
+            <div className={styles.projectOverlay} tabIndex={0}>
+                <div className={styles.projectTitle}>{title}</div>
+                <div className={styles.projectLinks}>{buttonLinks}</div>
+            </div>
+        </div>
+    );
 };
 
 export default Project;

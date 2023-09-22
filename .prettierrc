@@ -1,11 +1,12 @@
 {
-  "printWidth": 80,
-  "tabWidth": 2,
-  "singleQuote": true,
-  "trailingComma": "none",
-  "semi": true,
-  "newline-before-return": true,
-  "no-duplicate-variable": [true, "check-parameters"],
-  "no-var-keyword": true,
-  "endOfLine": "auto"
+    "semi": true,
+    "arrowParens": "always",
+    "singleQuote": true,
+    "tabWidth": 4,
+    "plugins": ["prettier-plugin-organize-imports"],
+    "pluginSearchDirs": false,
+    "organizeImportsSkipDestructiveCodeActions": true,
+    "printWidth": 80,
+    "trailingComma": "all",
+    "endOfLine": "auto"
 }
