@@ -1,19 +1,16 @@
-import React from 'react';
+import { FC } from 'react';
+
 import styles from './Banner.module.scss';
 
-import classNames from 'classnames/bind';
-
-const cx = classNames.bind(styles);
-
-const Banner = (): JSX.Element => {
-  return (
-    <div className={cx('banner-container')}>
-      <div className={cx('banner-words')}>
-        <div className={cx('banner-name')}>Brian Hamilton</div>
-        <div className={cx('banner-title')}>web developer</div>
-      </div>
-    </div>
-  );
+const Banner: FC = () => {
+    return (
+        <div className={styles.bannerContainer}>
+            <div className={styles.bannerWords}>
+                <div className={styles.bannerName}>Brian Hamilton</div>
+                <div className={styles.bannerTitle}>web developer</div>
+            </div>
+        </div>
+    );
 };
 
 export default Banner;

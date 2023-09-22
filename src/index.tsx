@@ -1,27 +1,28 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
+import { HelmetProvider } from 'react-helmet-async';
+import { BrowserRouter } from 'react-router-dom';
 
 import App from './App';
 import ScrollToTop from './ScrollToTop';
+import reportWebVitals from './reportWebVitals';
+
 import 'normalize.css';
 import './index.scss';
-import * as serviceWorker from './serviceWorker';
-import { BrowserRouter } from 'react-router-dom';
-import { Provider } from 'react-redux';
-import store from './store';
 
-const root: HTMLElement | null = document.getElementById('root');
+const root = ReactDOM.createRoot(
+    document.getElementById('root') as HTMLElement,
+);
+root.render(
+    <React.StrictMode>
+        <BrowserRouter>
+            <ScrollToTop>
+                <HelmetProvider>
+                    <App />
+                </HelmetProvider>
+            </ScrollToTop>
+        </BrowserRouter>
+    </React.StrictMode>,
+);
 
-if (root != null) {
-  ReactDOM.render(
-    <Provider store={store}>
-      <BrowserRouter>
-        <ScrollToTop>
-          <App />
-        </ScrollToTop>
-      </BrowserRouter>
-    </Provider>,
-    root
-  );
-  serviceWorker.register();
-}
+reportWebVitals();

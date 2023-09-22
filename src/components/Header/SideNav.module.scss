@@ -1,39 +1,42 @@
-@import "./styles/variables.scss";
+@use 'src/styles/_variables.scss' as *;
 
-.links-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: left;
-  padding: 10px 0 54px 0;
-  .drawer-link {
-    min-width: 200px;
-    padding: 20px 30px;
-    font-size: 17px;
-    font-weight: 300;
-    transition: all .6s cubic-bezier(.25,.8,.25,1);
-    border-bottom: 1px solid #ffffff;
-    &:link, &:visited {
-      color: #000000;
-      text-decoration: none;
-    }
-    &:hover, &:focus, &.active {
-      color: $primary-color;
-      border-bottom-color: $primary-color;
-    }
-  }
-  .drawer-exit {
-    width: 100%;
-    padding: 0 20px;
+.linksContainer {
     display: flex;
-    justify-content: flex-end;
-    & > i {
-      font-size: 20px;
-      cursor: pointer;
-      &:focus {
-        border: none;
-        outline: none;
-      }
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+    padding: 10px 0 54px 0;
+    .drawerLink {
+        min-width: 200px;
+        padding: 20px 30px;
+        font-size: 17px;
+        font-weight: 300;
+        transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+        border-bottom: 1px solid #ffffff;
+        &:link,
+        &:visited {
+            color: #000000;
+            text-decoration: none;
+        }
+        &:hover,
+        &:focus,
+        &.active {
+            color: $primary-color;
+            border-bottom-color: $primary-color;
+        }
     }
-  }
+    .drawerExit {
+        width: 100%;
+        padding: 0 20px;
+        display: flex;
+        justify-content: flex-end;
+        & > i {
+            font-size: 20px;
+            cursor: pointer;
+            &:focus {
+                border: none;
+                outline: none;
+            }
+        }
+    }
 }

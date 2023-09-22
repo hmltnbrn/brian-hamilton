@@ -1,128 +1,116 @@
-import React from 'react';
-import styles from './Header.module.scss';
+import classNames from 'classnames';
+import { FC, useState } from 'react';
 
-import { connect } from 'react-redux';
-import { toggleDrawer } from './actions';
-import { compose } from 'redux';
-import { withRouter } from 'react-router-dom';
-
-import classNames from 'classnames/bind';
-
-import { Button } from '../Local/Button/Button';
-
-import windowWidth from '../../WindowWidth';
-
-import { LinkedInIcon } from '../../icons/LinkedIn';
+import { useWindowWidth } from '../../hooks/useWindowWidth';
 import { GitHubIcon } from '../../icons/GitHub';
-
+import { LinkedInIcon } from '../../icons/LinkedIn';
+import { Button } from '../Local/Button/Button';
 import FixedMenu from './FixedMenu';
 import SideNav from './SideNav';
 
-interface Props {
-  windowWidth: number;
-  toggleDrawer: () => void;
-}
+import styles from './Header.module.scss';
 
-const cx = classNames.bind(styles);
-
-const Header = ({ ...props }: Props): JSX.Element => {
-  return (
-    <header>
-      <FixedMenu />
-      <div className={cx('header-container')}>
-        <div className={cx('header-left')}>
-          {props.windowWidth < 800 && (
-            <i
-              className={`material-icons ${cx('drawer-opener')}`}
-              onClick={props.toggleDrawer}
-            >
-              menu
-            </i>
-          )}
-        </div>
-        <div className={cx('header-right')}>
-          {props.windowWidth >= 800 ? (
-            <div className={cx('header-links')}>
-              <Button
-                type="nav-link"
-                exact={true}
-                to="/"
-                classNames={[cx('header-link')]}
-                activeClassName={cx('active')}
-              >
-                Home
-              </Button>
-              <Button
-                type="nav-link"
-                to="/resume"
-                classNames={[cx('header-link')]}
-                activeClassName={cx('active')}
-              >
-                Resume
-              </Button>
-              <Button
-                type="nav-link"
-                to="/portfolio"
-                classNames={[cx('header-link')]}
-                activeClassName={cx('active')}
-              >
-                Portfolio
-              </Button>
-              <Button
-                type="nav-link"
-                to="/contact"
-                classNames={[cx('header-link')]}
-                activeClassName={cx('active')}
-              >
-                Contact
-              </Button>
-              <div className={cx('vertical-rule')} />
-              <Button
-                type="a"
-                href="https://www.linkedin.com/in/brian-hamilton-520835a8"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <LinkedInIcon />
-              </Button>
-              <Button
-                type="a"
-                href="https://github.com/hmltnbrn"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <GitHubIcon />
-              </Button>
+const Header: FC = () => {
+    const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
+    const windowWidth = useWindowWidth();
+    return (
+        <header>
+            <FixedMenu toggleDrawer={() => setIsDrawerOpen(!isDrawerOpen)} />
+            <div className={styles.headerContainer}>
+                <div className={styles.headerLeft}>
+                    {windowWidth < 800 && (
+                        <i
+                            className={`material-icons ${classNames(
+                                styles.drawerOpener,
+                            )}`}
+                            onClick={() => setIsDrawerOpen(true)}
+                        >
+                            menu
+                        </i>
+                    )}
+                </div>
+                <div className={styles.headerRight}>
+                    {windowWidth >= 800 ? (
+                        <div className={styles.headerLinks}>
+                            <Button
+                                type="nav-link"
+                                exact
+                                to="/"
+                                classNames={[styles.headerLink]}
+                                activeClassName={styles.active}
+                            >
+                                Home
+                            </Button>
+                            <Button
+                                type="nav-link"
+                                to="/resume"
+                                classNames={[styles.headerLink]}
+                                activeClassName={styles.active}
+                            >
+                                Resume
+                            </Button>
+                            <Button
+                                type="nav-link"
+                                to="/portfolio"
+                                classNames={[styles.headerLink]}
+                                activeClassName={styles.active}
+                            >
+                                Portfolio
+                            </Button>
+                            <Button
+                                type="nav-link"
+                                to="/contact"
+                                classNames={[styles.headerLink]}
+                                activeClassName={styles.active}
+                            >
+                                Contact
+                            </Button>
+                            <div className={styles.verticalRule} />
+                            <Button
+                                type="a"
+                                href="https://www.linkedin.com/in/brian-hamilton-520835a8"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <LinkedInIcon />
+                            </Button>
+                            <Button
+                                type="a"
+                                href="https://github.com/hmltnbrn"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <GitHubIcon />
+                            </Button>
+                        </div>
+                    ) : (
+                        <div className={styles.headerLinks}>
+                            <Button
+                                type="a"
+                                href="https://www.linkedin.com/in/brian-hamilton-520835a8"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <LinkedInIcon />
+                            </Button>
+                            <Button
+                                type="a"
+                                href="https://github.com/hmltnbrn"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <GitHubIcon />
+                            </Button>
+                        </div>
+                    )}
+                </div>
             </div>
-          ) : (
-            <div className={cx('header-links')}>
-              <Button
-                type="a"
-                href="https://www.linkedin.com/in/brian-hamilton-520835a8"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <LinkedInIcon />
-              </Button>
-              <Button
-                type="a"
-                href="https://github.com/hmltnbrn"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <GitHubIcon />
-              </Button>
-            </div>
-          )}
-        </div>
-      </div>
-      <SideNav />
-    </header>
-  );
+            <SideNav
+                isOpen={isDrawerOpen}
+                toggleDrawer={() => setIsDrawerOpen(!isDrawerOpen)}
+            />
+        </header>
+    );
 };
 
-export default compose<any>(
-  withRouter,
-  connect(null, { toggleDrawer }),
-  windowWidth
-)(Header);
+export default Header;

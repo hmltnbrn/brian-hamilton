@@ -1,82 +1,82 @@
-.banner-container {
-  width: 100%;
-  height: 100vh;
-  position: relative;
-  background: url('/images/backgrounds/astoria-park.jpg') no-repeat center
-    center;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  background-attachment: fixed;
+.bannerContainer {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    background: url('/images/backgrounds/astoria-park.jpg') no-repeat center
+        center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
-.banner-words {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background: rgba(0, 0, 0, 0.6);
-  color: #ffffff;
-  display: flex;
-  flex-direction: column;
+.bannerWords {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.6);
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
 }
 
-.banner-name {
-  width: 100%;
-  padding: 250px 0 0 200px;
-  font-size: 80px;
-  font-weight: 300;
+.bannerName {
+    width: 100%;
+    padding: 250px 0 0 200px;
+    font-size: 80px;
+    font-weight: 300;
 }
 
-.banner-title {
-  width: 100%;
-  padding: 0 0 0 200px;
-  font-size: 40px;
-  font-weight: 300;
+.bannerTitle {
+    width: 100%;
+    padding: 0 0 0 200px;
+    font-size: 40px;
+    font-weight: 300;
 }
 
 @media (max-width: 1200px) {
-  .banner-name {
-    padding: 250px 0 0 150px;
-    font-size: 70px;
-  }
-  .banner-title {
-    padding: 0 0 0 150px;
-    font-size: 35px;
-  }
+    .bannerName {
+        padding: 250px 0 0 150px;
+        font-size: 70px;
+    }
+    .bannerTitle {
+        padding: 0 0 0 150px;
+        font-size: 35px;
+    }
 }
 
 @media (max-width: 900px) {
-  .banner-name {
-    padding: 200px 0 0 150px;
-    font-size: 65px;
-  }
-  .banner-title {
-    padding: 0 0 0 150px;
-    font-size: 32px;
-  }
+    .bannerName {
+        padding: 200px 0 0 150px;
+        font-size: 65px;
+    }
+    .bannerTitle {
+        padding: 0 0 0 150px;
+        font-size: 32px;
+    }
 }
 
 @media (max-width: 768px) {
-  .banner-name {
-    padding: 200px 0 0 100px;
-    font-size: 60px;
-  }
-  .banner-title {
-    padding: 0 0 0 100px;
-    font-size: 30px;
-  }
+    .bannerName {
+        padding: 200px 0 0 100px;
+        font-size: 60px;
+    }
+    .bannerTitle {
+        padding: 0 0 0 100px;
+        font-size: 30px;
+    }
 }
 
 @media (max-width: 600px) {
-  .banner-name {
-    padding: 150px 0 0 5%;
-    font-size: 50px;
-  }
-  .banner-title {
-    padding: 0 0 0 5%;
-    font-size: 25px;
-  }
+    .bannerName {
+        padding: 150px 0 0 5%;
+        font-size: 50px;
+    }
+    .bannerTitle {
+        padding: 0 0 0 5%;
+        font-size: 25px;
+    }
 }

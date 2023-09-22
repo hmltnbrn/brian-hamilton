@@ -1,28 +1,28 @@
-@import "./styles/variables.scss";
+@use 'src/styles/_variables.scss' as *;
 
-.about-container {
-  background: $dark-primary-color;
+.aboutContainer {
+    background: $dark-primary-color;
 }
 
-.about-text {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 75px 0;
-  p {
-    font-size: 30px;
-    padding: 0 50px;
-    font-weight: 300;
-    line-height: 1.4;
-    color: #ffffff;
-  }
+.aboutText {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 75px 0;
+    p {
+        font-size: 30px;
+        padding: 0 50px;
+        font-weight: 300;
+        line-height: 1.4;
+        color: #ffffff;
+    }
 }
 
 @media (max-width: 500px) {
-  .about-text {
-    padding: 25px 0;
-    p {
-      font-size: 20px;
-      padding: 0 25px;
+    .aboutText {
+        padding: 25px 0;
+        p {
+            font-size: 20px;
+            padding: 0 25px;
+        }
     }
-  }
 }

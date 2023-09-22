@@ -1,51 +1,56 @@
-@import "./styles/mixins.scss";
+@use 'src/styles/_mixins.scss' as *;
 
 .project {
-  padding: 10px;
-  margin: 10px;
-  width: 600px;
-  height: 300px;
-  position: relative;
-  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
-  cursor: pointer;
+    padding: 10px;
+    margin: 10px;
+    width: 600px;
+    height: 300px;
+    position: relative;
+    box-shadow:
+        rgba(0, 0, 0, 0.12) 0px 1px 6px,
+        rgba(0, 0, 0, 0.12) 0px 1px 4px;
+    cursor: pointer;
 }
 
-.project-overlay {
-  padding: 25px;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  transition: background .8s cubic-bezier(.25,.8,.25,1), opacity .8s cubic-bezier(.25,.8,.25,1);
-  &:hover, &:focus {
-    @include rgba_primary(0.7);
-    opacity: 1;
-  }
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  color: #ffffff;
-  opacity: 0;
-  .project-title {
-    font-size: 30px;
-    font-weight: 300;
-  }
-  .project-links {
-    display: flex;
-    justify-content: space-around;
-    a {
-      padding: 10px 20px;
-      font-size: 13px;
+.projectOverlay {
+    padding: 25px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transition:
+        background 0.8s cubic-bezier(0.25, 0.8, 0.25, 1),
+        opacity 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+    &:hover,
+    &:focus {
+        @include rgba_primary(0.7);
+        opacity: 1;
     }
-  }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    color: #ffffff;
+    opacity: 0;
+    .projectTitle {
+        font-size: 30px;
+        font-weight: 300;
+    }
+    .projectLinks {
+        display: flex;
+        justify-content: space-around;
+        a {
+            padding: 10px 20px;
+            font-size: 13px;
+        }
+    }
 }
 
 @media (max-width: 500px) {
-  .project-overlay {
-    .project-title {
-      font-size: 25px;
+    .projectOverlay {
+        .projectTitle {
+            font-size: 25px;
+        }
     }
-  }
 }

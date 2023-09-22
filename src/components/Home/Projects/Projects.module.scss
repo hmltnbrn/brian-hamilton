@@ -1,50 +1,50 @@
-@import "./styles/variables.scss";
+@use 'src/styles/_variables.scss' as *;
 
-.home-projects {
-  background: $dark-gray;
-  padding: 100px 25px;
-  h1 {
-    font-weight: 300;
-    font-size: 40px;
+.homeProjects {
+    background: $dark-gray;
+    padding: 100px 25px;
+    h1 {
+        font-weight: 300;
+        font-size: 40px;
+        padding: 0 100px;
+    }
+    & > * {
+        max-width: 1280px;
+        margin: 0 auto;
+    }
+}
+
+.projectContainer {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 25px 0;
+}
+
+.projectsLinkContainer {
+    display: flex;
+    justify-content: flex-end;
     padding: 0 100px;
-  }
-  & > * {
-    max-width: 1280px;
-    margin: 0 auto;
-  }
-}
-
-.project-container {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  padding: 25px 0;
-}
-
-.projects-link-container {
-  display: flex;
-  justify-content: flex-end;
-  padding: 0 100px;
 }
 
 @media (max-width: 768px) {
-  .home-projects {
-    h1 {
-      padding: 0 10px;
+    .homeProjects {
+        h1 {
+            padding: 0 10px;
+        }
     }
-  }
 }
 
 @media (max-width: 500px) {
-  .home-projects {
-    padding: 25px;
-    h1 {
-      font-size: 35px;
-      text-align: center;
+    .homeProjects {
+        padding: 25px;
+        h1 {
+            font-size: 35px;
+            text-align: center;
+        }
     }
-  }
-  .projects-link-container {
-    justify-content: center;
-    padding: 0 10px;
-  }
+    .projectsLinkContainer {
+        justify-content: center;
+        padding: 0 10px;
+    }
 }

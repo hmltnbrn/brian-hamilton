@@ -1,64 +1,40 @@
-import React from 'react';
+import { FC, useState } from 'react';
+
+import { ProjectType } from '../Portfolio';
+import ProjectDialog from './ProjectDialog';
+
 import styles from './Project.module.scss';
-import { connect } from 'react-redux';
-import { getProject } from '../actions';
 
-import { AppState } from '../../../store';
-
-import classNames from 'classnames/bind';
-
-interface Links {
-  href: string;
-  text: string;
-}
-
-interface Background {
-  src: string;
-  position: string;
-}
-
-interface StateProps {
-  dialog: boolean;
-}
-
-interface Props {
-  id: number;
-  background: Background;
-  title: string;
-  year: string;
-  description: string;
-  technology: string[];
-  links: Links[];
-  complete: boolean;
-  active: boolean;
-  dialog: boolean;
-  getProject: (id: number) => void;
-}
-
-const cx = classNames.bind(styles);
-
-const Project = (props: Props): JSX.Element => {
-  const projectStyle = {
-    // tslint:disable-next-line: prettier
-    background: `url(${props.background.src}) no-repeat ${props.background.position}`,
-    backgroundSize: 'cover'
-  };
-
-  return (
-    <div
-      className={cx('project')}
-      style={projectStyle}
-      onClick={(): void => props.getProject(props.id)}
-    >
-      <div className={cx('project-overlay')} tabIndex={0}>
-        <div className={cx('project-title')}>{props.title}</div>
-      </div>
-    </div>
-  );
+type Props = {
+    project: ProjectType;
 };
 
-const mapStateToProps = (state: AppState): StateProps => ({
-  dialog: state.portfolio.dialog
-});
+const Project: FC<Props> = ({ project }) => {
+    const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
-export default connect(mapStateToProps, { getProject })(Project);
+    const projectStyle = {
+        background: `url(${project.background.src}) no-repeat ${project.background.position}`,
+        backgroundSize: 'cover',
+    };
+
+    return (
+        <>
+            <div
+                className={styles.project}
+                style={projectStyle}
+                onClick={() => setIsModalOpen(true)}
+            >
+                <div className={styles.projectOverlay} tabIndex={0}>
+                    <div className={styles.projectTitle}>{project.title}</div>
+                </div>
+            </div>
+            <ProjectDialog
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+                project={project}
+            />
+        </>
+    );
+};
+
+export default Project;

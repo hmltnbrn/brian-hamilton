@@ -1,58 +1,51 @@
-import React from 'react';
-import styles from './App.module.scss';
+import { FC } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
-import {
-  Switch,
-  Route,
-  withRouter,
-  RouteComponentProps
-} from 'react-router-dom';
-import { TransitionGroup, CSSTransition } from 'react-transition-group';
-
-import classNames from 'classnames/bind';
-
-import Header from './components/Header/Header';
-import Home from './components/Home/Home';
-import Resume from './components/Resume/Resume';
-import Portfolio from './components/Portfolio/Portfolio';
 import Contact from './components/Contact/Contact';
 import Footer from './components/Footer/Footer';
+import Header from './components/Header/Header';
+import Home from './components/Home/Home';
 import NotFound from './components/NotFound/NotFound';
+import Portfolio from './components/Portfolio/Portfolio';
+import Resume from './components/Resume/Resume';
 
-const cx = classNames.bind(styles);
+import styles from './App.module.scss';
 
-const App = ({ location }: RouteComponentProps): JSX.Element => {
-  return (
-    <div className={cx('app-components')}>
-      <Header />
-      <main>
-        <TransitionGroup>
-          <CSSTransition
-            key={location.key}
-            classNames={{
-              enter: cx('fade-enter'),
-              enterActive: cx('fade-enter-active'),
-              exit: cx('fade-exit'),
-              exitActive: cx('fade-exit-active')
-            }}
-            timeout={300}
-            unmountOnExit={true}
-          >
-            <section className={cx('route-section')}>
-              <Switch location={location}>
-                <Route exact={true} path="/" component={Home} />
-                <Route path="/resume" component={Resume} />
-                <Route path="/portfolio" component={Portfolio} />
-                <Route path="/contact" component={Contact} />
-                <Route component={NotFound} />
-              </Switch>
-            </section>
-          </CSSTransition>
-        </TransitionGroup>
-      </main>
-      <Footer />
-    </div>
-  );
+const App: FC = () => {
+    return (
+        <div className={styles.appComponents}>
+            <Header />
+            <main>
+                <TransitionGroup>
+                    <CSSTransition
+                        classNames={{
+                            enter: styles.fadeEnter,
+                            enterActive: styles.fadeEnterActive,
+                            exit: styles.fadeExit,
+                            exitActive: styles.fadeExitActive,
+                        }}
+                        timeout={300}
+                        unmountOnExit
+                    >
+                        <section className={styles.routeSection}>
+                            <Routes>
+                                <Route path="/" element={<Home />} />
+                                <Route path="/resume" element={<Resume />} />
+                                <Route
+                                    path="/portfolio"
+                                    element={<Portfolio />}
+                                />
+                                <Route path="/contact" element={<Contact />} />
+                                <Route path="*" element={<NotFound />} />
+                            </Routes>
+                        </section>
+                    </CSSTransition>
+                </TransitionGroup>
+            </main>
+            <Footer />
+        </div>
+    );
 };
 
-export default withRouter(App);
+export default App;
