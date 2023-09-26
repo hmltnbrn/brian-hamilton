@@ -2,35 +2,11 @@ import axios from 'axios';
 import classNames from 'classnames';
 import { FC, useEffect, useMemo, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { BASE_URL, ProjectType } from '../../helpers/constants';
 
 import Project from './Project/Project';
 
 import styles from './Portfolio.module.scss';
-
-export type Links = {
-    href: string;
-    text: string;
-};
-
-export type Background = {
-    src: string;
-    position: string;
-};
-
-export type ProjectType = {
-    id: number;
-    background: Background;
-    title: string;
-    year: string;
-    description: string;
-    technology: string[];
-    links: Links[];
-    complete: boolean;
-    active: boolean;
-};
-
-const BASE_URL =
-    process.env.NODE_ENV === 'production' ? '' : 'http://localhost:8080';
 
 const Portfolio: FC = () => {
     const [portfolio, setPortfolio] = useState<ProjectType[]>([]);
