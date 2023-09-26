@@ -75,11 +75,13 @@ const Resume: FC = () => {
                                             <li>PostCSS</li>
                                             <li>WordPress</li>
                                             <li>Progressive Web Apps</li>
+                                            <li>Tailwind</li>
                                         </ul>
                                     </li>
                                     <li>
                                         Database / Data Visualization
                                         <ul>
+                                            <li>SQL / NoSQL</li>
                                             <li>PostgreSQL</li>
                                             <li>MySQL</li>
                                             <li>MongoDB</li>
@@ -118,6 +120,7 @@ const Resume: FC = () => {
                                         <li>CloudFront</li>
                                         <li>EC2</li>
                                         <li>S3</li>
+                                        <li>DynamoDB</li>
                                         <li>Heroku</li>
                                     </ul>
                                 </div>
@@ -163,8 +166,16 @@ const Resume: FC = () => {
                                     interacting with the backend.
                                 </li>
                                 <li>
+                                    Updated the tech stack with TypeScript and
+                                    modern React components.
+                                </li>
+                                <li>
                                     Worked on the design, development, and A/B
                                     testing of new features.
+                                </li>
+                                <li>
+                                    Responsible for researching and implementing
+                                    new Web3 technologies.
                                 </li>
                             </ul>
                         </div>
@@ -178,12 +189,16 @@ const Resume: FC = () => {
                             </h4>
                             <ul>
                                 <li>
-                                    Full-stack engineer for multiple platforms,
+                                    Senior engineer for multiple platforms,
                                     using PHP, React, and Node.js.
                                 </li>
                                 <li>
-                                    Led React and Node.js engineer for
+                                    Lead React and Node.js engineer for
                                     development of a new company-wide CMS.
+                                </li>
+                                <li>
+                                    Manager of multiple MySQL and MongoDB
+                                    database systems.
                                 </li>
                             </ul>
                         </div>

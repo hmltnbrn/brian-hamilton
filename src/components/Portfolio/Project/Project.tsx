@@ -1,6 +1,6 @@
 import { FC, useState } from 'react';
 
-import { ProjectType } from '../Portfolio';
+import { ProjectType } from '../../../helpers/constants';
 import ProjectDialog from './ProjectDialog';
 
 import styles from './Project.module.scss';
@@ -13,7 +13,7 @@ const Project: FC<Props> = ({ project }) => {
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
     const projectStyle = {
-        background: `url(${project.background.src}) no-repeat ${project.background.position}`,
+        background: `url(${project?.background?.src}) no-repeat ${project?.background?.position}`,
         backgroundSize: 'cover',
     };
 
@@ -25,7 +25,7 @@ const Project: FC<Props> = ({ project }) => {
                 onClick={() => setIsModalOpen(true)}
             >
                 <div className={styles.projectOverlay} tabIndex={0}>
-                    <div className={styles.projectTitle}>{project.title}</div>
+                    <div className={styles.projectTitle}>{project?.title}</div>
                 </div>
             </div>
             <ProjectDialog

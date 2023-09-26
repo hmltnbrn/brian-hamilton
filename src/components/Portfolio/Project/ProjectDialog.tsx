@@ -4,8 +4,8 @@ import classNames from 'classnames';
 import parse from 'html-react-parser';
 import { FC } from 'react';
 
+import { ProjectLinkType, ProjectType } from '../../../helpers/constants';
 import { ButtonLink } from '../../Local/Button/Button';
-import { Links, ProjectType } from '../Portfolio';
 
 import styles from './ProjectDialog.module.scss';
 
@@ -18,12 +18,12 @@ type Props = {
 const ProjectDialog: FC<Props> = ({ isOpen, onClose, project }) => {
     const projectStyle = {
         background: `url(${
-            project.background ? project.background.src : ''
+            project?.background ? project?.background?.src : ''
         }) no-repeat top center`,
         backgroundSize: 'cover',
     };
-    const projectLinks = project.links || [];
-    const projectTech = project.technology || [];
+    const projectLinks = project?.links || [];
+    const projectTech = project?.technology || [];
     return (
         <Dialog
             fullScreen={false}
@@ -49,19 +49,25 @@ const ProjectDialog: FC<Props> = ({ isOpen, onClose, project }) => {
                 <div className={styles.activeContainer}>
                     <div
                         className={classNames(styles.activeDot, {
-                            [styles.inactive]: !project.active,
+                            [styles.inactive]: !project?.active,
                         })}
                     />
                     <h4
                         className={classNames({
-                            [styles.inactive]: !project.active,
+                            [styles.inactive]: !project?.active,
                         })}
                     >
-                        {project.active ? 'Active' : 'Inactive'}
+                        {project?.active ? 'Active' : 'Inactive'}
                     </h4>
                 </div>
-                <h2>{project.title}</h2>
-                <h3>{project.year}</h3>
+                <h2>{project?.title}</h2>
+                {!project?.endYear ? (
+                    <h3>{project?.startYear}</h3>
+                ) : (
+                    <h3>
+                        {project?.startYear} - {project?.endYear}
+                    </h3>
+                )}
                 <div className={styles.badgeContainer}>
                     {projectTech.map((tech: string, index: number) => {
                         return (
@@ -71,21 +77,23 @@ const ProjectDialog: FC<Props> = ({ isOpen, onClose, project }) => {
                         );
                     })}
                 </div>
-                <p>{parse(project.description || '')}</p>
+                <p>{parse(project?.description || '')}</p>
                 <div className={styles.projectLinks}>
-                    {projectLinks.map((link: Links, index: number) => {
-                        return (
-                            <ButtonLink
-                                type="a"
-                                key={index}
-                                href={link.href}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                {link.text}
-                            </ButtonLink>
-                        );
-                    })}
+                    {projectLinks.map(
+                        (link: ProjectLinkType, index: number) => {
+                            return (
+                                <ButtonLink
+                                    type="a"
+                                    key={index}
+                                    href={link?.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    {link?.text}
+                                </ButtonLink>
+                            );
+                        },
+                    )}
                 </div>
             </DialogContent>
         </Dialog>
