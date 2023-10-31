@@ -2,10 +2,11 @@ import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import axios from 'axios';
 import classNames from 'classnames';
-import { ChangeEvent, FC, FormEvent, useCallback, useState } from 'react';
+import { FC, FormEvent, useCallback, useState } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { Helmet } from 'react-helmet-async';
 
+import { useContactForm } from '../../hooks/useContactForm';
 import { ButtonLink, RoundButtonLink } from '../Local/Button/Button';
 import CustomSnackbar from '../Local/CustomSnackbar/CustomSnackbar';
 import Input from '../Local/Input/Input';
@@ -14,15 +15,7 @@ import TextArea from '../Local/TextArea/TextArea';
 import styles from './Contact.module.scss';
 
 const Contact: FC = () => {
-    const [name, setName] = useState<string>('');
-    const [nameError, setNameError] = useState<boolean | string>(false);
-    const [email, setEmail] = useState<string>('');
-    const [emailError, setEmailError] = useState<boolean | string>(false);
-    const [subject, setSubject] = useState<string>('');
-    const [subjectError, setSubjectError] = useState<boolean | string>(false);
-    const [message, setMessage] = useState<string>('');
-    const [messageError, setMessageError] = useState<boolean | string>(false);
-    const [recaptcha, setRecaptcha] = useState<string | null>('');
+    const [recaptcha, setRecaptcha] = useState<string | null>(null);
     const [emailDialog, setEmailDialog] = useState<boolean>(false);
     const [phoneDialog, setPhoneDialog] = useState<boolean>(false);
     const [emailSendingSnackbar, setEmailSendingSnackbar] =
@@ -32,6 +25,11 @@ const Contact: FC = () => {
     const [recaptchaSnackbar, setRecaptchaSnackbar] = useState<boolean>(false);
     const [emailErrorSnackbar, setEmailErrorSnackbar] =
         useState<boolean>(false);
+
+    const { formState, updateField, validateField, resetForm } =
+        useContactForm();
+
+    const { name, email, subject, message } = formState;
 
     const sendEmail = useCallback(async () => {
         const data = {
@@ -47,66 +45,47 @@ const Contact: FC = () => {
             setEmailSendingSnackbar(false);
             setEmailSuccessSnackbar(true);
             setRecaptcha('');
-            clear();
+            resetForm();
         } catch (e) {
             setEmailSendingSnackbar(false);
             setEmailErrorSnackbar(true);
             setRecaptcha('');
         }
-    }, [email, message, name, recaptcha, subject]);
+    }, [name, email, subject, message, recaptcha, resetForm]);
 
     const handleSubmit = useCallback(
         (event: FormEvent<HTMLFormElement>) => {
-            const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(.\w{2,63})+$/;
-            let validEmail = true;
-
-            !name ? setNameError('Required field') : setNameError(false);
-            !subject
-                ? setSubjectError('Required field')
-                : setSubjectError(false);
-            !message
-                ? setMessageError('Required field')
-                : setMessageError(false);
+            event.preventDefault();
             !recaptcha
                 ? setRecaptchaSnackbar(true)
                 : setRecaptchaSnackbar(false);
 
-            if (!email) {
-                setEmailError('Required field');
-                validEmail = false;
-            } else if (!emailRegex.test(email)) {
-                setEmailError('Not a valid email');
-                validEmail = false;
-            } else {
-                setEmailError(false);
-                validEmail = true;
-            }
+            Object.keys(formState).forEach((key) => {
+                validateField(key);
+            });
 
             if (
-                name &&
-                validEmail === true &&
-                subject &&
-                message &&
+                name?.isValid &&
+                email?.isValid &&
+                subject?.isValid &&
+                message?.isValid &&
                 recaptcha
             ) {
                 setEmailDialog(false);
                 sendEmail();
             }
-            event.preventDefault();
         },
-        [email, message, name, recaptcha, sendEmail, subject],
+        [
+            recaptcha,
+            formState,
+            name?.isValid,
+            email?.isValid,
+            subject?.isValid,
+            message?.isValid,
+            validateField,
+            sendEmail,
+        ],
     );
-
-    const clear = () => {
-        setName('');
-        setNameError(false);
-        setEmail('');
-        setEmailError(false);
-        setSubject('');
-        setSubjectError(false);
-        setMessage('');
-        setMessageError(false);
-    };
 
     return (
         <>
@@ -154,41 +133,57 @@ const Contact: FC = () => {
                             type="text"
                             name="name"
                             placeholder="Full Name *"
-                            value={name}
-                            errorText={nameError}
-                            onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                                setName(e.currentTarget.value)
+                            value={name?.value}
+                            errorText={name?.error}
+                            onChange={(e) =>
+                                updateField(
+                                    e.currentTarget.name,
+                                    e.currentTarget.value,
+                                )
                             }
+                            onBlur={(e) => validateField(e.currentTarget.name)}
                         />
                         <Input
                             type="email"
                             name="email"
                             placeholder="Email Address *"
-                            value={email}
-                            errorText={emailError}
-                            onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                                setEmail(e.currentTarget.value)
+                            value={email?.value}
+                            errorText={email?.error}
+                            onChange={(e) =>
+                                updateField(
+                                    e.currentTarget.name,
+                                    e.currentTarget.value,
+                                )
                             }
+                            onBlur={(e) => validateField(e.currentTarget.name)}
                         />
                         <Input
                             type="text"
                             name="subject"
                             placeholder="Subject *"
-                            value={subject}
-                            errorText={subjectError}
-                            onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                                setSubject(e.currentTarget.value)
+                            value={subject?.value}
+                            errorText={subject?.error}
+                            onChange={(e) =>
+                                updateField(
+                                    e.currentTarget.name,
+                                    e.currentTarget.value,
+                                )
                             }
+                            onBlur={(e) => validateField(e.currentTarget.name)}
                         />
                         <TextArea
                             name="message"
                             rows={6}
                             placeholder="Message *"
-                            value={message}
-                            errorText={messageError}
-                            onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
-                                setMessage(e.currentTarget.value)
+                            value={message?.value}
+                            errorText={message?.error}
+                            onChange={(e) =>
+                                updateField(
+                                    e.currentTarget.name,
+                                    e.currentTarget.value,
+                                )
                             }
+                            onBlur={(e) => validateField(e.currentTarget.name)}
                         />
                         <div className={styles.recaptchaContainer}>
                             <ReCAPTCHA
@@ -202,7 +197,7 @@ const Contact: FC = () => {
                             />
                         </div>
                         <div className={styles.dialogButtonContainer}>
-                            <ButtonLink type="button" onButtonClick={clear}>
+                            <ButtonLink type="button" onButtonClick={resetForm}>
                                 Clear
                             </ButtonLink>
                             <ButtonLink type="submit">Send Email</ButtonLink>

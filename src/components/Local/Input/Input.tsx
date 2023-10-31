@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { ChangeEvent, FC } from 'react';
+import { ChangeEvent, FC, FocusEvent } from 'react';
 
 import styles from './Input.module.scss';
 
@@ -8,8 +8,9 @@ type Props = {
     name: string;
     placeholder: string;
     value?: string;
-    errorText?: string | boolean;
-    onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+    errorText?: string | boolean | null;
+    onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+    onBlur?: (e: FocusEvent<HTMLInputElement>) => void;
 };
 
 const Input: FC<Props> = ({
@@ -19,6 +20,7 @@ const Input: FC<Props> = ({
     value,
     errorText,
     onChange,
+    onBlur,
 }) => {
     return (
         <div className={styles.formGroup}>
@@ -27,9 +29,8 @@ const Input: FC<Props> = ({
                 name={name}
                 placeholder={placeholder}
                 value={value}
-                onChange={(e: ChangeEvent<HTMLInputElement>): void =>
-                    onChange(e)
-                }
+                onChange={(e) => onChange?.(e)}
+                onBlur={(e) => onBlur?.(e)}
                 className={classNames({ [styles.error]: errorText })}
             />
             <div className={styles.errorAlert}>{errorText}</div>

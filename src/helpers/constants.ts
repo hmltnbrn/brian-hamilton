@@ -1,6 +1,8 @@
 export const BASE_URL =
     process.env.NODE_ENV === 'production' ? '' : 'http://localhost:8080';
 
+export const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(.\w{2,63})+$/;
+
 export type ProjectLinkType = {
     href: string;
     text: string;
